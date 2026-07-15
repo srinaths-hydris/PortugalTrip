@@ -961,126 +961,182 @@
     {
       "day_number": 14,
       "date": "Sun Aug 9",
-      "title": "REST DAY — Last Full Day with D&R 👨‍👩‍👧‍👦",
-      "subtitle": "Easy local day together. D&R fly home tomorrow morning.",
-      "location": "Armação de Pêra (local day)",
+      "title": "DROP D&R AT FARO + SIGHTSEEING + RETURN",
+      "subtitle": "Airport drop (overnight stay), explore Faro & Silves, back to casa",
+      "location": "Armação → Faro Airport → Silves → Armação",
       "activities": [
         {
           "time": "8:30 AM",
-          "name": "Breakfast at Casa Margarida",
+          "name": "Breakfast & pack D&R luggage",
           "type": "dining",
-          "notes": "Slow morning. No airport drive today."
+          "notes": "D&R pack for overnight airport hotel stay. You pack for Lisbon drive tomorrow."
         },
         {
           "time": "10:00 AM",
-          "name": "Local beach time — Praia Grande de Pêra",
-          "type": "beach",
-          "notes": "Walkable, easy, low-stress family morning."
+          "name": "Drive to Faro Airport with D&R",
+          "type": "drive",
+          "notes": "~40 min from Armação. D&R will stay overnight near airport for 11:35 AM flight tomorrow."
+        },
+        {
+          "time": "10:45 AM",
+          "name": "👋 Drop D&R at Faro Airport hotel",
+          "type": "transit",
+          "notes": "Say goodbye! They check into airport hotel, you continue sightseeing."
+        },
+        {
+          "time": "11:00 AM",
+          "name": "Explore Faro Old Town",
+          "type": "walking",
+          "notes": "Free. 1-1.5 hrs. Arco da Vila, cathedral square, charming cobblestone streets. Quick stop!"
         },
         {
           "time": "12:30 PM",
-          "name": "Lunch in Armação de Pêra",
+          "name": "Lunch in Faro",
           "type": "dining",
-          "notes": "Keep it local and simple."
+          "notes": "~€35-45 family. Waterfront restaurant or old town café."
+        },
+        {
+          "time": "1:30 PM",
+          "name": "Drive to Silves",
+          "type": "drive",
+          "notes": "~30 min inland. Historic hillside town with castle!"
         },
         {
           "time": "2:00 PM",
-          "name": "Chill at Casa Margarida / pool time",
-          "type": "rest",
-          "notes": "Pack slowly for tomorrow. Keep energy for travel day."
+          "name": "Silves Castle",
+          "type": "historic-site",
+          "notes": "€2.80/adult, free <12. Red sandstone Moorish castle with great views. Kids love the ramparts!",
+          "cost": "€6 (2 adults)"
         },
         {
-          "time": "5:30 PM",
-          "name": "Farewell dinner with D&R",
+          "time": "3:30 PM",
+          "name": "Walk Silves Old Town & riverside",
+          "type": "walking",
+          "notes": "Free. Pretty medieval bridge, orange groves, ice cream stop."
+        },
+        {
+          "time": "4:30 PM",
+          "name": "Drive back to Casa Margarida",
+          "type": "drive",
+          "notes": "~20 min from Silves to Armação."
+        },
+        {
+          "time": "5:00 PM",
+          "name": "Final pack & organize for Lisbon tomorrow",
+          "type": "rest",
+          "notes": "Get everything ready for checkout + long drive tomorrow."
+        },
+        {
+          "time": "7:00 PM",
+          "name": "Dinner in Armação de Pêra",
           "type": "dining",
-          "notes": "Final evening together before tomorrow's airport drop."
+          "notes": "Just the 4 of you. Relaxed final Algarve dinner."
         },
         {
-          "time": "7:30 PM",
-          "name": "REST at casa & final pack for tomorrow",
+          "time": "8:30 PM",
+          "name": "Early night — pack complete!",
           "type": "rest",
-          "notes": "Early night recommended. Faro drop + Lisbon drive tomorrow."
+          "notes": "Everything ready for checkout + Lisbon drive tomorrow."
         }
       ],
-      "kids_note": "True recovery day: beach + pool + easy dinner. Keep everyone fresh for tomorrow's airport drop and Lisbon drive.",
-      "tip": "No Faro run today. D&R fly out tomorrow (Mon Aug 10, 11:35 AM), so keep this day light and pack tonight."
+      "kids_note": "Drop D&R early, then you do YOUR sightseeing (Faro old town is charming, Silves castle is fun!). Back to casa by 5 PM to pack for tomorrow's Lisbon drive.",
+      "tip": "D&R stay overnight near Faro Airport (they can walk to terminal tomorrow for 11:35 AM flight). You return to casa tonight, checkout tomorrow morning, and do sightseeing en route to Lisbon."
     },
     {
       "day_number": 15,
       "date": "Mon Aug 10",
-      "title": "ALGARVE → FARO AIRPORT (D&R drop) → LISBON",
-      "subtitle": "Drop D&R for 11:35 AM flight, then drive north",
-      "location": "Armação → Faro Airport → Lisbon",
+      "title": "ALGARVE → LISBON (with Évora stop)",
+      "subtitle": "Scenic drive north with UNESCO sightseeing",
+      "location": "Armação → Évora → Lisbon",
       "activities": [
         {
-          "time": "7:00 AM",
-          "name": "Checkout + load bags",
+          "time": "8:00 AM",
+          "name": "Leisurely breakfast & checkout Casa Margarida",
           "type": "check-out",
-          "notes": "Light breakfast/snacks. Start early for Faro airport drop."
+          "notes": "Pack car. No rush — D&R already at airport!"
         },
         {
-          "time": "7:45 AM",
-          "name": "Drive to Faro Airport with D&R",
+          "time": "9:00 AM",
+          "name": "🚗 Drive to Évora",
           "type": "drive",
-          "notes": "~40 min from Armação de Pêra. Everyone in Car 2 together for final ride."
+          "notes": "~2 hrs northeast via A2/A6. UNESCO World Heritage city! Kids nap in car."
         },
         {
-          "time": "8:30 AM",
-          "name": "👋 Drop D&R at FAO Departures",
-          "type": "transit",
-          "notes": "easyJet EZY8532 to London Gatwick departs 11:35 AM. 3-hour buffer for security + bag check. Say goodbye!"
+          "time": "11:00 AM",
+          "name": "Arrive Évora — Roman Temple & Aqueduct",
+          "type": "photo-stop",
+          "notes": "Free. Quick photo stop at the Roman Temple of Diana (2000 years old!). 15 min."
         },
         {
-          "time": "8:45 AM",
-          "name": "🚗 Start drive to Lisbon",
-          "type": "drive",
-          "notes": "~2.5-3 hrs via A2. Early start = beat traffic. Optional lunch/coffee break en route."
+          "time": "11:30 AM",
+          "name": "Chapel of Bones (Capela dos Ossos)",
+          "type": "historic-site",
+          "notes": "€6/adult, free <12. Eerie chapel lined with human bones. 30 min. 7-yr-old will be fascinated!",
+          "cost": "€12 (2 adults)"
         },
         {
-          "time": "12:00 PM",
-          "name": "Arrive Lisbon airport area",
-          "type": "arrival",
-          "notes": "Lunch near airport before car return."
+          "time": "12:15 PM",
+          "name": "Walk Évora Old Town",
+          "type": "walking",
+          "notes": "Free. Whitewashed medieval streets, cafés, shops. 30 min stroll."
         },
         {
-          "time": "1:00 PM",
-          "name": "🚗 DROP OFF CAR 2 at airport rental desk",
-          "type": "car-rental",
-          "notes": "Car returned! No 5 AM stress tomorrow. Fuel check + return complete."
-        },
-        {
-          "time": "1:30 PM",
-          "name": "Check into Holiday Inn Express Airport",
-          "type": "check-in",
-          "notes": "5 min walk from terminal. Drop all bags. REST! ✅ BOOKED (on points)"
+          "time": "12:45 PM",
+          "name": "Lunch in Évora",
+          "type": "dining",
+          "notes": "~€40-50 family. Traditional Alentejo cuisine — soups, bread, cheese, veggie dishes."
         },
         {
           "time": "2:00 PM",
-          "name": "REST at hotel — shower, unwind, relax",
-          "type": "rest",
-          "notes": "Everyone decompress. Kids watch TV. Parents rest. Long afternoon nap. No agenda!"
+          "name": "🚗 Drive to Lisbon",
+          "type": "drive",
+          "notes": "~1.5 hrs via A6/A2. Afternoon nap time!"
         },
         {
-          "time": "5:30 PM",
-          "name": "Early dinner near hotel OR order room service",
+          "time": "3:30 PM",
+          "name": "Arrive Lisbon Airport",
+          "type": "arrival",
+          "notes": "DROP OFF CAR 2 at rental desk. Car returned!"
+        },
+        {
+          "time": "4:00 PM",
+          "name": "🚗 DROP OFF CAR 2 at airport",
+          "type": "car-rental",
+          "notes": "Fuel check complete. No 5 AM stress tomorrow!"
+        },
+        {
+          "time": "4:15 PM",
+          "name": "Check into Holiday Inn Express Airport",
+          "type": "check-in",
+          "notes": "5 min walk from terminal. Drop bags. REST! ✅ BOOKED (on points)"
+        },
+        {
+          "time": "4:30 PM",
+          "name": "REST at hotel — long wind-down",
+          "type": "rest",
+          "notes": "Shower, decompress, kids watch TV. Full afternoon rest."
+        },
+        {
+          "time": "6:30 PM",
+          "name": "Early dinner near hotel OR room service",
           "type": "dining",
-          "notes": "Simple, easy. Walk to nearby restaurant or order in. No Uber to city tonight — just REST!"
+          "notes": "Simple, easy. No Uber to city — just REST!"
         },
         {
-          "time": "7:30 PM",
-          "name": "Final packing & organize for flight",
+          "time": "8:00 PM",
+          "name": "Final pack & organize for 4:30 AM wake-up",
           "type": "rest",
-          "notes": "Make sure everything's ready for 4:30 AM wake-up!"
+          "notes": "Set multiple alarms! Flight is 7:35 AM."
         },
         {
-          "time": "8:30 PM",
+          "time": "9:00 PM",
           "name": "BED! EARLY!",
           "type": "rest",
-          "notes": "Set multiple alarms! Flight is 7:35 AM. Sleep by 9 PM = 7.5 hrs before 4:30 AM wake-up!"
+          "notes": "7.5 hrs sleep before 4:30 AM wake-up."
         }
       ],
-      "kids_note": "Early Faro drop-off, then long nap window in the car to Lisbon. Arrive Lisbon by noon = full afternoon rest at hotel before flight tomorrow.",
-      "tip": "D&R flight timeline: EZY8532 departs Faro 11:35 AM, arrives London Gatwick 2:25 PM (Mon Aug 10). Drop them by 8:30 AM for 3-hour buffer. Earlier Lisbon arrival = more rest time for your family."
+      "kids_note": "D&R already flew home this morning! You do YOUR sightseeing: Évora is fascinating (Roman ruins + bone chapel). Arrive Lisbon by 3:30 PM = full evening rest before flight.",
+      "tip": "Évora is 30 min off the direct route but WORTH IT — UNESCO site, Roman temple, bone chapel (kids love it), medieval streets. Adds 1 hr total to drive but breaks up the journey perfectly."
     },
     {
       "day_number": 16,
