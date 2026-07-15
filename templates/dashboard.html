@@ -156,10 +156,20 @@
                 <div class="quick-link-icon">✅</div>
                 <div>Checklist</div>
             </a>
+            <a href="{{ url_for('dining') }}" class="quick-link">
+                <div class="quick-link-icon">🍽️</div>
+                <div>Dining</div>
+            </a>
+            <a href="{{ url_for('attractions') }}" class="quick-link">
+                <div class="quick-link-icon">🏰</div>
+                <div>Attractions</div>
+            </a>
+            {% if user.is_admin %}
             <a href="{{ url_for('budget') }}" class="quick-link">
                 <div class="quick-link-icon">💰</div>
                 <div>Budget</div>
             </a>
+            {% endif %}
         </div>
     </div>
 

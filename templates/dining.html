@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block title %}Dining Guide - Portugal 2026{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="mb-3">🍽️ Dining Guide</h1>
+            <p class="lead">{{ dining.guide_info.description }}</p>
+            <div class="alert alert-info">
+                <strong>Note:</strong> {{ dining.guide_info.notes }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Days -->
+    {% for day in dining.days %}
+    <div class="card mb-4">
+        <div class="card-header" style="background-color: #e8f4f8; cursor: pointer;" onclick="toggleDay({{ day.day_number }})">
+            <h4 class="mb-0">
+                Day {{ day.day_number }} - {{ day.date }} - {{ day.location }}
+                <span class="float-end">
+                    <i class="bi bi-chevron-down" id="icon-{{ day.day_number }}"></i>
+                </span>
+            </h4>
+        </div>
+        <div class="card-body collapse" id="day-{{ day.day_number }}">
+            {% for meal in day.meals %}
+            <div class="meal-entry mb-4 pb-3 {% if not loop.last %}border-bottom{% endif %}">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5 class="text-primary">
+                            {% if meal.meal_type == 'breakfast' %}🍳{% endif %}
+                            {% if meal.meal_type == 'lunch' %}🍴{% endif %}
+                            {% if meal.meal_type == 'dinner' %}🍽️{% endif %}
+                            {% if meal.meal_type == 'snack' %}☕{% endif %}
+                            {{ meal.meal_type|title }}
+                        </h5>
+                        <p class="text-muted mb-1"><strong>{{ meal.time }}</strong></p>
+                        {% if meal.booking_needed %}
+                        <span class="badge bg-warning text-dark">📞 Book Ahead</span>
+                        {% endif %}
+                        {% if meal.kid_friendly %}
+                        <span class="badge bg-success">👶 Kid Friendly</span>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-9">
+                        <h5 class="mb-2">
+                            {% if 'PLACEHOLDER' in meal.restaurant_name %}
+                            <span class="text-warning">🔍 {{ meal.restaurant_name }}</span>
+                            {% else %}
+                            {{ meal.restaurant_name }}
+                            {% endif %}
+                        </h5>
+                        <p class="mb-1"><strong>Cuisine:</strong> {{ meal.cuisine }}</p>
+                        <p class="mb-1"><strong>Area:</strong> {{ meal.area }}</p>
+                        {% if meal.address %}
+                        <p class="mb-1"><strong>Address:</strong> {{ meal.address }}</p>
+                        {% endif %}
+
+                        <div class="mt-2">
+                            <p class="mb-1"><strong>What to Get:</strong> {{ meal.what_to_get }}</p>
+                            {% if meal.notes %}
+                            <p class="mb-1 text-muted"><em>💡 {{ meal.notes }}</em></p>
+                            {% endif %}
+                        </div>
+
+                        <p class="mt-2 mb-0">
+                            <strong>Estimated Cost:</strong>
+                            <span class="badge bg-secondary">{{ meal.estimated_cost }}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Dining Tips Section -->
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">💡 Dining Tips & Tricks</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5>🇵🇹 General Tips</h5>
+                    <ul>
+                        {% for tip in dining.dining_tips.general %}
+                        <li>{{ tip }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>🥗 Vegetarian Options</h5>
+                    <ul>
+                        {% for tip in dining.dining_tips.vegetarian %}
+                        <li>{{ tip }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5>👶 With Kids</h5>
+                    <ul>
+                        {% for tip in dining.dining_tips.with_kids %}
+                        <li>{{ tip }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>📞 Booking</h5>
+                    <ul>
+                        {% for tip in dining.dining_tips.booking %}
+                        <li>{{ tip }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Reference -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">⭐ Must-Visit Spots</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h6 class="text-primary">Porto</h6>
+                    <ul class="list-unstyled">
+                        <li>☕ Lello Bookshop Café</li>
+                        <li>🍔 Café Santiago (Francesinha)</li>
+                        <li>🍴 Brasão Aliados</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h6 class="text-primary">Lisbon</h6>
+                    <ul class="list-unstyled">
+                        <li>🥐 Pastéis de Belém (NON-NEGOTIABLE!)</li>
+                        <li>🍽️ Time Out Market (2 visits!)</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h6 class="text-primary">Sintra</h6>
+                    <ul class="list-unstyled">
+                        <li>🥐 Piriquita (Travesseiros)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Placeholder Status -->
+    <div class="alert alert-warning" role="alert">
+        <h5>🔍 Restaurants Marked "PLACEHOLDER"</h5>
+        <p class="mb-0">These are spots where you should scout options on arrival using Google Maps. Look for high ratings (4.0+) and recent reviews. Portuguese locals know best!</p>
+    </div>
+</div>
+
+<script>
+function toggleDay(dayNum) {
+    const content = document.getElementById(`day-${dayNum}`);
+    const icon = document.getElementById(`icon-${dayNum}`);
+
+    if (content.classList.contains('show')) {
+        content.classList.remove('show');
+        icon.classList.remove('bi-chevron-up');
+        icon.classList.add('bi-chevron-down');
+    } else {
+        content.classList.add('show');
+        icon.classList.remove('bi-chevron-down');
+        icon.classList.add('bi-chevron-up');
+    }
+}
+
+// Expand first day by default
+document.addEventListener('DOMContentLoaded', function() {
+    toggleDay(1);
+});
+</script>
+
+{% endblock %}

@@ -170,6 +170,17 @@ def attractions():
                          attractions=attractions_data,
                          comments=comments_data)
 
+@app.route('/dining')
+@login_required
+def dining():
+    """Dining guide - where to eat each day."""
+    user = auth.get_user()
+    user['is_admin'] = auth.is_admin(user['email'])
+    dining_data = load_data('dining.json')
+    return render_template('dining.html',
+                         user=user,
+                         dining=dining_data)
+
 @app.route('/budget')
 @login_required
 def budget():

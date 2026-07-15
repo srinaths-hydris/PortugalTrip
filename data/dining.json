@@ -1,0 +1,755 @@
+{
+  "guide_info": {
+    "title": "Portugal 2026 Dining Guide",
+    "description": "Day-by-day restaurant recommendations and meal planning",
+    "notes": "Mix of specific recommendations and flexible placeholders. Book popular spots in advance (especially Porto and Lisbon)."
+  },
+  "days": [
+    {
+      "day_number": 1,
+      "date": "Mon Jul 27",
+      "location": "Porto",
+      "meals": [
+        {
+          "meal_type": "dinner",
+          "time": "6:00 PM",
+          "restaurant_name": "PLACEHOLDER - Tasca near Aliados",
+          "cuisine": "Portuguese traditional",
+          "area": "Aliados/Centro",
+          "what_to_get": "Caldo verde soup, salads, bread basket, cheese, veggie sides",
+          "notes": "Simple local spot. Walk from São Bento. Look for 'tasca' or 'petiscos' signs.",
+          "estimated_cost": "€35-45 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    },
+    {
+      "day_number": 2,
+      "date": "Tue Jul 28",
+      "location": "Porto",
+      "meals": [
+        {
+          "meal_type": "snack",
+          "time": "10:00 AM",
+          "restaurant_name": "Lello Bookshop Café",
+          "cuisine": "Café/pastries",
+          "area": "Centro",
+          "what_to_get": "Pastéis de nata, coffee",
+          "notes": "Right after visiting the bookshop",
+          "estimated_cost": "€5-8",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "12:30 PM",
+          "restaurant_name": "PLACEHOLDER - Ribeira or Gaia waterfront",
+          "cuisine": "Portuguese/casual",
+          "area": "Ribeira or Vila Nova de Gaia",
+          "what_to_get": "Caldo verde, salads, cheese plates, bread",
+          "notes": "After cable car. Lots of options along the waterfront. Avoid tourist traps - look for locals!",
+          "estimated_cost": "€35-45 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "6:30 PM",
+          "restaurant_name": "Café Santiago",
+          "cuisine": "Portuguese (Francesinha specialist)",
+          "area": "Centro",
+          "address": "Rua de Passos Manuel, 226",
+          "what_to_get": "Francesinha (adults share), simple salads/bread for kids",
+          "notes": "THE spot for Porto's signature dish. Always busy but fast turnover.",
+          "estimated_cost": "€30-40 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    },
+    {
+      "day_number": 3,
+      "date": "Wed Jul 29",
+      "location": "Douro Valley",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "7:30 AM",
+          "restaurant_name": "Quick grab before train",
+          "cuisine": "Café/bakery",
+          "area": "Near São Bento",
+          "what_to_get": "Pastéis, croissants, coffee, juice boxes",
+          "notes": "Grab and go - train leaves at 8:15 AM!",
+          "estimated_cost": "€10-15",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "12:00 PM",
+          "restaurant_name": "PLACEHOLDER - Pinhão village tasca",
+          "cuisine": "Portuguese traditional",
+          "area": "Pinhão village",
+          "what_to_get": "Soup, omelets, salads, bread, cheese",
+          "notes": "Small village, limited options. Walk from train station - look for 'restaurante' signs.",
+          "estimated_cost": "€40 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "7:30 PM",
+          "restaurant_name": "Brasão Aliados",
+          "cuisine": "Portuguese contemporary",
+          "area": "Aliados, Porto",
+          "address": "Rua de Sá da Bandeira, 16",
+          "what_to_get": "Francesinhas (if you want more!), grilled dishes, salads, veggie sides",
+          "notes": "Casual upscale. Good for families. After long day on train.",
+          "estimated_cost": "€40-50 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    },
+    {
+      "day_number": 4,
+      "date": "Thu Jul 30",
+      "location": "Porto → Aveiro → Tomar",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "8:00 AM",
+          "restaurant_name": "Boon House Airbnb",
+          "cuisine": "Self-serve",
+          "area": "Porto",
+          "what_to_get": "Whatever's in the kitchen - toast, cereal, coffee",
+          "notes": "Pack up and checkout",
+          "estimated_cost": "€0",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "snack",
+          "time": "12:30 PM",
+          "restaurant_name": "Ovos Moles da Fábrica",
+          "cuisine": "Portuguese pastries",
+          "area": "Aveiro old town",
+          "what_to_get": "Ovos moles (sweet egg pastries - kids LOVE these!)",
+          "notes": "Aveiro's signature treat. After the canal boat.",
+          "estimated_cost": "€5-8",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "1:30 PM",
+          "restaurant_name": "PLACEHOLDER - Aveiro or en route",
+          "cuisine": "Pizza/pasta or Portuguese",
+          "area": "Aveiro or roadside",
+          "what_to_get": "Simple lunch before 2-hour drive",
+          "notes": "Keep it quick - long drive ahead. Pizza/pasta = easy with kids.",
+          "estimated_cost": "€35-45 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "6:30 PM",
+          "restaurant_name": "PLACEHOLDER - Tomar riverside",
+          "cuisine": "Portuguese traditional",
+          "area": "Tomar old town",
+          "what_to_get": "Prato do dia (daily special), soup, salads",
+          "notes": "After arrival and rest. Walk to old town square - multiple options.",
+          "estimated_cost": "€35-45 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    },
+    {
+      "day_number": 5,
+      "date": "Fri Jul 31",
+      "location": "Tomar + Almourol",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "8:00 AM",
+          "restaurant_name": "Os Marias Airbnb or nearby café",
+          "cuisine": "Self-serve or café",
+          "area": "Olalhas/Tomar",
+          "what_to_get": "Quick breakfast before big day",
+          "notes": "Full day of castle exploring ahead",
+          "estimated_cost": "€10-15",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "12:00 PM",
+          "restaurant_name": "PLACEHOLDER - Tomar town",
+          "cuisine": "Portuguese",
+          "area": "Tomar centro",
+          "what_to_get": "Soup, mains, salads",
+          "notes": "After Convento de Cristo visit. Multiple options in town square.",
+          "estimated_cost": "€35-45 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "8:00 PM",
+          "restaurant_name": "PLACEHOLDER - Tomar",
+          "cuisine": "Portuguese",
+          "area": "Tomar old town",
+          "what_to_get": "Whatever you're craving after long day",
+          "notes": "After Almourol castle and optional reservoir swim",
+          "estimated_cost": "€40-50 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    },
+    {
+      "day_number": 6,
+      "date": "Sat Aug 1",
+      "location": "Tomar → Caves → Batalha → Óbidos → Lisbon",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "8:00 AM",
+          "restaurant_name": "Quick breakfast at Airbnb",
+          "cuisine": "Self-serve",
+          "area": "Tomar",
+          "what_to_get": "Light breakfast before checkout",
+          "notes": "Long transit day ahead",
+          "estimated_cost": "€10",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "1:15 PM",
+          "restaurant_name": "PLACEHOLDER - Batalha",
+          "cuisine": "Portuguese",
+          "area": "Near monastery",
+          "what_to_get": "Simple lunch - soup, sandwiches, salads",
+          "notes": "After caves, before monastery visit",
+          "estimated_cost": "€35-45 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "snack",
+          "time": "4:00 PM",
+          "restaurant_name": "Óbidos - ice cream stop (optional)",
+          "cuisine": "Ice cream/snacks",
+          "area": "Óbidos walled town",
+          "what_to_get": "Ice cream while walking the walls",
+          "notes": "Only if you stop at Óbidos",
+          "estimated_cost": "€10-15",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "7:30 PM",
+          "restaurant_name": "PLACEHOLDER - Near Holiday Inn Lisbon",
+          "cuisine": "Portuguese or Italian",
+          "area": "Lisbon - Saldanha/Campo Pequeno area",
+          "what_to_get": "Easy dinner after long day",
+          "notes": "Walk from hotel. Keep it simple - everyone's tired.",
+          "estimated_cost": "€40-50 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    },
+    {
+      "day_number": 7,
+      "date": "Sun Aug 2",
+      "location": "Lisbon",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "9:00 AM",
+          "restaurant_name": "Holiday Inn breakfast buffet",
+          "cuisine": "Hotel breakfast",
+          "area": "Hotel",
+          "what_to_get": "Full buffet - fuel up!",
+          "notes": "Sleep in! First lazy morning.",
+          "estimated_cost": "Included",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "12:00 PM",
+          "restaurant_name": "PLACEHOLDER - Parque das Nações",
+          "cuisine": "Food court or waterfront",
+          "area": "Parque das Nações (near Oceanário)",
+          "what_to_get": "Pizza, pasta, salads - easy options",
+          "notes": "Before Oceanário visit",
+          "estimated_cost": "€35-45 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "7:00 PM",
+          "restaurant_name": "Time Out Market Lisboa",
+          "cuisine": "Food hall - multiple vendors",
+          "area": "Cais do Sodré",
+          "address": "Av. 24 de Julho, 49",
+          "what_to_get": "Everyone picks their own! Multiple cuisines under one roof.",
+          "notes": "PERFECT for picky eaters. Famous food hall with top Lisbon chefs. Busy but worth it!",
+          "estimated_cost": "€50-60 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    },
+    {
+      "day_number": 8,
+      "date": "Mon Aug 3",
+      "location": "Lisbon",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "7:30 AM",
+          "restaurant_name": "Quick café near metro",
+          "cuisine": "Café/pastries",
+          "area": "Near hotel",
+          "what_to_get": "Pastéis, coffee, juice - grab and go",
+          "notes": "Early start for Tram 28 - get there by 8:45 AM!",
+          "estimated_cost": "€10-15",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "snack",
+          "time": "11:30 AM",
+          "restaurant_name": "PLACEHOLDER - Alfama viewpoint café",
+          "cuisine": "Café/pastries",
+          "area": "Alfama",
+          "what_to_get": "Pastéis de nata, coffee, juice",
+          "notes": "After castle, walking down through Alfama",
+          "estimated_cost": "€10-15",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "12:00 PM",
+          "restaurant_name": "Time Out Market Lisboa",
+          "cuisine": "Food hall",
+          "area": "Cais do Sodré",
+          "what_to_get": "Everyone picks their own vendor!",
+          "notes": "Second visit! Kids know what they like now. Solves picky eater problem.",
+          "estimated_cost": "€40-50 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "6:00 PM",
+          "restaurant_name": "PLACEHOLDER - Bairro Alto tasca",
+          "cuisine": "Portuguese traditional",
+          "area": "Bairro Alto",
+          "what_to_get": "Soup, petiscos (small plates), veggie sides",
+          "notes": "After Santa Justa elevator. Walk Bairro Alto streets - many options.",
+          "estimated_cost": "€40-50 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    },
+    {
+      "day_number": 9,
+      "date": "Tue Aug 4",
+      "location": "Lisbon - Belém",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "9:15 AM",
+          "restaurant_name": "Pastéis de Belém",
+          "cuisine": "Famous pastry shop",
+          "area": "Belém",
+          "address": "Rua de Belém 84-92",
+          "what_to_get": "Pastéis de nata (THE original since 1837!), coffee, juice",
+          "notes": "NON-NEGOTIABLE! Go early to avoid lines. Kids will go CRAZY for warm custard tarts.",
+          "estimated_cost": "€15-20 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "12:00 PM",
+          "restaurant_name": "PLACEHOLDER - Belém waterfront",
+          "cuisine": "Portuguese café",
+          "area": "Belém",
+          "what_to_get": "Prato do dia, salads, sandwiches",
+          "notes": "After monuments, before heading back to hotel for rest",
+          "estimated_cost": "€35-45 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "7:00 PM",
+          "restaurant_name": "PLACEHOLDER - Near hotel",
+          "cuisine": "Simple restaurant",
+          "area": "Near Holiday Inn",
+          "what_to_get": "Pasta, salads, veggie options",
+          "notes": "Easy dinner - no Uber needed tonight",
+          "estimated_cost": "€40-50 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    },
+    {
+      "day_number": 10,
+      "date": "Wed Aug 5",
+      "location": "Sintra",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "7:30 AM",
+          "restaurant_name": "Quick grab near hotel or Rossio station",
+          "cuisine": "Café/bakery",
+          "area": "Lisbon centro",
+          "what_to_get": "Pastries, coffee, juice boxes",
+          "notes": "Early train to Sintra at 8:00 AM",
+          "estimated_cost": "€10-15",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "snack",
+          "time": "8:45 AM",
+          "restaurant_name": "Piriquita",
+          "cuisine": "Famous Sintra bakery",
+          "area": "Sintra town",
+          "address": "Rua das Padarias 1",
+          "what_to_get": "Travesseiros (pillow pastries) and queijadas (cheese tarts) - Sintra specialties!",
+          "notes": "Right by train station. Grab before heading up to palaces.",
+          "estimated_cost": "€8-12",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "12:45 PM",
+          "restaurant_name": "PLACEHOLDER - Sintra village café",
+          "cuisine": "Café/sandwiches",
+          "area": "Sintra town center",
+          "what_to_get": "Sandwiches, salads - quick and light",
+          "notes": "Between Moorish Castle and Pena Palace. Keep it fast!",
+          "estimated_cost": "€30-40 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "7:00 PM",
+          "restaurant_name": "PLACEHOLDER - Near hotel + pack for Algarve",
+          "cuisine": "Portuguese or Italian",
+          "area": "Near Holiday Inn",
+          "what_to_get": "Easy dinner - organize for tomorrow's drive",
+          "notes": "Last night in Lisbon before Algarve!",
+          "estimated_cost": "€40-50 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    },
+    {
+      "day_number": 11,
+      "date": "Thu Aug 6",
+      "location": "Lisbon → Faro → Algarve",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "9:00 AM",
+          "restaurant_name": "Holiday Inn breakfast buffet",
+          "cuisine": "Hotel breakfast",
+          "area": "Hotel",
+          "what_to_get": "Full breakfast before checkout",
+          "notes": "Fuel up for drive + D&R pickup!",
+          "estimated_cost": "Included",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "11:30 AM",
+          "restaurant_name": "Lisbon Airport food court",
+          "cuisine": "Various",
+          "area": "Lisbon Airport",
+          "what_to_get": "Light lunch before drive",
+          "notes": "After picking up Car 2, before hitting the road",
+          "estimated_cost": "€30-40 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "7:30 PM",
+          "restaurant_name": "PLACEHOLDER - Armação de Pêra seafood",
+          "cuisine": "Portuguese seafood",
+          "area": "Armação de Pêra",
+          "what_to_get": "Fresh fish, seafood cataplana (group of 6!)",
+          "notes": "CELEBRATION DINNER! D&R have arrived! Book a table for 6.",
+          "estimated_cost": "€70-90 for 6 people",
+          "kid_friendly": true,
+          "booking_needed": true
+        }
+      ]
+    },
+    {
+      "day_number": 12,
+      "date": "Fri Aug 7",
+      "location": "Algarve - Benagil",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "7:30 AM",
+          "restaurant_name": "Casa Margarida - self-catered",
+          "cuisine": "Self-serve",
+          "area": "Casa",
+          "what_to_get": "Quick breakfast before boat tour",
+          "notes": "Early start for 9:30 AM boat departure",
+          "estimated_cost": "€15-20 (groceries)",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "12:30 PM",
+          "restaurant_name": "PLACEHOLDER - Marina café/restaurant",
+          "cuisine": "Seafood/Portuguese",
+          "area": "Albufeira or Portimão marina",
+          "what_to_get": "Fresh fish, salads, sandwiches",
+          "notes": "After boat tour, before Praia da Marinha",
+          "estimated_cost": "€50-60 for 6",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "7:00 PM",
+          "restaurant_name": "PLACEHOLDER - Armação de Pêra",
+          "cuisine": "Portuguese",
+          "area": "Armação town",
+          "what_to_get": "Group dinner for 6",
+          "notes": "Book ahead - 6 people!",
+          "estimated_cost": "€70-80 for 6",
+          "kid_friendly": true,
+          "booking_needed": true
+        }
+      ]
+    },
+    {
+      "day_number": 13,
+      "date": "Sat Aug 8",
+      "location": "Lagos + Sagres",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "7:30 AM",
+          "restaurant_name": "Casa Margarida - self-catered",
+          "cuisine": "Self-serve",
+          "area": "Casa",
+          "what_to_get": "Breakfast before long drive day",
+          "notes": "Big driving day - fuel up!",
+          "estimated_cost": "€15-20 (groceries)",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "12:00 PM",
+          "restaurant_name": "PLACEHOLDER - Lagos Old Town",
+          "cuisine": "Portuguese or international",
+          "area": "Lagos centro",
+          "what_to_get": "Good sit-down meal - you're here for a while",
+          "notes": "After Ponta da Piedade and beach. Lagos has great restaurant scene!",
+          "estimated_cost": "€60-70 for 6",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "snack",
+          "time": "3:30 PM",
+          "restaurant_name": "Sagres - café near fortress",
+          "cuisine": "Café/snacks",
+          "area": "Sagres",
+          "what_to_get": "Sandwiches, pastries, drinks - quick fuel",
+          "notes": "Between fortress and Cape St. Vincent",
+          "estimated_cost": "€20-25 for 6",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "7:00 PM",
+          "restaurant_name": "PLACEHOLDER - Armação or Albufeira",
+          "cuisine": "Portuguese",
+          "area": "Base or nearby",
+          "what_to_get": "Nice dinner after long day",
+          "notes": "Everyone will be tired - book ahead for 6!",
+          "estimated_cost": "€70-80 for 6",
+          "kid_friendly": true,
+          "booking_needed": true
+        }
+      ]
+    },
+    {
+      "day_number": 14,
+      "date": "Sun Aug 9",
+      "location": "Faro + Silves (D&R drop day)",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "8:00 AM",
+          "restaurant_name": "Casa Margarida - goodbye breakfast",
+          "cuisine": "Self-serve",
+          "area": "Casa",
+          "what_to_get": "Final breakfast with D&R",
+          "notes": "Say goodbye - they're heading to airport hotel",
+          "estimated_cost": "€15-20 (groceries)",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "12:30 PM",
+          "restaurant_name": "PLACEHOLDER - Faro waterfront",
+          "cuisine": "Portuguese seafood",
+          "area": "Faro marina/old town",
+          "what_to_get": "Fresh fish, seafood rice, salads",
+          "notes": "After dropping D&R, exploring Faro old town. Just the 4 of you now!",
+          "estimated_cost": "€40-50 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "snack",
+          "time": "3:00 PM",
+          "restaurant_name": "Ice cream in Silves",
+          "cuisine": "Ice cream",
+          "area": "Silves old town",
+          "what_to_get": "Ice cream after castle visit",
+          "notes": "After exploring castle and town",
+          "estimated_cost": "€10-12",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "7:00 PM",
+          "restaurant_name": "PLACEHOLDER - Armação de Pêra",
+          "cuisine": "Portuguese",
+          "area": "Armação",
+          "what_to_get": "Relaxed family dinner - just the 4 of you",
+          "notes": "Final Algarve dinner - pack after this!",
+          "estimated_cost": "€40-50 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    },
+    {
+      "day_number": 15,
+      "date": "Mon Aug 10",
+      "location": "Évora → Lisbon",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "8:00 AM",
+          "restaurant_name": "Casa Margarida - checkout breakfast",
+          "cuisine": "Self-serve",
+          "area": "Casa",
+          "what_to_get": "Leisurely breakfast before checkout",
+          "notes": "No rush - D&R flew home already!",
+          "estimated_cost": "€15 (groceries)",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "lunch",
+          "time": "12:45 PM",
+          "restaurant_name": "PLACEHOLDER - Évora old town",
+          "cuisine": "Alentejo traditional",
+          "area": "Évora centro",
+          "what_to_get": "Açorda (bread soup), migas, local cheese, wine (adults)",
+          "notes": "After Chapel of Bones and Roman temple. Traditional Alentejo cuisine!",
+          "estimated_cost": "€40-50 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        },
+        {
+          "meal_type": "dinner",
+          "time": "6:30 PM",
+          "restaurant_name": "Near airport hotel OR room service",
+          "cuisine": "Simple/casual",
+          "area": "Near Lisbon Airport",
+          "what_to_get": "Easy dinner - no stress",
+          "notes": "Just REST. Flight tomorrow morning!",
+          "estimated_cost": "€35-45 family",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    },
+    {
+      "day_number": 16,
+      "date": "Tue Aug 11",
+      "location": "Fly home",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "time": "4:30 AM",
+          "restaurant_name": "Holiday Inn Express (if open) or airport",
+          "cuisine": "Whatever's available",
+          "area": "Airport",
+          "what_to_get": "Quick breakfast or grab pastries at airport",
+          "notes": "VERY early. Grab what you can!",
+          "estimated_cost": "€15-20",
+          "kid_friendly": true,
+          "booking_needed": false
+        }
+      ]
+    }
+  ],
+  "dining_tips": {
+    "general": [
+      "Portugal is very affordable compared to US/UK",
+      "Kids are welcome EVERYWHERE - Portuguese love children",
+      "Lunch is typically 12:30-3 PM, dinner starts around 7 PM",
+      "Prato do dia (dish of the day) is always good value",
+      "Soup (sopa) is served everywhere and kids usually like it"
+    ],
+    "vegetarian": [
+      "Say: 'Tem opções vegetarianas?' (Do you have vegetarian options?)",
+      "Common veggie dishes: omelets, salads, soup, cheese plates, bread",
+      "Most restaurants have pasta/pizza as backup",
+      "Pastéis de nata are vegetarian (but contain eggs)"
+    ],
+    "with_kids": [
+      "Half portions (meia dose) are generous - order one to share",
+      "Plain pasta with olive oil = safe bet everywhere",
+      "Fresh bread is always on the table",
+      "Ice cream shops everywhere - great bribe tool!",
+      "High chairs widely available"
+    ],
+    "booking": [
+      "Time Out Market: No reservations - arrive off-peak (before 12:30 or after 2 PM)",
+      "Pastéis de Belém: No reservations - go early (by 9:30 AM)",
+      "Algarve dinners for 6: Book 1-2 days ahead in summer",
+      "Porto: Most casual spots don't need booking",
+      "Use Google Maps reviews to scout options on the go"
+    ]
+  }
+}
