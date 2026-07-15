@@ -1,0 +1,69 @@
+{
+  "title": "Portugal Attractions Guide",
+  "description": "Key attractions and activities for the trip",
+  "attractions": [
+    {
+      "id": "livraria-lello",
+      "name": "Livraria Lello",
+      "location": "Porto",
+      "day": "Day 2 - Tue Jul 28",
+      "description": "One of the world's most beautiful bookstores. Inspiration for Harry Potter.",
+      "cost": "€8/adult",
+      "tips": "Book timed entry tickets in advance. Go early to avoid crowds."
+    },
+    {
+      "id": "convento-de-cristo",
+      "name": "Convento de Cristo",
+      "location": "Tomar",
+      "day": "Day 5 - Fri Aug 1",
+      "description": "UNESCO World Heritage monastery complex of the Knights Templar.",
+      "cost": "€6/adult",
+      "tips": "Allow 2-3 hours. Round church (Charola) is the highlight."
+    },
+    {
+      "id": "quinta-da-regaleira",
+      "name": "Quinta da Regaleira",
+      "location": "Sintra",
+      "day": "Day 10 - Wed Aug 5",
+      "description": "Gothic palace with mysterious Initiation Well and enchanted gardens.",
+      "cost": "€12/adult",
+      "tips": "Book morning slot. Wear comfortable shoes for exploring."
+    },
+    {
+      "id": "pena-palace",
+      "name": "Pena Palace",
+      "location": "Sintra",
+      "day": "Day 10 - Wed Aug 5",
+      "description": "Colorful Romanticist castle on a hilltop with stunning views.",
+      "cost": "€14/adult",
+      "tips": "Combo ticket with Moorish Castle saves money. Take shuttle bus from parking."
+    },
+    {
+      "id": "benagil-cave",
+      "name": "Benagil Cave",
+      "location": "Algarve",
+      "day": "Day 12 - Fri Aug 7",
+      "description": "Iconic sea cave with natural skylight. Catamaran tour from Portimão.",
+      "cost": "€45-60/adult, €25-35/child",
+      "tips": "BOOK EARLY - sells out in August! Morning departure recommended."
+    },
+    {
+      "id": "lagos-old-town",
+      "name": "Lagos Old Town & Ponta da Piedade",
+      "location": "Algarve",
+      "day": "Day 13 - Sat Aug 8",
+      "description": "Historic walled town and dramatic cliff formations with golden grottos.",
+      "cost": "Free (parking ~€2)",
+      "tips": "Walk the cliff path at sunset. Stop for pastéis de nata."
+    },
+    {
+      "id": "belem-tower",
+      "name": "Belém Tower & Jerónimos Monastery",
+      "location": "Lisbon",
+      "day": "Day 15 - Mon Aug 10",
+      "description": "UNESCO World Heritage sites from Portugal's Age of Discovery.",
+      "cost": "Free from outside",
+      "tips": "Arrive at golden hour (6-7 PM) for best photos without crowds."
+    }
+  ]
+}

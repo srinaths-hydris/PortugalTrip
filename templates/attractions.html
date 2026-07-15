@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+
+{% block title %}Attractions - Portugal Trip 2026{% endblock %}
+
+{% block content %}
+<style>
+    .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .attractions-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .attraction-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .attraction-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    .attraction-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 1rem;
+    }
+
+    .attraction-name {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #333;
+        margin: 0;
+    }
+
+    .attraction-location {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: #667eea;
+        color: white;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        margin-left: 0.5rem;
+    }
+
+    .attraction-day {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 0.75rem;
+    }
+
+    .attraction-description {
+        color: #555;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+
+    .attraction-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+    }
+
+    .attraction-cost {
+        font-weight: 700;
+        color: #28a745;
+    }
+
+    .attraction-tips {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 0.75rem;
+        margin-top: 1rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        color: #856404;
+    }
+
+    .attraction-tips strong {
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+
+    .comments-section {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 2px solid #eee;
+    }
+
+    .comments-header {
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .comment-form {
+        margin-bottom: 1rem;
+    }
+
+    .comment-input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        resize: vertical;
+        min-height: 60px;
+        font-family: inherit;
+    }
+
+    .comment-input:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+
+    .comment-submit {
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .comment-submit:hover {
+        background: #5a67d8;
+    }
+
+    .comments-list {
+        margin-top: 1rem;
+    }
+
+    .comment {
+        padding: 0.75rem;
+        background: #f8f9fa;
+        border-radius: 6px;
+        margin-bottom: 0.75rem;
+    }
+
+    .comment-author {
+        font-weight: 600;
+        color: #667eea;
+        font-size: 0.9rem;
+    }
+
+    .comment-time {
+        font-size: 0.75rem;
+        color: #999;
+        margin-left: 0.5rem;
+    }
+
+    .comment-text {
+        margin-top: 0.5rem;
+        color: #555;
+        line-height: 1.4;
+    }
+
+    .no-comments {
+        color: #999;
+        font-style: italic;
+        font-size: 0.9rem;
+    }
+</style>
+
+<div class="page-header">
+    <h1>🗺️ Key Attractions</h1>
+    <p>{{ attractions.description if attractions else 'Must-see locations on your Portugal trip' }}</p>
+</div>
+
+{% if attractions and attractions.attractions %}
+<div class="attractions-container">
+    {% for attraction in attractions.attractions %}
+    <div class="attraction-card">
+        <div class="attraction-header">
+            <h3 class="attraction-name">{{ attraction.name }}</h3>
+            <span class="attraction-location">{{ attraction.location }}</span>
+        </div>
+
+        <div class="attraction-day">📅 {{ attraction.day }}</div>
+
+        <p class="attraction-description">{{ attraction.description }}</p>
+
+        <div class="attraction-meta">
+            <span class="attraction-cost">{{ attraction.cost }}</span>
+        </div>
+
+        {% if attraction.tips %}
+        <div class="attraction-tips">
+            <strong>💡 Tips:</strong>
+            {{ attraction.tips }}
+        </div>
+        {% endif %}
+
+        <div class="comments-section">
+            <div class="comments-header">
+                💬 Comments
+            </div>
+
+            <div class="comment-form">
+                <textarea class="comment-input"
+                          id="comment-{{ attraction.id }}"
+                          placeholder="Add your thoughts, tips, or questions..."></textarea>
+                <button class="comment-submit" onclick="addComment('{{ attraction.id }}')">
+                    Post Comment
+                </button>
+            </div>
+
+            <div class="comments-list" id="comments-{{ attraction.id }}">
+                {% if comments and comments.attractions and comments.attractions[attraction.id] %}
+                    {% for comment in comments.attractions[attraction.id] %}
+                    <div class="comment">
+                        <div>
+                            <span class="comment-author">{{ comment.user }}</span>
+                            <span class="comment-time">{{ comment.timestamp[:10] }}</span>
+                        </div>
+                        <div class="comment-text">{{ comment.text }}</div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="no-comments" id="no-comments-{{ attraction.id }}">
+                        Be the first to comment!
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div style="text-align: center; padding: 3rem; background: white; border-radius: 12px;">
+    <h2>⏳ Loading attractions...</h2>
+    <p>Data is being prepared.</p>
+</div>
+{% endif %}
+
+<script>
+function addComment(attractionId) {
+    const textarea = document.getElementById(`comment-${attractionId}`);
+    const commentText = textarea.value.trim();
+
+    if (!commentText) {
+        alert('Please enter a comment');
+        return;
+    }
+
+    fetch(`/api/attractions/${attractionId}/comments`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ comment: commentText })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Clear textarea
+            textarea.value = '';
+
+            // Remove "no comments" message if present
+            const noComments = document.getElementById(`no-comments-${attractionId}`);
+            if (noComments) {
+                noComments.remove();
+            }
+
+            // Add new comment to list
+            const commentsList = document.getElementById(`comments-${attractionId}`);
+            const commentDiv = document.createElement('div');
+            commentDiv.className = 'comment';
+            commentDiv.innerHTML = `
+                <div>
+                    <span class="comment-author">${data.comment.user}</span>
+                    <span class="comment-time">${data.comment.timestamp.substring(0, 10)}</span>
+                </div>
+                <div class="comment-text">${data.comment.text}</div>
+            `;
+            commentsList.appendChild(commentDiv);
+        } else {
+            alert(data.error || 'Failed to post comment');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to post comment');
+    });
+}
+</script>
+
+{% endblock %}

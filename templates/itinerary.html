@@ -1,0 +1,310 @@
+{% extends "base.html" %}
+
+{% block title %}Itinerary - Portugal Trip 2026{% endblock %}
+
+{% block content %}
+<style>
+    .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .trip-summary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .trip-summary h2 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.8rem;
+    }
+
+    .trip-summary p {
+        margin: 0.25rem 0;
+        opacity: 0.95;
+    }
+
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .day-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .day-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    .day-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1.25rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .day-header:hover {
+        background: linear-gradient(135deg, #5a67d8 0%, #6b3f99 100%);
+    }
+
+    .day-title-group {
+        flex: 1;
+    }
+
+    .day-number {
+        font-size: 0.85rem;
+        opacity: 0.9;
+        margin-bottom: 0.25rem;
+    }
+
+    .day-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .day-subtitle {
+        font-size: 0.9rem;
+        opacity: 0.85;
+        margin-top: 0.25rem;
+    }
+
+    .chevron {
+        font-size: 1.5rem;
+        transition: transform 0.3s;
+        user-select: none;
+    }
+
+    .day-body {
+        padding: 1.5rem;
+        display: none;
+    }
+
+    .day-body.expanded {
+        display: block;
+    }
+
+    .activity-item {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+        border-left: 3px solid #667eea;
+        background: #f8f9fa;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+    }
+
+    .activity-time {
+        font-weight: 700;
+        color: #667eea;
+        min-width: 80px;
+        flex-shrink: 0;
+    }
+
+    .activity-content {
+        flex: 1;
+    }
+
+    .activity-name {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.25rem;
+    }
+
+    .activity-notes {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 0.25rem;
+    }
+
+    .activity-youtube {
+        margin-top: 0.5rem;
+    }
+
+    .activity-youtube a {
+        color: #667eea;
+        text-decoration: none;
+        font-size: 0.85rem;
+    }
+
+    .activity-youtube a:hover {
+        text-decoration: underline;
+    }
+
+    .activity-cost {
+        font-weight: 600;
+        color: #28a745;
+        font-size: 0.9rem;
+        margin-top: 0.25rem;
+    }
+
+    .kids-note {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 1rem;
+        margin-top: 1.5rem;
+        border-radius: 6px;
+    }
+
+    .kids-note strong {
+        color: #856404;
+    }
+
+    .tip-note {
+        background: #d1ecf1;
+        border-left: 4px solid #17a2b8;
+        padding: 1rem;
+        margin-top: 1.5rem;
+        border-radius: 6px;
+    }
+
+    .tip-note strong {
+        color: #0c5460;
+    }
+
+    .expand-all-btn {
+        margin-bottom: 1.5rem;
+        padding: 0.75rem 1.5rem;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .expand-all-btn:hover {
+        background: #5a67d8;
+    }
+</style>
+
+<div class="page-header">
+    <h1>🗓️ Portugal 2026 Itinerary</h1>
+    <p>16-day adventure through Porto, Tomar, Lisbon & Algarve</p>
+</div>
+
+{% if itinerary %}
+<div class="trip-summary">
+    <h2>{{ itinerary.trip_info.title }}</h2>
+    <p><strong>{{ itinerary.trip_info.dates }}</strong></p>
+    <p>{{ itinerary.trip_info.participants }}</p>
+    <p>{{ itinerary.trip_info.guests }}</p>
+</div>
+
+<button class="expand-all-btn" onclick="toggleAllDays()">Expand All Days</button>
+
+<div class="calendar-grid">
+    {% for day in itinerary.days %}
+    <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+            <div class="day-title-group">
+                <div class="day-number">Day {{ day.day_number }} • {{ day.date }}</div>
+                <div class="day-title">{{ day.title }}</div>
+                <div class="day-subtitle">{{ day.subtitle }}</div>
+            </div>
+            <div class="chevron">›</div>
+        </div>
+
+        <div class="day-body">
+            {% for activity in day.activities %}
+            <div class="activity-item">
+                <div class="activity-time">{{ activity.time }}</div>
+                <div class="activity-content">
+                    <div class="activity-name">{{ activity.name }}</div>
+                    <div class="activity-notes">{{ activity.notes }}</div>
+                    {% if activity.cost %}
+                    <div class="activity-cost">💰 {{ activity.cost }}</div>
+                    {% endif %}
+                    {% if activity.youtube %}
+                    <div class="activity-youtube">
+                        <a href="{{ activity.youtube }}" target="_blank">▶️ Watch video preview</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+            {% if day.kids_note %}
+            <div class="kids-note">
+                <strong>👶 Kids note:</strong> {{ day.kids_note }}
+            </div>
+            {% endif %}
+
+            {% if day.tip %}
+            <div class="tip-note">
+                <strong>💡 Tip:</strong> {{ day.tip }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+<div style="text-align: center; padding: 3rem; background: white; border-radius: 12px;">
+    <h2>⏳ Itinerary loading...</h2>
+    <p>Data is being prepared.</p>
+</div>
+{% endif %}
+
+<script>
+function toggleDay(headerElement) {
+    const dayCard = headerElement.parentElement;
+    const body = dayCard.querySelector('.day-body');
+    const chevron = headerElement.querySelector('.chevron');
+
+    if (body.classList.contains('expanded')) {
+        body.classList.remove('expanded');
+        chevron.style.transform = 'rotate(0deg)';
+    } else {
+        body.classList.add('expanded');
+        chevron.style.transform = 'rotate(90deg)';
+    }
+}
+
+let allExpanded = false;
+
+function toggleAllDays() {
+    const dayBodies = document.querySelectorAll('.day-body');
+    const chevrons = document.querySelectorAll('.chevron');
+    const btn = document.querySelector('.expand-all-btn');
+
+    allExpanded = !allExpanded;
+
+    dayBodies.forEach((body, index) => {
+        if (allExpanded) {
+            body.classList.add('expanded');
+            chevrons[index].style.transform = 'rotate(90deg)';
+        } else {
+            body.classList.remove('expanded');
+            chevrons[index].style.transform = 'rotate(0deg)';
+        }
+    });
+
+    btn.textContent = allExpanded ? 'Collapse All Days' : 'Expand All Days';
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,194 @@
+{
+  "summary": {
+    "total_estimated": "€5,500-6,500",
+    "accommodation_total": "€1,440 + Tomar TBD",
+    "per_person_darshan_rika": "€600-800 (4 days split)"
+  },
+  "categories": [
+    {
+      "name": "Accommodation",
+      "total": "€1,440 + Tomar TBD",
+      "items": [
+        {
+          "description": "Porto - Boon House Airbnb (3 nights)",
+          "cost": "€440",
+          "status": "Pending"
+        },
+        {
+          "description": "Tomar - Airbnb (3 nights)",
+          "cost": "TBD",
+          "status": "Need to book"
+        },
+        {
+          "description": "Lisbon - Holiday Inn Continental (4 nights)",
+          "cost": "Points",
+          "status": "Booked"
+        },
+        {
+          "description": "Algarve - Casa Margarida (4 nights)",
+          "cost": "€1,000",
+          "status": "Booked"
+        },
+        {
+          "description": "Airport - Holiday Inn Express (1 night)",
+          "cost": "Points",
+          "status": "Booked"
+        }
+      ]
+    },
+    {
+      "name": "Transportation",
+      "total": "€1,550",
+      "items": [
+        {
+          "description": "Car 1: Porto → Lisbon (3 days, one-way)",
+          "cost": "€600",
+          "status": "Need to book"
+        },
+        {
+          "description": "Car 2: Lisbon round-trip via Algarve (5 days)",
+          "cost": "€950",
+          "status": "Need to book"
+        }
+      ]
+    },
+    {
+      "name": "Activities & Tours",
+      "total": "€500-650",
+      "items": [
+        {
+          "description": "Day 2: Porto - Lello bookshop",
+          "cost": "€16"
+        },
+        {
+          "description": "Day 2: Porto - Rabelo boat cruise",
+          "cost": "€42"
+        },
+        {
+          "description": "Day 2: Porto - Gaia Cable Car",
+          "cost": "€26"
+        },
+        {
+          "description": "Day 3: Douro train round-trip",
+          "cost": "€56"
+        },
+        {
+          "description": "Day 4: Aveiro moliceiro boat",
+          "cost": "€46"
+        },
+        {
+          "description": "Day 5: Convento de Cristo",
+          "cost": "€20"
+        },
+        {
+          "description": "Day 5: Almourol Castle boat",
+          "cost": "€8"
+        },
+        {
+          "description": "Day 6: Cave tour (Grutas de Mira de Aire)",
+          "cost": "€21"
+        },
+        {
+          "description": "Day 6: Batalha Monastery",
+          "cost": "€16"
+        },
+        {
+          "description": "Day 7: Oceanário de Lisboa",
+          "cost": "€59"
+        },
+        {
+          "description": "Day 8: Castelo de São Jorge",
+          "cost": "€30"
+        },
+        {
+          "description": "Day 10: Sintra - Quinta da Regaleira",
+          "cost": "€24"
+        },
+        {
+          "description": "Day 10: Sintra - Moorish Castle",
+          "cost": "€16"
+        },
+        {
+          "description": "Day 10: Sintra - Pena Palace",
+          "cost": "€28"
+        },
+        {
+          "description": "Day 10: Sintra train tickets",
+          "cost": "€10"
+        },
+        {
+          "description": "Day 12: Benagil Cave Catamaran",
+          "cost": "€150-180"
+        },
+        {
+          "description": "Day 13: Sagres Fortress",
+          "cost": "€6"
+        }
+      ]
+    },
+    {
+      "name": "Food & Dining",
+      "total": "€1,800-2,400",
+      "notes": "~€35-50/meal for family of 4, 3 meals/day for 16 days. Aug 6-9: family of 6.",
+      "breakdown": {
+        "family_of_4_days": "12 days x €120/day = €1,440",
+        "family_of_6_days": "4 days x €180/day = €720",
+        "contingency": "€200-400"
+      },
+      "items": []
+    },
+    {
+      "name": "Miscellaneous",
+      "total": "€400-600",
+      "items": [
+        {
+          "description": "Metro/tram tickets in Porto & Lisbon",
+          "cost": "€50-80"
+        },
+        {
+          "description": "Parking in various cities",
+          "cost": "€80-120"
+        },
+        {
+          "description": "Ice cream, snacks, coffee",
+          "cost": "€150-250"
+        },
+        {
+          "description": "Souvenirs",
+          "cost": "€100-150"
+        }
+      ]
+    }
+  ],
+  "darshan_rika_split": {
+    "dates": "Aug 6-9, 2026 (4 days)",
+    "shared_costs": [
+      {
+        "description": "Casa Margarida accommodation (4 nights)",
+        "total": "€1,000",
+        "split_method": "Per couple",
+        "their_share": "€500"
+      },
+      {
+        "description": "Group dinners & lunches (4 days)",
+        "total_estimate": "€720",
+        "split_method": "Per person",
+        "their_share": "€240 (2 people out of 6)"
+      },
+      {
+        "description": "Benagil catamaran (Day 12)",
+        "total_estimate": "€170",
+        "split_method": "Per adult",
+        "their_share": "€60 (2 adults)"
+      },
+      {
+        "description": "Fuel for group days",
+        "total_estimate": "€60",
+        "split_method": "Split by days",
+        "their_share": "€24"
+      }
+    ],
+    "estimated_total": "€600-800",
+    "notes": "Final split TBD — adjust after trip based on actual expenses"
+  }
+}

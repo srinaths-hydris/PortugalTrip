@@ -1,0 +1,199 @@
+{
+  "accommodations": [
+    {
+      "name": "Holiday Inn Express Porto - Boavista",
+      "location": "Porto",
+      "dates": "Jul 26-27, 2026 (1 night)",
+      "cost": "17,000 IHG Points",
+      "status": "Booked",
+      "confirmation": "41044494",
+      "document": "0_Porto_Hotel_Reservation Confirmation 41044494.pdf",
+      "notes": "✅ 1 Queen Standard Single Sofa Bed with Free Breakfast. Check-in 3:00 PM. 5 R. de Outubro 578, Porto 4100-173"
+    },
+    {
+      "name": "VIVA Miragaia Downtown (Porto Apartment)",
+      "location": "Porto",
+      "dates": "Jul 27-30, 2026 (3 nights)",
+      "cost": "$532 (€465.62)",
+      "status": "Booked",
+      "confirmation": "6562.491.759 | PIN: 5035",
+      "document": "1_Potro Apartment Confirmation.pdf",
+      "notes": "✅ Two-Bedroom Apartment. 3 adults, 2 children. Rua São Pedro de Miragaia, 4050-565 Porto. Check-in Mon Jul 27, 16:00-00:00"
+    },
+    {
+      "name": "Os Marias: Retreat in Castelo de Bode",
+      "location": "Olalhas, Tomar (near Castelo de Bode reservoir)",
+      "dates": "Jul 30 - Aug 1, 2026 (2 nights)",
+      "cost": "$259 (modified from 3 nights)",
+      "status": "Booked",
+      "confirmation": "HMMBQAYSPE",
+      "notes": "✅ Airbnb. Host: Carla +351 916 590 672. Check-in Thu Jul 30, 3:00 PM. ⚠️ Need to modify from 3→2 nights"
+    },
+    {
+      "name": "Holiday Inn Lisbon – Continental",
+      "location": "Lisbon",
+      "dates": "Aug 1-6, 2026 (5 nights)",
+      "cost": "120,000 IHG Points",
+      "status": "Booked",
+      "confirmation": "28003005",
+      "document": "Lisbon.pdf",
+      "notes": "✅ 1 King Bed Standard. Rua Laura Alves 9, Lisbon. ⚠️ Need to add 1 night (Aug 1-2) for ~24,000 pts"
+    },
+    {
+      "name": "Casa Margarida",
+      "location": "Silves, Algarve",
+      "dates": "Aug 6-10, 2026 (4 nights)",
+      "cost": "€1,000-1,200",
+      "status": "Booked",
+      "confirmation": "VRBO Trip: egti-M4J-Y6M-0B5W",
+      "document": "Algarve.pdf",
+      "notes": "✅ 3 bedrooms, 6 people, AC. Check-in Thu Aug 6, 5:00 PM or later. Darshan & Rika present Aug 6-9"
+    },
+    {
+      "name": "Holiday Inn Express Lisbon Airport",
+      "location": "Lisbon Airport",
+      "dates": "Aug 10-11, 2026 (1 night)",
+      "cost": "24,000 IHG Points",
+      "status": "Booked",
+      "confirmation": "81447033",
+      "document": "Lisbon Airport.pdf",
+      "notes": "✅ 1 Double Standard with Free Breakfast. Rua Guine, no. 18-18b, Lisbon. At airport — 5 min walk to terminal"
+    }
+  ],
+  "car_rentals": [
+    {
+      "name": "Car 1 - Sicily by Car",
+      "pickup": "Porto Airport (2026-07-30 09:00)",
+      "dropoff": "Lisbon Airport (2026-08-02 09:00)",
+      "dates": "Wed Jul 30 - Fri Aug 2, 2026 (3 days)",
+      "vehicle": "SUV Compacto Plus Auto Peugeot 2008 or similar",
+      "cost": "€374.24 (€47.18/day + €140.01 one-way + €30.90/day Gold Protection)",
+      "status": "Booked",
+      "confirmation": "39661",
+      "document": "CarOne.pdf",
+      "pickup_address": "Porto Aeroporto, Rua do Pinhal 267, MAIA, 4470-640",
+      "pickup_phone": "+351223177791",
+      "dropoff_address": "Lisboa Aeroporto, Avenida Severiano Falcão 2, PRIOR VELHO, 2685-378",
+      "dropoff_phone": "+351 210944974",
+      "notes": "✅ Includes CDW, THW, Road Assistance Premium, Smart Gold + Silver Protection. Zero excess. Unlimited km. Confirm child seats at pickup."
+    },
+    {
+      "name": "Car 2",
+      "pickup": "Lisbon Airport",
+      "dropoff": "Lisbon Airport",
+      "dates": "Thu Aug 6 - Mon Aug 10 evening (~5 days)",
+      "cost": "€950",
+      "status": "Need to book",
+      "confirmation": "TBD",
+      "notes": "Upgraded larger vehicle for 6 people. Return EVENING of Aug 10 (not 5 AM Aug 11). Confirm child seats."
+    }
+  ],
+  "tickets": [
+    {
+      "name": "Livraria Lello",
+      "date": "Tue Jul 28, 2026",
+      "time": "9:00 AM",
+      "cost": "€8/adult (€16 total)",
+      "status": "Need to book",
+      "confirmation": "TBD",
+      "notes": "Timed tickets required. Book in advance!"
+    },
+    {
+      "name": "Benagil Cave Catamaran",
+      "date": "Fri Aug 7, 2026",
+      "time": "9:30 AM departure",
+      "cost": "€45-60/adult, €25-35/child (€150-180 family)",
+      "status": "Need to book",
+      "confirmation": "TBD",
+      "notes": "SELLS OUT! Book ASAP — August peak season."
+    },
+    {
+      "name": "Quinta da Regaleira",
+      "date": "Wed Aug 5, 2026",
+      "time": "9:30 AM",
+      "cost": "€12/adult (€24 total)",
+      "status": "Need to book",
+      "confirmation": "TBD",
+      "notes": "Timed tickets recommended"
+    },
+    {
+      "name": "Pena Palace + Moorish Castle Combo",
+      "date": "Wed Aug 5, 2026",
+      "time": "Afternoon",
+      "cost": "€14/adult Pena + €8/adult Moorish (€44 total)",
+      "status": "Need to book",
+      "confirmation": "TBD",
+      "notes": "Combo ticket saves money"
+    }
+  ],
+  "restaurants": [
+    {
+      "name": "Lagos restaurants (group of 6)",
+      "date": "Algarve dates (Aug 6-9)",
+      "status": "Need to book",
+      "notes": "Book 1-2 days ahead — August peak, group of 6"
+    }
+  ],
+  "flights": [
+    {
+      "flight_number": "UA 6863",
+      "route": "Lisbon → London Heathrow",
+      "date": "Tue Aug 11, 2026",
+      "departure": "7:35 AM",
+      "arrival": "10:20 AM",
+      "duration": "2h 45m",
+      "status": "Booked"
+    },
+    {
+      "flight_number": "UA 949",
+      "route": "London Heathrow → San Francisco",
+      "date": "Tue Aug 11, 2026",
+      "departure": "1:00 PM",
+      "arrival": "4:00 PM (same day)",
+      "duration": "11h",
+      "status": "Booked"
+    }
+  ],
+  "action_items": [
+    {
+      "item": "Book Tomar hotel (3 nights)",
+      "priority": "High",
+      "completed": false
+    },
+    {
+      "item": "Book Pena Palace tickets (Day 10 - Aug 5)",
+      "priority": "High",
+      "completed": false
+    },
+    {
+      "item": "Book Benagil catamaran tour (Day 12 - Aug 7)",
+      "priority": "High",
+      "completed": false
+    },
+    {
+      "item": "Confirm Darshan & Rika Faro flight times",
+      "priority": "Medium",
+      "completed": false
+    },
+    {
+      "item": "Book Algarve restaurants (group of 6)",
+      "priority": "Medium",
+      "completed": false
+    },
+    {
+      "item": "Set multiple alarms for 4:30 AM on Aug 11",
+      "priority": "High",
+      "completed": false
+    },
+    {
+      "item": "Download offline maps for Portugal",
+      "priority": "Low",
+      "completed": false
+    },
+    {
+      "item": "Print hotel confirmations",
+      "priority": "Low",
+      "completed": false
+    }
+  ]
+}

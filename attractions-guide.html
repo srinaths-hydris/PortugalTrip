@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portugal Trip Attractions Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .legend {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .day-section {
+            margin-bottom: 40px;
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .day-header:hover {
+            transform: translateX(5px);
+        }
+
+        .day-header h2 {
+            font-size: 1.5em;
+        }
+
+        .toggle-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s;
+        }
+
+        .day-header.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .attraction-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .attraction-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .attraction-type {
+            font-size: 2em;
+            flex-shrink: 0;
+        }
+
+        .attraction-info {
+            flex: 1;
+        }
+
+        .attraction-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .attraction-description {
+            color: #718096;
+            font-size: 0.95em;
+        }
+
+        .attraction-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            padding: 6px 12px;
+            background: #edf2f7;
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: #4a5568;
+        }
+
+        .youtube-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #ff0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            align-self: flex-start;
+        }
+
+        .youtube-link:hover {
+            background: #cc0000;
+            transform: scale(1.05);
+        }
+
+        .youtube-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .day-content {
+            max-height: 5000px;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .day-content.collapsed {
+            max-height: 0;
+        }
+
+        .notes {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .notes strong {
+            color: #ff6f00;
+        }
+
+        @media (max-width: 768px) {
+            .attractions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🇵🇹 Portugal Attractions Guide</h1>
+            <p>Jul 27 – Aug 11, 2026 | Complete video preview for all stops</p>
+        </header>
+
+        <div class="legend">
+            <div class="legend-item"><span>👀</span> Sightseeing</div>
+            <div class="legend-item"><span>🚶</span> Walking</div>
+            <div class="legend-item"><span>🚤</span> Boat Tour</div>
+            <div class="legend-item"><span>🏰</span> Historic Site</div>
+            <div class="legend-item"><span>🌊</span> Beach/Water</div>
+            <div class="legend-item"><span>🎢</span> Kids Activity</div>
+            <div class="legend-item"><span>🍽️</span> Food</div>
+            <div class="legend-item"><span>🚋</span> Transport</div>
+            <div class="legend-item"><span>📸</span> Photo Stop</div>
+        </div>
+
+        <div class="content">
+
+            <!-- Day 1 -->
+            <div class="day-section">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 1 — Mon Jul 27: ARRIVE PORTO</h2>
+                        <p>Settle in & soak up the atmosphere</p>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="attractions-grid">
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">👀</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">São Bento Station</div>
+                                    <div class="attraction-description">Famous azulejo tiles, 10 min stop</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">Stroller-friendly</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=VfNns9bNQjk" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Video Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚶</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Ribeira Evening Stroll</div>
+                                    <div class="attraction-description">Riverside promenade, street performers, gelato</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">Flat walk</span>
+                                <span class="meta-tag">Kids can run</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=Qz4Z8c0ihKc" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Walk Tour
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="day-section">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 2 — Tue Jul 28: PORTO HIGHLIGHTS</h2>
+                        <p>Bookshop, cruise, cable car & gardens</p>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="attractions-grid">
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">👀</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Livraria Lello Bookshop</div>
+                                    <div class="attraction-description">Harry Potter inspiration, stunning interior</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€8/person</span>
+                                <span class="meta-tag">30 min</span>
+                                <span class="meta-tag">BOOK TIMED TICKET</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=nMQz0NPXMlg" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Inside Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚶</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Bolhão Market</div>
+                                    <div class="attraction-description">Traditional market, fresh pastries, cheese</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€15-20 family</span>
+                                <span class="meta-tag">Kids love samples</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=Y4vPxZ5jCHU" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Market Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚤</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">6 Bridges Douro Cruise</div>
+                                    <div class="attraction-description">50 min river cruise, see all Porto bridges</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€18/adult, €9/child</span>
+                                <span class="meta-tag">50 min</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=Xe5wVNVm5I8" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Cruise View
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚡</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Gaia Cable Car</div>
+                                    <div class="attraction-description">5 min ride with best Porto skyline views</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€8/adult, €5/child</span>
+                                <span class="meta-tag">5 min</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=aRK8TlfeHaY" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Ride View
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚶</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Dom Luís I Bridge Walk</div>
+                                    <div class="attraction-description">Iconic double-deck bridge, lower deck stroller-friendly</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">Stroller OK</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=tDqZKo8qqQ4" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Bridge Walk
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🎢</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Crystal Palace Gardens</div>
+                                    <div class="attraction-description">Peacocks, playground, duck ponds — kids can RUN!</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">Perfect for kids</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=J8LfXXMxvwY" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Gardens Walk
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="day-section">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 3 — Wed Jul 29: DOURO VALLEY</h2>
+                        <p>Scenic train through terraced vineyards</p>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="attractions-grid">
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚂</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Douro Valley Train to Pinhão</div>
+                                    <div class="attraction-description">2.5 hrs through STUNNING terraced vineyards</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€14/adult one-way</span>
+                                <span class="meta-tag">Free <4</span>
+                                <span class="meta-tag">BOOK ONLINE</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=9mKqWs7yG9A" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Full Train Ride
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">📸</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Pinhão Blue-Tile Station</div>
+                                    <div class="attraction-description">Beautiful azulejo tiles, 10 min photo stop</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=kKqMQz8U3Y0" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Station Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚶</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Quinta do Bomfim Gardens</div>
+                                    <div class="attraction-description">Vineyard walk, kids can run in terraces</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free grounds</span>
+                                <span class="meta-tag">Optional</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=dVNwmR7y_4I" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Quinta Walk
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🌊</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Foz do Douro Seaside</div>
+                                    <div class="attraction-description">Rock pools, ice cream, sunset promenade</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">Sunset spot</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=3Q1XhZ3zVWo" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Foz Walk
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="day-section">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 4 — Thu Jul 30: PORTO → AVEIRO → TOMAR</h2>
+                        <p>Pick up car, colorful boats, head to Tomar</p>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="attractions-grid">
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚤</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Aveiro Moliceiro Boats</div>
+                                    <div class="attraction-description">45 min canal tour on colorful traditional boats</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€15/adult, €8/child</span>
+                                <span class="meta-tag">45 min</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=xKhZZZ_JGRU" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Boat Ride
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">📸</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Costa Nova Stripy Houses</div>
+                                    <div class="attraction-description">Famous candy-striped beach houses, quick photo + run on sand</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">10 min stop</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=eFkN-nTk9DY" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Stripy Houses
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚶</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Tomar Old Town</div>
+                                    <div class="attraction-description">Waterwheel, river walk, playground</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=F9tQAJGqsT0" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Tomar Tour
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 5 -->
+            <div class="day-section">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 5 — Fri Jul 31: KNIGHTS & CASTLES</h2>
+                        <p>Templar fortress & island castle — THE highlight!</p>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="notes">
+                        <strong>👶 Kids note:</strong> These are the most magical stops of the trip — real knights' fortress and a castle on an island! Includes rest break before afternoon adventure.
+                    </div>
+                    <div class="attractions-grid">
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🏰</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Convento de Cristo</div>
+                                    <div class="attraction-description">Knights Templar fortress — UNMISSABLE! 2.5 hrs</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€10/adult</span>
+                                <span class="meta-tag">Free <12</span>
+                                <span class="meta-tag">UNESCO Site</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=FGzqe0SYKbk" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Full Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚤🏰</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Almourol Island Castle</div>
+                                    <div class="attraction-description">Boat to castle on island — KIDS WILL LOVE!</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€2/person boat</span>
+                                <span class="meta-tag">Castle free</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=nxMqMaUq3Eg" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Boat + Castle
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🌊</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Castelo de Bode Reservoir</div>
+                                    <div class="attraction-description">Crystal-clear freshwater swimming (optional)</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">Optional</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=Uu4xfPkqBw4" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Reservoir Views
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 6 -->
+            <div class="day-section">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 6 — Sat Aug 1: CAVES & FLEXIBLE TRANSIT TO LISBON</h2>
+                        <p>Underground caves (Nirupa's favorite!) + optional medieval stops</p>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="notes">
+                        <strong>⚠️ FLEX STRATEGY:</strong> Caves are NON-NEGOTIABLE (Nirupa's favorite). Fátima and Óbidos are OPTIONAL — skip either/both if kids are tired. Batalha is the best medieval stop (roofless chapels). Make real-time decisions based on kid energy levels.
+                    </div>
+                    <div class="attractions-grid">
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🕳️</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Grutas de Mira de Aire</div>
+                                    <div class="attraction-description">Underground caves — Nirupa's favorite! MUST-DO</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€8/adult, €4/child</span>
+                                <span class="meta-tag">NON-NEGOTIABLE</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=WMUA1Wy9wf4" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Cave Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">⛪</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Fátima Sanctuary</div>
+                                    <div class="attraction-description">Pilgrimage site (OPTIONAL — skip if kids tired)</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">OPTIONAL</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=3gKzOqgcHxY" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Sanctuary
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🏰</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Batalha Monastery</div>
+                                    <div class="attraction-description">Medieval monastery with roofless chapels — BEST medieval stop</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€6/adult</span>
+                                <span class="meta-tag">Free <12</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=EFU_D3iPt2w" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Monastery Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚶🏰</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Óbidos Medieval Town</div>
+                                    <div class="attraction-description">Castle walls walk (OPTIONAL — skip if late)</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">OPTIONAL</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=oRMyxLR6L5A" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Castle Walk
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 7 -->
+            <div class="day-section">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 7 — Sun Aug 2: LISBON REST DAY</h2>
+                        <p>First unscheduled morning + Oceanário in afternoon</p>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="notes">
+                        <strong>💤 REST DAY:</strong> First completely unscheduled morning of the trip. Sleep in, explore neighborhood, or just relax!
+                    </div>
+                    <div class="attractions-grid">
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🐠</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Oceanário de Lisboa</div>
+                                    <div class="attraction-description">World-class aquarium — perfect afternoon activity</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">~€20/adult, €14/child</span>
+                                <span class="meta-tag">BOOK TICKETS</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=9o6I-OJP0AQ" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Aquarium Tour
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 8 -->
+            <div class="day-section">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 8 — Mon Aug 3: CLASSIC LISBON</h2>
+                        <p>Tram 28, castle, Alfama & Time Out Market</p>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="attractions-grid">
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚋</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Tram 28</div>
+                                    <div class="attraction-description">Iconic yellow tram through old neighborhoods</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€3.80/ride</span>
+                                <span class="meta-tag">Hop on/off</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=G9b0eJHMp8I" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Full Tram Ride
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🏰</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Castelo de São Jorge</div>
+                                    <div class="attraction-description">Hilltop castle with panoramic Lisbon views</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€15/adult</span>
+                                <span class="meta-tag">Free <12</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=5r_t3Z-tDH0" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Castle Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚶</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Alfama Neighborhood</div>
+                                    <div class="attraction-description">Medieval maze of narrow streets, miradouros</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">Historic</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=SoZpOFdA2aY" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Alfama Walk
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🍽️</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Time Out Market</div>
+                                    <div class="attraction-description">Gourmet food court with best Lisbon chefs</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">~€40 family</span>
+                                <span class="meta-tag">High chairs available</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=OtJ0LsI0lX8" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Market Tour
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 9 -->
+            <div class="day-section">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 9 — Tue Aug 4: BELÉM</h2>
+                        <p>Monuments & pastéis de nata</p>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="attractions-grid">
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🏰</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Belém Tower</div>
+                                    <div class="attraction-description">Iconic riverside fortress, UNESCO site</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€8/adult</span>
+                                <span class="meta-tag">Free <12</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=qzYgSecGQww" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Tower Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🏛️</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Jerónimos Monastery</div>
+                                    <div class="attraction-description">Stunning Manueline architecture, UNESCO site</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€12/adult</span>
+                                <span class="meta-tag">Free <12</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=SQzWwqUC9sU" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Monastery Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🍰</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Pastéis de Belém</div>
+                                    <div class="attraction-description">ORIGINAL custard tarts — founded 1837!</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€1.50/tart</span>
+                                <span class="meta-tag">MUST-TRY</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=4n8ZnFa_VLE" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Pastel Making
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 10 -->
+            <div class="day-section">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Day 10 — Wed Aug 5: SINTRA</h2>
+                        <p>Magical wells, castles & fairytale palaces</p>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="attractions-grid">
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🏰</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Quinta da Regaleira</div>
+                                    <div class="attraction-description">Mysterious initiation wells, underground tunnels, gardens</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€12/adult</span>
+                                <span class="meta-tag">Free <8</span>
+                                <span class="meta-tag">BOOK COMBO</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=J2Wv6P9TCQY" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Full Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🏰</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Moorish Castle Ruins</div>
+                                    <div class="attraction-description">Mountain-top castle walls with stunning views</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€10/adult</span>
+                                <span class="meta-tag">Free <8</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=8LEwYslqpOU" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Castle Walk
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🏰</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Pena Palace</div>
+                                    <div class="attraction-description">Colorful fairytale palace — Instagram-famous!</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€20/adult</span>
+                                <span class="meta-tag">Free <8</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=gqxBW-AHR0w" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Palace Tour
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 11-13: Algarve -->
+            <div class="day-section">
+                <div class="day-header" onclick="toggleDay(this)">
+                    <div>
+                        <h2>Days 11-13 — Aug 6-8: ALGARVE</h2>
+                        <p>Beaches, caves, cliffs (Darshan & Rika join!)</p>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="day-content">
+                    <div class="notes">
+                        <strong>👥 Guests Join:</strong> Darshan & Rika fly into Faro from London Aug 6, depart Aug 9. Accommodation has 3 bedrooms.
+                    </div>
+                    <div class="attractions-grid">
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🚤</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Benagil Cave Catamaran</div>
+                                    <div class="attraction-description">Famous sea cave with skylight — SELLS OUT IN AUGUST!</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">~€60/adult, €30/child</span>
+                                <span class="meta-tag">BOOK NOW</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=Uxp-BnRz13o" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Cave Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🌊🏖️</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Praia da Marinha</div>
+                                    <div class="attraction-description">Golden cliffs, turquoise water — Portugal's best beach!</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">Perfect for kids</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=VF3Dqv1gOqM" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Beach Views
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🏰</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Silves Castle</div>
+                                    <div class="attraction-description">Red sandstone Moorish castle</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">€3.50/adult</span>
+                                <span class="meta-tag">Free <12</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=a7YKjKJ6vqQ" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Castle Tour
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">🌊🚶</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Lagos & Ponta da Piedade</div>
+                                    <div class="attraction-description">Historic town + stunning golden rock formations</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">Best sunset spot</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=UU8hKDlSIqg" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Lagos Tour
+                            </a>
+                            <a href="https://www.youtube.com/watch?v=nFvOnMPUq8Q" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Ponta da Piedade
+                            </a>
+                        </div>
+
+                        <div class="attraction-card">
+                            <div class="attraction-header">
+                                <span class="attraction-type">📸</span>
+                                <div class="attraction-info">
+                                    <div class="attraction-name">Sagres - Cabo de São Vicente</div>
+                                    <div class="attraction-description">"End of the world" dramatic cliffs</div>
+                                </div>
+                            </div>
+                            <div class="attraction-meta">
+                                <span class="meta-tag">Free</span>
+                                <span class="meta-tag">Windy — hold kids' hands!</span>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=sRhKBYV0Y8w" target="_blank" class="youtube-link">
+                                <span>▶</span> Watch Sagres Cliffs
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding: 40px; background: #f8f9fa;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">✈️ Aug 11: Fly Home</h3>
+                <p style="color: #718096;">Departure 7:35 AM from Lisbon Airport</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleDay(header) {
+            header.classList.toggle('collapsed');
+            const content = header.nextElementSibling;
+            content.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>

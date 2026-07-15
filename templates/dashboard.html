@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Portugal Trip 2026{% endblock %}
+
+{% block content %}
+<style>
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .dashboard-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .dashboard-card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .countdown {
+        text-align: center;
+        padding: 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+    }
+
+    .countdown-number {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1;
+        margin: 1rem 0;
+    }
+
+    .countdown-label {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    .stat-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .stat-row:last-child {
+        border-bottom: none;
+    }
+
+    .stat-label {
+        color: #666;
+    }
+
+    .stat-value {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .quick-links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .quick-link {
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #333;
+        text-align: center;
+        transition: all 0.2s;
+    }
+
+    .quick-link:hover {
+        background: #667eea;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .quick-link-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+<div class="countdown">
+    <div class="countdown-label">Days Until Departure</div>
+    <div class="countdown-number">{{ days_until }}</div>
+    <div class="countdown-label">{{ trip_date.strftime('%B %d, %Y') }}</div>
+</div>
+
+<div class="dashboard-grid">
+    <div class="dashboard-card">
+        <h2>📋 Trip Overview</h2>
+        <div class="stat-row">
+            <span class="stat-label">Duration</span>
+            <span class="stat-value">15 days</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">Cities</span>
+            <span class="stat-value">Porto, Tomar, Lisbon, Algarve</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">Travelers</span>
+            <span class="stat-value">4 (2 adults + 2 kids)</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">Flights</span>
+            <span class="stat-value">SFO → LIS → SFO</span>
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        <h2>✈️ Next Actions</h2>
+        <div class="stat-row">
+            <span class="stat-label">Book Tomar hotel</span>
+            <span class="stat-value" style="color: #f59e0b;">⚠️ Pending</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">Book Pena Palace tickets</span>
+            <span class="stat-value" style="color: #f59e0b;">⚠️ Pending</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">Book Benagil catamaran</span>
+            <span class="stat-value" style="color: #f59e0b;">⚠️ Pending</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">Confirm Darshan/Rika flights</span>
+            <span class="stat-value" style="color: #f59e0b;">⚠️ Pending</span>
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        <h2>🔗 Quick Links</h2>
+        <div class="quick-links">
+            <a href="{{ url_for('itinerary') }}" class="quick-link">
+                <div class="quick-link-icon">📅</div>
+                <div>Itinerary</div>
+            </a>
+            <a href="{{ url_for('reservations') }}" class="quick-link">
+                <div class="quick-link-icon">🎫</div>
+                <div>Reservations</div>
+            </a>
+            <a href="{{ url_for('checklist') }}" class="quick-link">
+                <div class="quick-link-icon">✅</div>
+                <div>Checklist</div>
+            </a>
+            <a href="{{ url_for('budget') }}" class="quick-link">
+                <div class="quick-link-icon">💰</div>
+                <div>Budget</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        <h2>🌤️ Weather Preview</h2>
+        <div class="stat-row">
+            <span class="stat-label">Porto (Jul 27-29)</span>
+            <span class="stat-value">☀️ 25-28°C</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">Lisbon (Aug 2-5)</span>
+            <span class="stat-value">☀️ 28-32°C</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">Algarve (Aug 6-9)</span>
+            <span class="stat-value">🌡️ 32-35°C</span>
+        </div>
+        <div style="margin-top: 1rem; padding: 0.75rem; background: #fff3cd; border-radius: 8px; font-size: 0.9rem;">
+            ⚠️ Peak summer heat in Algarve - plan indoor activities midday
+        </div>
+    </div>
+</div>
+{% endblock %}

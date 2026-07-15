@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block title %}Reservations - Portugal Trip 2026{% endblock %}
+
+{% block content %}
+<style>
+    .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .reservation-section {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .reservation-section h2 {
+        color: #667eea;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+    }
+
+    .reservation-item {
+        padding: 1.5rem;
+        border-left: 4px solid #667eea;
+        background: #f8f9fa;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+    }
+
+    .reservation-item.booked {
+        border-left-color: #28a745;
+        background: #f1f9f4;
+    }
+
+    .reservation-item.pending {
+        border-left-color: #ffc107;
+        background: #fffbf0;
+    }
+
+    .reservation-item.need-to-book {
+        border-left-color: #dc3545;
+        background: #fdf2f3;
+    }
+
+    .reservation-name {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .reservation-detail {
+        margin: 0.5rem 0;
+        color: #666;
+    }
+
+    .reservation-detail strong {
+        color: #333;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 0.35rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+    }
+
+    .status-booked {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .status-pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .status-need-to-book {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .confirmation-code {
+        background: #e3f2fd;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-family: monospace;
+        margin-top: 0.5rem;
+        display: inline-block;
+    }
+</style>
+
+<div class="page-header">
+    <h1>📋 Reservations</h1>
+    <p>All bookings with confirmation codes</p>
+</div>
+
+{% if reservations %}
+<!-- Accommodations -->
+<div class="reservation-section">
+    <h2>🏨 Accommodations</h2>
+    {% for hotel in reservations.accommodations %}
+    <div class="reservation-item {{ hotel.status|lower|replace(' ', '-') }}">
+        <div class="reservation-name">{{ hotel.name }}</div>
+        <div class="reservation-detail"><strong>Location:</strong> {{ hotel.location }}</div>
+        <div class="reservation-detail"><strong>Dates:</strong> {{ hotel.dates }}</div>
+        <div class="reservation-detail"><strong>Cost:</strong> {{ hotel.cost }}</div>
+        {% if hotel.confirmation and hotel.confirmation != 'TBD' %}
+        <div class="confirmation-code">{{ hotel.confirmation }}</div>
+        {% endif %}
+        {% if hotel.document %}
+        <div class="reservation-detail" style="margin-top: 0.5rem;">
+            <a href="{{ url_for('static', filename='documents/' + hotel.document) }}" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 600;">
+                📄 View Confirmation Document
+            </a>
+        </div>
+        {% endif %}
+        <span class="status-badge status-{{ hotel.status|lower|replace(' ', '-') }}">
+            {{ '✅ ' if hotel.status == 'Booked' else '⏳ ' if hotel.status == 'Pending' else '❌ ' }}{{ hotel.status }}
+        </span>
+        {% if hotel.notes %}
+        <div class="reservation-detail" style="margin-top: 0.75rem;">{{ hotel.notes }}</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Car Rentals -->
+<div class="reservation-section">
+    <h2>🚗 Car Rentals</h2>
+    {% for car in reservations.car_rentals %}
+    <div class="reservation-item {{ car.status|lower|replace(' ', '-') }}">
+        <div class="reservation-name">{{ car.name }}</div>
+        {% if car.vehicle %}
+        <div class="reservation-detail"><strong>Vehicle:</strong> {{ car.vehicle }}</div>
+        {% endif %}
+        <div class="reservation-detail"><strong>Pickup:</strong> {{ car.pickup }}</div>
+        {% if car.pickup_address %}
+        <div class="reservation-detail" style="font-size: 0.9rem; color: #666;">{{ car.pickup_address }}</div>
+        {% endif %}
+        <div class="reservation-detail"><strong>Dropoff:</strong> {{ car.dropoff }}</div>
+        {% if car.dropoff_address %}
+        <div class="reservation-detail" style="font-size: 0.9rem; color: #666;">{{ car.dropoff_address }}</div>
+        {% endif %}
+        <div class="reservation-detail"><strong>Dates:</strong> {{ car.dates }}</div>
+        <div class="reservation-detail"><strong>Cost:</strong> {{ car.cost }}</div>
+        {% if car.confirmation and car.confirmation != 'TBD' %}
+        <div class="confirmation-code">{{ car.confirmation }}</div>
+        {% endif %}
+        {% if car.document %}
+        <div class="reservation-detail" style="margin-top: 0.5rem;">
+            <a href="{{ url_for('static', filename='documents/' + car.document) }}" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 600;">
+                📄 View Confirmation Document
+            </a>
+        </div>
+        {% endif %}
+        <span class="status-badge status-{{ car.status|lower|replace(' ', '-') }}">
+            {{ '✅ ' if car.status == 'Booked' else '⏳ ' if car.status == 'Pending' else '❌ ' }}{{ car.status }}
+        </span>
+        {% if car.notes %}
+        <div class="reservation-detail" style="margin-top: 0.75rem;">{{ car.notes }}</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Tickets -->
+<div class="reservation-section">
+    <h2>🎫 Attraction Tickets</h2>
+    {% for ticket in reservations.tickets %}
+    <div class="reservation-item {{ ticket.status|lower|replace(' ', '-') }}">
+        <div class="reservation-name">{{ ticket.name }}</div>
+        <div class="reservation-detail"><strong>Date:</strong> {{ ticket.date }}</div>
+        <div class="reservation-detail"><strong>Time:</strong> {{ ticket.time }}</div>
+        <div class="reservation-detail"><strong>Cost:</strong> {{ ticket.cost }}</div>
+        {% if ticket.confirmation and ticket.confirmation != 'TBD' %}
+        <div class="confirmation-code">{{ ticket.confirmation }}</div>
+        {% endif %}
+        <span class="status-badge status-{{ ticket.status|lower|replace(' ', '-') }}">
+            {{ '✅ ' if ticket.status == 'Booked' else '⏳ ' if ticket.status == 'Pending' else '❌ ' }}{{ ticket.status }}
+        </span>
+        {% if ticket.notes %}
+        <div class="reservation-detail" style="margin-top: 0.75rem;">{{ ticket.notes }}</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Flights -->
+<div class="reservation-section">
+    <h2>✈️ Flights</h2>
+    {% for flight in reservations.flights %}
+    <div class="reservation-item booked">
+        <div class="reservation-name">{{ flight.flight_number }}: {{ flight.route }}</div>
+        <div class="reservation-detail"><strong>Date:</strong> {{ flight.date }}</div>
+        <div class="reservation-detail"><strong>Departure:</strong> {{ flight.departure }}</div>
+        <div class="reservation-detail"><strong>Arrival:</strong> {{ flight.arrival }}</div>
+        <div class="reservation-detail"><strong>Duration:</strong> {{ flight.duration }}</div>
+        <span class="status-badge status-booked">✅ {{ flight.status }}</span>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+<div style="text-align: center; padding: 3rem; background: white; border-radius: 12px;">
+    <h2>⏳ Reservations loading...</h2>
+    <p>Data is being prepared.</p>
+</div>
+{% endif %}
+
+{% endblock %}

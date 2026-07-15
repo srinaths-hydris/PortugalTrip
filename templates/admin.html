@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block title %}Admin - Portugal Trip 2026{% endblock %}
+
+{% block content %}
+<style>
+    .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .admin-section {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .admin-section h2 {
+        font-size: 1.5rem;
+        color: #667eea;
+        margin-bottom: 1.5rem;
+    }
+
+    .add-email-form {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .add-email-form input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    .add-email-form button {
+        padding: 0.75rem 1.5rem;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .add-email-form button:hover {
+        background: #5a67d8;
+    }
+
+    .email-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .email-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .email-address {
+        font-weight: 500;
+        color: #333;
+    }
+
+    .email-admin-badge {
+        padding: 0.25rem 0.75rem;
+        background: #667eea;
+        color: white;
+        border-radius: 12px;
+        font-size: 0.85rem;
+    }
+
+    .btn-remove {
+        padding: 0.5rem 1rem;
+        background: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .btn-remove:hover {
+        background: #c82333;
+    }
+
+    .btn-remove:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+    }
+
+    .btn-promote {
+        padding: 0.5rem 1rem;
+        background: #28a745;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-left: 0.5rem;
+    }
+
+    .btn-promote:hover {
+        background: #218838;
+    }
+</style>
+
+<div class="page-header">
+    <h1>⚙️ Admin Panel</h1>
+    <p>Manage who can access the site</p>
+</div>
+
+<div class="admin-section">
+    <h2>✉️ Email Whitelist</h2>
+
+    <div class="add-email-form">
+        <input type="email" id="newEmail" placeholder="Enter email address..." />
+        <button onclick="addEmail()">Add Email</button>
+    </div>
+
+    <div class="email-list">
+        {% if whitelist and whitelist.allowed_emails %}
+            {% for email in whitelist.allowed_emails %}
+            <div class="email-item">
+                <div>
+                    <span class="email-address">{{ email }}</span>
+                    {% for admin_email in whitelist.admin_emails %}
+                        {% if email.lower() == admin_email.lower() %}
+                        <span class="email-admin-badge">Admin</span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div>
+                    {% set is_admin_user = namespace(value=false) %}
+                    {% for admin_email in whitelist.admin_emails %}
+                        {% if email.lower() == admin_email.lower() %}
+                            {% set is_admin_user.value = true %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if not is_admin_user.value %}
+                    <button class="btn-promote" onclick="promoteToAdmin('{{ email }}')">
+                        Promote to Admin
+                    </button>
+                    {% endif %}
+                    <button class="btn-remove"
+                            onclick="removeEmail('{{ email }}')"
+                            {% if is_admin_user.value %}disabled{% endif %}>
+                        Remove
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align: center; color: #666;">No emails in whitelist</p>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function addEmail() {
+    const emailInput = document.getElementById('newEmail');
+    const email = emailInput.value.trim();
+
+    if (!email) {
+        alert('Please enter an email address');
+        return;
+    }
+
+    fetch('/api/admin/whitelist/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            alert(data.error || 'Failed to add email');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to add email');
+    });
+}
+
+function removeEmail(email) {
+    if (!confirm(`Remove ${email} from whitelist?`)) {
+        return;
+    }
+
+    fetch('/api/admin/whitelist/remove', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            alert(data.error || 'Failed to remove email');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to remove email');
+    });
+}
+
+function promoteToAdmin(email) {
+    if (!confirm(`Promote ${email} to admin? This will give them full access including Budget and Admin panel.`)) {
+        return;
+    }
+
+    fetch('/api/admin/promote', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            alert(data.error || 'Failed to promote user');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to promote user');
+    });
+}
+</script>
+
+{% endblock %}

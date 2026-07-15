@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+
+{% block title %}Budget - Portugal Trip 2026{% endblock %}
+
+{% block content %}
+<style>
+    .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .budget-summary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .budget-summary h2 {
+        margin: 0 0 1rem 0;
+        font-size: 2.5rem;
+    }
+
+    .budget-summary p {
+        margin: 0.5rem 0;
+        opacity: 0.95;
+        font-size: 1.1rem;
+    }
+
+    .budget-category {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .category-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #667eea;
+    }
+
+    .category-title {
+        font-size: 1.8rem;
+        color: #667eea;
+        font-weight: 700;
+    }
+
+    .category-total {
+        font-size: 1.5rem;
+        color: #28a745;
+        font-weight: 700;
+    }
+
+    .budget-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+        background: #f8f9fa;
+        border-radius: 6px;
+    }
+
+    .item-description {
+        flex: 1;
+        color: #333;
+    }
+
+    .item-cost {
+        font-weight: 700;
+        color: #28a745;
+        white-space: nowrap;
+        margin-left: 1rem;
+    }
+
+    .item-status {
+        font-size: 0.85rem;
+        color: #666;
+        margin-left: 1rem;
+    }
+
+    .split-section {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 1.5rem;
+        border-radius: 6px;
+    }
+
+    .split-section h3 {
+        color: #856404;
+        margin-bottom: 1rem;
+    }
+
+    .split-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #ffeaa7;
+    }
+
+    .split-item:last-child {
+        border-bottom: none;
+    }
+</style>
+
+<div class="page-header">
+    <h1>💰 Budget Breakdown</h1>
+    <p>Total costs and per-person split</p>
+</div>
+
+{% if budget %}
+<div class="budget-summary">
+    <h2>{{ budget.summary.total_estimated }}</h2>
+    <p><strong>Total Estimated Trip Cost</strong></p>
+    <p>{{ budget.summary.accommodation_total }}</p>
+    <p style="margin-top: 1rem; font-size: 0.95rem;">Darshan & Rika share: {{ budget.summary.per_person_darshan_rika }}</p>
+</div>
+
+{% for category in budget.categories %}
+<div class="budget-category">
+    <div class="category-header">
+        <div class="category-title">{{ category.name }}</div>
+        <div class="category-total">{{ category.total }}</div>
+    </div>
+
+    {% if category.notes %}
+    <p style="color: #666; margin-bottom: 1rem;">{{ category.notes }}</p>
+    {% endif %}
+
+    {% if category.breakdown %}
+    <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+        {% for key, value in category.breakdown.items() %}
+        <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
+            <span>{{ key|replace('_', ' ')|title }}:</span>
+            <strong>{{ value }}</strong>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% for item in category['items'] %}
+    <div class="budget-item">
+        <div class="item-description">
+            {{ item.description }}
+            {% if item.status %}
+            <span class="item-status">({{ item.status }})</span>
+            {% endif %}
+        </div>
+        <div class="item-cost">{{ item.cost }}</div>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+
+<!-- Darshan & Rika Split -->
+{% if budget.darshan_rika_split %}
+<div class="budget-category">
+    <div class="category-header">
+        <div class="category-title">👫 Darshan & Rika Cost Share</div>
+        <div class="category-total">{{ budget.darshan_rika_split.estimated_total }}</div>
+    </div>
+
+    <p style="color: #666; margin-bottom: 1.5rem;"><strong>{{ budget.darshan_rika_split.dates }}</strong></p>
+
+    <div class="split-section">
+        <h3>Shared Costs</h3>
+        {% for item in budget.darshan_rika_split.shared_costs %}
+        <div class="split-item">
+            <div>
+                <strong>{{ item.description }}</strong>
+                <div style="font-size: 0.9rem; color: #666; margin-top: 0.25rem;">
+                    {{ item.split_method }} • Total: {{ item.total }}
+                </div>
+            </div>
+            <div style="font-weight: 700; color: #28a745;">{{ item.their_share }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">{{ budget.darshan_rika_split.notes }}</p>
+</div>
+{% endif %}
+
+{% else %}
+<div style="text-align: center; padding: 3rem; background: white; border-radius: 12px;">
+    <h2>⏳ Budget loading...</h2>
+    <p>Data is being prepared.</p>
+</div>
+{% endif %}
+
+{% endblock %}

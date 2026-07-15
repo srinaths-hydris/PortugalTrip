@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Portugal 2026 - Family Itinerary</title>
+    <style>
+        :root {
+            --purple: #667eea;
+            --purple-dark: #5a6fd6;
+            --purple-light: #f0f4ff;
+            --gold: #f59e0b;
+            --gold-light: #fffbeb;
+            --green: #10b981;
+            --radius: 14px;
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            min-height: 100vh;
+            padding-bottom: 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* HEADER */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 50px 20px 30px;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 { font-size: 2em; font-weight: 800; letter-spacing: -0.5px; }
+        .hero .subtitle { font-size: 0.95em; opacity: 0.85; margin-top: 4px; }
+        .flight-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 16px;
+        }
+        .flight-pill {
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(10px);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 500;
+        }
+
+
+        /* ROUTE MAP */
+        .route-map-container {
+            background: white;
+            margin: 20px 12px;
+            padding: 24px 16px;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .route-map {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+            margin: 0 20px;
+            overflow-x: auto;
+        }
+
+        .route-line {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: linear-gradient(90deg,
+                #ec4899 0%,
+                #ec4899 40%,
+                #cbd5e1 40%,
+                #cbd5e1 50%,
+                #8b5cf6 50%,
+                #8b5cf6 90%,
+                #cbd5e1 90%);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .route-stop {
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .route-stop:hover {
+            transform: translateY(-8px);
+        }
+
+        .route-marker {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid #667eea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s;
+            margin: 0 auto 8px;
+        }
+
+        .route-stop:hover .route-marker {
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+            transform: scale(1.1);
+        }
+
+        .route-marker.porto { border-color: #ec4899; }
+        .route-marker.tomar { border-color: #ec4899; }
+        .route-marker.lisbon { border-color: #8b5cf6; }
+        .route-marker.algarve { border-color: #8b5cf6; }
+        .route-marker.return { border-color: #10b981; }
+
+        .stop-label {
+            text-align: center;
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #334155;
+            white-space: nowrap;
+        }
+
+        .stop-days {
+            font-size: 0.85em;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .route-legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .route-legend .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8em;
+            color: #64748b;
+        }
+
+        /* Activity stats badges */
+        .day-stats {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .stat-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Activity type icons in tables */
+        .activity-icon {
+            display: inline-block;
+            margin-right: 6px;
+            font-size: 1.1em;
+        }
+
+
+        /* Tooltip styles */
+        .stat-badge {
+            position: relative;
+            cursor: help;
+        }
+
+        .stat-badge:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 6px 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            font-size: 0.75em;
+            white-space: nowrap;
+            border-radius: 6px;
+            margin-bottom: 5px;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .stat-badge:hover::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.9);
+            margin-bottom: -5px;
+            z-index: 1000;
+        }
+
+        /* YouTube link styles */
+        .youtube-link-inline {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #ff0000;
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-left: 8px;
+            padding: 2px 8px;
+            background: #fff0f0;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .youtube-link-inline:hover {
+            background: #ff0000;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .activity-with-video {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .route-map {
+                flex-direction: column;
+                gap: 30px;
+                padding: 20px 0;
+            }
+
+            .route-line {
+                left: 50%;
+                right: auto;
+                width: 4px;
+                height: 80%;
+                top: 10%;
+                bottom: 10%;
+                transform: translateX(-50%);
+                background: linear-gradient(180deg,
+                    #ec4899 0%,
+                    #ec4899 25%,
+                    #cbd5e1 25%,
+                    #cbd5e1 35%,
+                    #8b5cf6 35%,
+                    #8b5cf6 75%,
+                    #cbd5e1 75%);
+            }
+
+            .route-stop {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                width: 100%;
+            }
+
+            .route-marker {
+                margin: 0;
+            }
+
+            .stop-label {
+                text-align: left;
+            }
+        }
+
+        /* ITINERARY STYLES */
+        .itin-day {
+            margin: 12px;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .itin-day-header {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+            color: white;
+            padding: 16px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .itin-day-header .day-num {
+            background: rgba(255,255,255,0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.95em;
+            flex-shrink: 0;
+        }
+        .itin-day-header .day-info { flex: 1; }
+        .itin-day-header .day-title { font-size: 1.05em; font-weight: 700; }
+        .itin-day-header .day-theme { font-size: 0.8em; opacity: 0.85; margin-top: 2px; }
+        .itin-day-header .chevron {
+            font-size: 1.2em;
+            transition: transform 0.3s;
+        }
+        .itin-day.open .itin-day-header .chevron { transform: rotate(90deg); }
+
+        .itin-day-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .itin-day.open .itin-day-body { max-height: 10000px; }
+
+        .itin-day-inner { padding: 16px; }
+
+        .itin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.85em;
+        }
+        .itin-table th {
+            background: #f9fafb;
+            padding: 8px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+            border-bottom: 2px solid #e5e5e5;
+        }
+        .itin-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #f0f0f0;
+            line-height: 1.4;
+        }
+        .itin-table td:first-child {
+            font-weight: 600;
+            color: var(--purple);
+            white-space: nowrap;
+        }
+        .itin-table tr:last-child td { border-bottom: none; }
+
+        .kids-note {
+            background: var(--gold-light);
+            border-left: 3px solid var(--gold);
+            padding: 10px 12px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.8em;
+            color: #555;
+            line-height: 1.4;
+            margin-top: 12px;
+        }
+        .kids-note strong { color: var(--gold); }
+
+        .itin-overview {
+            background: white;
+            margin: 12px;
+            padding: 16px;
+            border-radius: var(--radius);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .itin-overview h3 {
+            font-size: 1em;
+            margin-bottom: 12px;
+            color: var(--purple);
+        }
+        .itin-overview table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85em;
+        }
+        .itin-overview th, .itin-overview td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .itin-overview th {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.75em;
+            text-transform: uppercase;
+        }
+        .itin-overview tr:last-child td { border-bottom: none; }
+
+        /* DESKTOP TWEAKS */
+        @media (min-width: 700px) {
+            body { padding: 20px; }
+            .itin-day, .hero, .itin-overview { max-width: 800px; margin-left: auto; margin-right: auto; }
+        }
+
+        /* CALENDAR DAY NAVIGATOR */
+        .calendar-container {
+            background: white;
+            margin: 20px 12px;
+            padding: 24px 16px;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+            padding: 0 10px;
+        }
+
+        .calendar-day {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 20px 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            min-height: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-day:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .calendar-day-num {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(102, 126, 234, 0.15);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .calendar-day:hover .calendar-day-num {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .calendar-day-icon {
+            font-size: 3em;
+            margin-bottom: 8px;
+        }
+
+        .calendar-day-label {
+            font-size: 0.8em;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #495057;
+        }
+
+        .calendar-day:hover .calendar-day-label {
+            color: white;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 16px;
+            width: 95%;
+            max-width: 1400px;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            animation: slideDown 0.3s;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .modal-header h2 {
+            flex: 1;
+            text-align: center;
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2em;
+            font-weight: 300;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-nav {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .modal-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .modal-body {
+            padding: 30px;
+            max-height: calc(90vh - 100px);
+            overflow-y: auto;
+            font-size: 1.05em;
+        }
+
+        @media (max-width: 768px) {
+            .calendar-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .modal-content {
+                width: 98%;
+                margin: 1% auto;
+                max-height: 95vh;
+            }
+
+            .modal-header {
+                padding: 15px 10px;
+            }
+
+            .modal-header h2 {
+                font-size: 1.2em;
+            }
+
+            .modal-body {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Portugal 2026</h1>
+    <p class="subtitle">Family Itinerary</p>
+    <div class="flight-pills">
+        <span class="flight-pill">&#x1F4CD; Jul 27 &ndash; Aug 11</span>
+        <span class="flight-pill">&#x1F46A; 2 Adults + 2 Kids</span>
+        <span class="flight-pill">&#x1F389; D&amp;R join in Algarve</span>
+        <span class="flight-pill">&#x1F697; 2 car rentals (3d + 5d)</span>
+    </div>
+    <div style="margin-top: 20px;">
+        <a href="attractions-guide.html" style="display: inline-block; background: rgba(255,255,255,0.25); backdrop-filter: blur(10px); color: white; text-decoration: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.35)'" onmouseout="this.style.background='rgba(255,255,255,0.25)'">
+            📹 Watch Every Attraction (YouTube Links)
+        </a>
+    </div>
+</div>
+
+<!-- ROUTE MAP -->
+<div class="route-map-container">
+    <h3 style="text-align: center; color: #667eea; margin-bottom: 20px; font-size: 1.3em;">🗺️ Your Journey Through Portugal</h3>
+    <div class="route-map">
+        <div class="route-line"></div>
+        <div class="route-stop" data-day="1-3" onclick="scrollToDay(1)">
+            <div class="route-marker porto">
+                <span class="stop-icon">🏙️</span>
+            </div>
+            <div class="stop-label">Porto<br><span class="stop-days">Days 1-3</span></div>
+        </div>
+        <div class="route-stop" data-day="4-6" onclick="openDayModal(4)">
+            <div class="route-marker tomar">
+                <span class="stop-icon">🏰</span>
+            </div>
+            <div class="stop-label">Tomar<br><span class="stop-days">Days 4-6</span></div>
+        </div>
+        <div class="route-stop" data-day="7-10" onclick="openDayModal(7)">
+            <div class="route-marker lisbon">
+                <span class="stop-icon">🚋</span>
+            </div>
+            <div class="stop-label">Lisbon<br><span class="stop-days">Days 7-10</span></div>
+        </div>
+        <div class="route-stop" data-day="11-14" onclick="openDayModal(11)">
+            <div class="route-marker algarve">
+                <span class="stop-icon">🌊</span>
+            </div>
+            <div class="stop-label">Algarve<br><span class="stop-days">Days 11-14</span></div>
+        </div>
+        <div class="route-stop" data-day="15" onclick="openDayModal(15)">
+            <div class="route-marker return">
+                <span class="stop-icon">✈️</span>
+            </div>
+            <div class="stop-label">Return<br><span class="stop-days">Day 15</span></div>
+        </div>
+    </div>
+    <div class="route-legend">
+        <div class="legend-item"><span style="background: #ec4899; width: 12px; height: 12px; border-radius: 50%; display: inline-block;"></span> Car 1 (Porto→Lisbon)</div>
+        <div class="legend-item"><span style="background: #8b5cf6; width: 12px; height: 12px; border-radius: 50%; display: inline-block;"></span> Car 2 (Lisbon↔Algarve)</div>
+    </div>
+</div>
+
+<!-- CALENDAR VIEW -->
+<div class="calendar-container">
+    <h3 style="text-align: center; color: #667eea; margin-bottom: 20px; font-size: 1.3em;">📅 Quick Day Navigator</h3>
+    <div class="calendar-grid">
+        <div class="calendar-day" onclick="openDayModal(1)" data-day="1">
+            <div class="calendar-day-num">1</div>
+            <div class="calendar-day-icon">🏙️</div>
+            <div class="calendar-day-label">Jul 27<br>Porto</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(2)" data-day="2">
+            <div class="calendar-day-num">2</div>
+            <div class="calendar-day-icon">🚤</div>
+            <div class="calendar-day-label">Jul 28<br>Bridges</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(3)" data-day="3">
+            <div class="calendar-day-num">3</div>
+            <div class="calendar-day-icon">🚂</div>
+            <div class="calendar-day-label">Jul 29<br>Douro</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(4)" data-day="4">
+            <div class="calendar-day-num">4</div>
+            <div class="calendar-day-icon">🚗</div>
+            <div class="calendar-day-label">Jul 30<br>Aveiro</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(5)" data-day="5">
+            <div class="calendar-day-num">5</div>
+            <div class="calendar-day-icon">🏰</div>
+            <div class="calendar-day-label">Jul 31<br>Knights</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(6)" data-day="6">
+            <div class="calendar-day-num">6</div>
+            <div class="calendar-day-icon">🕳️</div>
+            <div class="calendar-day-label">Aug 1<br>Caves</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(7)" data-day="7">
+            <div class="calendar-day-num">7</div>
+            <div class="calendar-day-icon">💤</div>
+            <div class="calendar-day-label">Aug 2<br>Rest</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(8)" data-day="8">
+            <div class="calendar-day-num">8</div>
+            <div class="calendar-day-icon">🚋</div>
+            <div class="calendar-day-label">Aug 3<br>Lisbon</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(9)" data-day="9">
+            <div class="calendar-day-num">9</div>
+            <div class="calendar-day-icon">🏛️</div>
+            <div class="calendar-day-label">Aug 4<br>Belém</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(10)" data-day="10">
+            <div class="calendar-day-num">10</div>
+            <div class="calendar-day-icon">🏰</div>
+            <div class="calendar-day-label">Aug 5<br>Sintra</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(11)" data-day="11">
+            <div class="calendar-day-num">11</div>
+            <div class="calendar-day-icon">🌊</div>
+            <div class="calendar-day-label">Aug 6<br>Algarve</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(12)" data-day="12">
+            <div class="calendar-day-num">12</div>
+            <div class="calendar-day-icon">🚤</div>
+            <div class="calendar-day-label">Aug 7<br>Benagil</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(13)" data-day="13">
+            <div class="calendar-day-num">13</div>
+            <div class="calendar-day-icon">🏖️</div>
+            <div class="calendar-day-label">Aug 8<br>Lagos</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(14)" data-day="14">
+            <div class="calendar-day-num">14</div>
+            <div class="calendar-day-icon">☀️</div>
+            <div class="calendar-day-label">Aug 9<br>Beach</div>
+        </div>
+        <div class="calendar-day" onclick="openDayModal(15)" data-day="15">
+            <div class="calendar-day-num">15</div>
+            <div class="calendar-day-icon">✈️</div>
+            <div class="calendar-day-label">Aug 10<br>Return</div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div id="dayModal" class="modal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button class="modal-close" onclick="closeDayModal()">&times;</button>
+            <button class="modal-nav" onclick="navigateDay(-1)">‹ Prev</button>
+            <h2 id="modalTitle">Day Details</h2>
+            <button class="modal-nav" onclick="navigateDay(1)">Next ›</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <!-- Day content will be inserted here -->
+        </div>
+    </div>
+</div>
+
+<!-- TRIP OVERVIEW -->
+<div class="itin-overview">
+    <h3>&#x1F5FA;&#xFE0F; Trip Overview</h3>
+    <table>
+        <tr>
+            <th>Dates</th>
+            <th>Region</th>
+            <th>Nights</th>
+            <th>Accommodation</th>
+            <th>Cost</th>
+            <th>Car</th>
+        </tr>
+        <tr>
+            <td>Jul 27&ndash;30</td>
+            <td>Porto</td>
+            <td>3</td>
+            <td><strong>Boon House Airbnb</strong> &#x2705;</td>
+            <td>&euro;440</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>Jul 30 &ndash; Aug 1</td>
+            <td>Tomar &amp; Central</td>
+            <td>2</td>
+            <td><strong>Os Marias (Olalhas)</strong> &#x2705;</td>
+            <td>$388</td>
+            <td>Car 1 (&euro;600)</td>
+        </tr>
+        <tr>
+            <td>Aug 1&ndash;6</td>
+            <td>Lisbon</td>
+            <td>5</td>
+            <td><strong>Holiday Inn Continental</strong> &#x2705;</td>
+            <td>Points</td>
+            <td>No car</td>
+        </tr>
+        <tr>
+            <td>Aug 6&ndash;9</td>
+            <td>Algarve (Arma&ccedil;&atilde;o de P&ecirc;ra)</td>
+            <td>4</td>
+            <td><strong>Casa Margarida</strong> &#x2705;</td>
+            <td>&euro;1,000</td>
+            <td>Car 2 (&euro;950)</td>
+        </tr>
+        <tr>
+            <td>Aug 10</td>
+            <td>Lisbon Airport</td>
+            <td>1</td>
+            <td><strong>Holiday Inn Express</strong> &#x2705;</td>
+            <td>Points</td>
+            <td>Car 2</td>
+        </tr>
+        <tr>
+            <td>Aug 11</td>
+            <td><strong>FLY HOME 7:35 AM</strong></td>
+            <td>&ndash;</td>
+            <td>&ndash;</td>
+            <td>&ndash;</td>
+            <td>&ndash;</td>
+        </tr>
+    </table>
+</div>
+
+<!-- CAR RENTAL -->
+<div class="itin-overview">
+    <h3>&#x1F697; Car Rental &mdash; 2 Separate Bookings (Cheaper!)</h3>
+    <table>
+        <tr><th colspan="2" style="color: var(--purple);">Car 1: Porto &rarr; Lisbon (one-way) &mdash; &euro;600</th></tr>
+        <tr><td>Pick up</td><td><strong>Thu Jul 30, 10:00 AM</strong> &mdash; Porto Airport</td></tr>
+        <tr><td>Drop off</td><td><strong>Sun Aug 2</strong> &mdash; Lisbon</td></tr>
+        <tr><td>Duration</td><td>~3 days</td></tr>
+        <tr><td>Cost</td><td><strong>&euro;600</strong> (incl. taxes)</td></tr>
+        <tr><td>Covers</td><td>Aveiro, Tomar, Batalha, Nazar&eacute;, &Oacute;bidos &rarr; Lisbon</td></tr>
+    </table>
+    <table style="margin-top: 16px;">
+        <tr><th colspan="2" style="color: var(--purple);">Car 2: Lisbon Airport &harr; Algarve (round-trip) &mdash; &euro;950</th></tr>
+        <tr><td>Pick up</td><td><strong>Thu Aug 6, early AM</strong> &mdash; Lisbon Airport</td></tr>
+        <tr><td>Drop off</td><td><strong>Mon Aug 10, ~9 PM</strong> &mdash; Lisbon Airport (evening drop!)</td></tr>
+        <tr><td>Duration</td><td>~5 days (5 &times; 24-hr blocks)</td></tr>
+        <tr><td>Cost</td><td><strong>&euro;950</strong> (incl. taxes)</td></tr>
+        <tr><td>Vehicle</td><td>Upgraded larger car (fits group with D&amp;R)</td></tr>
+        <tr><td>Covers</td><td>Algarve round-trip + drop evening before flight</td></tr>
+    </table>
+    <p style="margin: 12px 0; padding: 10px; background: #e8f5e9; border-left: 4px solid #4caf50; font-size: 0.85em; border-radius: 0 8px 8px 0;">
+        &#x1F4A1; <strong>Why split?</strong> Cheaper than one 12-day rental. No car needed in Lisbon (4 days parking saved). Charged per 24-hr block &mdash; pickup early Aug 6 maximizes value since drop-off is 5 AM Aug 11.
+    </p>
+    <p style="margin: 4px 0 0; font-size: 0.85em; color: #666;">Total cars: <strong>&euro;1,550</strong></p>
+</div>
+
+
+<!-- ROUTE -->
+<div class="itin-overview" style="background: linear-gradient(135deg, #e3f2fd 0%, #fff8e1 100%); border-left: 4px solid #2196F3;">
+    <h3>&#x2728; Route</h3>
+    <div style="font-size: 0.9em; line-height: 1.8;">
+        <p><strong>Porto</strong> (walk + Uber) &rarr; <span style="background:#e8f5e9;padding:2px 6px;border-radius:4px;font-size:0.85em;">Car 1</span> &rarr; Aveiro &rarr; <strong>Tomar</strong><a href="https://www.youtube.com/watch?v=F9tQAJGqsT0" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> &rarr; Batalha &rarr; Nazar&eacute; &rarr; &Oacute;bidos &rarr; <strong>Lisbon</strong> <span style="background:#ffebee;padding:2px 6px;border-radius:4px;font-size:0.85em;">drop Car 1</span></p>
+        <p style="margin-top: 8px;"><strong>Lisbon</strong> (metro + tram, 4 days) &rarr; <span style="background:#e8f5e9;padding:2px 6px;border-radius:4px;font-size:0.85em;">Car 2</span> &rarr; <strong>Algarve</strong> (4 days) &rarr; <strong>Lisbon Airport</strong> <span style="background:#ffebee;padding:2px 6px;border-radius:4px;font-size:0.85em;">drop Car 2 &bull; fly home</span></p>
+    </div>
+</div>
+
+<!-- ACCOMMODATION -->
+<div class="itin-overview">
+    <h3>&#x1F3E8; Accommodation</h3>
+    <table>
+        <tr><th>Dates</th><th>Place</th><th>Cost</th><th>Status</th></tr>
+        <tr><td>Jul 27&ndash;30</td><td><strong>Boon House Airbnb</strong>, Porto</td><td>&euro;440</td><td>&#x2705; Booked</td></tr>
+        <tr><td>Jul 30 &ndash; Aug 1</td><td><strong>Os Marias</strong>, Olalhas (2 nights, modified)</td><td>~$259</td><td>&#x26A0;&#xFE0F; Needs mod</td></tr>
+        <tr><td>Aug 1&ndash;6</td><td><strong>Holiday Inn Continental</strong>, Lisbon (5 nights, need +1)</td><td>~120K pts</td><td>&#x26A0;&#xFE0F; Needs mod</td></tr>
+        <tr><td>Aug 6&ndash;10</td><td><strong>Casa Margarida</strong>, Arma&ccedil;&atilde;o de P&ecirc;ra (3 bed, 6 ppl, AC)</td><td>&euro;1,000</td><td>&#x2705; Booked</td></tr>
+        <tr><td>Aug 10&ndash;11</td><td><strong>Holiday Inn Express</strong>, Lisbon Airport</td><td>Points</td><td>&#x2705; Booked</td></tr>
+    </table>
+    <p style="margin: 8px 0 0; font-size: 0.85em; color: #666;">Total accommodation: <strong>€1,699 (~$259 + €1,440)</strong>. Lisbon &amp; Airport on hotel points.</p>
+</div>
+
+<!-- ACTIVITIES TO BOOK -->
+<div class="itin-overview" style="border-left: 4px solid #ff9800;">
+    <h3>&#x1F3AB; Book in Advance (August = busy!)</h3>
+    <table>
+        <tr><th>What</th><th>When</th><th>Cost</th><th>Status</th></tr>
+        <tr><td><strong>Livraria Lello</strong><a href="https://www.youtube.com/watch?v=nMQz0NPXMlg" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> (timed ticket)</td><td>Tue Jul 28, 9:00 AM</td><td>&euro;8/person (redeemable on books)</td><td>&#x274C; Book</td></tr>
+        <tr><td><strong>Ocean&aacute;rio de Lisboa</strong></td><td>Sun Aug 2, ~4:00 PM</td><td>&euro;25/adult, &euro;17 child, free &lt;3</td><td>&#x274C; Book</td></tr>
+        <tr><td><strong>Quinta da Regaleira</strong><a href="https://www.youtube.com/watch?v=J2Wv6P9TCQY" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> (timed)</td><td>Wed Aug 5, 9:30 AM</td><td>&euro;12/adult, free &lt;5</td><td>&#x274C; Book</td></tr>
+        <tr><td><strong>Pena Palace + Moorish Castle</strong><a href="https://www.youtube.com/watch?v=gqxBW-AHR0w" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a><a href="https://www.youtube.com/watch?v=8LEwYslqpOU" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> (combo)</td><td>Wed Aug 5, afternoon</td><td>~&euro;22/adult combo</td><td>&#x274C; Book</td></tr>
+        <tr><td><strong>Benagil Cave Catamaran</strong><a href="https://www.youtube.com/watch?v=Uxp-BnRz13o" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>Fri Aug 7, ~9:30 AM</td><td>&euro;45-60/adult, &euro;25-35/child</td><td>&#x274C; Book (SELLS OUT!)</td></tr>
+        <tr><td><strong>Restaurant bookings</strong> (Algarve group dinners)</td><td>Aug 6&ndash;9 evenings</td><td>&mdash;</td><td>&#x274C; Book 1-2 days ahead</td></tr>
+    </table>
+    <p style="margin: 8px 0 0; font-size: 0.85em; color: #666;">Timed tickets sell out in August &mdash; book 2-4 weeks ahead. Benagil catamaran books out days in advance.</p>
+</div>
+
+<!-- DAY 1 -->
+<div class="itin-day" data-day="1">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">1</div>
+        <div class="day-info">
+            <div class="day-title">Mon Jul 27 &mdash; ARRIVE PORTO</div>
+            <div class="day-theme">Settle in &amp; soak up the atmosphere</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Sightseeing">👀</span><span class="stat-badge" data-tooltip="Walking">🚶</span><span class="stat-badge" data-tooltip="Food/Dining">🍽️</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>Afternoon</td><td>Arrive Porto, check into <strong>Boon House Airbnb</strong></td><td>Central Porto. Rest, freshen up.</td></tr>
+                <tr><td>5:00 PM</td><td><strong>S&atilde;o Bento Station tiles</strong></td><td>10 min stop. Free. Stroller-friendly.</td></tr>
+                <tr><td>6:00 PM</td><td><strong>Ribeira Evening Stroll</strong><a href="https://www.youtube.com/watch?v=Qz4Z8c0ihKc" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>Twinkling lights, street performers, gelato</td></tr>
+                <tr><td>7:30 PM</td><td>Dinner at Ribeira</td><td>Simple tasca &mdash; soup, salads, bread, cheese</td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> Keep it easy after travel. Ribeira is flat and stroller-friendly.</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 2 -->
+<div class="itin-day" data-day="2">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">2</div>
+        <div class="day-info">
+            <div class="day-title">Tue Jul 28 &mdash; PORTO: RIVER &amp; BRIDGES</div>
+            <div class="day-theme">Bookshop, cruise, cable car &amp; gardens</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Sightseeing">👀</span><span class="stat-badge" data-tooltip="Walking">🚶 ×2</span><span class="stat-badge" data-tooltip="Boat Tour">🚤</span><span class="stat-badge" data-tooltip="Cable Car">🚡</span><span class="stat-badge" data-tooltip="Kids Activity">🎢</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>9:00 AM</td><td><strong>Livraria Lello Bookshop</strong><a href="https://www.youtube.com/watch?v=nMQz0NPXMlg" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>&euro;8/person. 30 min. Harry Potter inspiration! Book timed ticket.</td></tr>
+                <tr><td>9:45 AM</td><td><strong>Bolh&atilde;o Market</strong> &mdash; Breakfast</td><td>&euro;15-20 family. Pastries, cheese, fruit.</td></tr>
+                <tr><td>11:00 AM</td><td><strong>6 Bridges Douro Cruise</strong><a href="https://www.youtube.com/watch?v=Xe5wVNVm5I8" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>&euro;18/adult, &euro;9/child. 50 min.</td></tr>
+                <tr><td>12:00 PM</td><td><strong>Gaia Cable Car</strong><a href="https://www.youtube.com/watch?v=aRK8TlfeHaY" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>&euro;8/adult, &euro;5/child. 5 min ride. Best views!</td></tr>
+                <tr><td>12:30 PM</td><td>Lunch in Gaia</td><td>&euro;35-45 family. Caldo verde, salads, bread.</td></tr>
+                <tr><td>1:30 PM</td><td><strong>Walk Dom Lu&iacute;s I Bridge</strong></td><td>Free. Lower deck = stroller-friendly.</td></tr>
+                <tr><td>2:00 PM</td><td><strong>REST BREAK</strong></td><td>Nap time!</td></tr>
+                <tr><td>4:30 PM</td><td><strong>Crystal Palace Gardens</strong><a href="https://www.youtube.com/watch?v=J8LfXXMxvwY" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>Free. Peacocks, playground, duck ponds.</td></tr>
+                <tr><td>6:30 PM</td><td><strong>Francesinha at Caf&eacute; Santiago</strong></td><td>&euro;14-18/sandwich. Porto&rsquo;s signature dish!</td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> Lello = magical for 7-yr-old! Crystal Palace = let them RUN.</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 3 -->
+<div class="itin-day" data-day="3">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">3</div>
+        <div class="day-info">
+            <div class="day-title">Wed Jul 29 &mdash; DOURO VALLEY SCENIC TRAIN</div>
+            <div class="day-theme">Train through terraced vineyards</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Train">🚂 ×2</span><span class="stat-badge" data-tooltip="Photo Stop">📸</span><span class="stat-badge" data-tooltip="Walking">🚶</span><span class="stat-badge" data-tooltip="Beach/Swimming">🌊</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>8:15 AM</td><td>Train <strong>Porto &rarr; Pinh&atilde;o</strong></td><td>&euro;14/adult one-way, free &lt;4. 2.5 hrs. Stunning views!</td></tr>
+                <tr><td>11:00 AM</td><td>Arrive Pinh&atilde;o &mdash; <strong>blue-tile station</strong></td><td>Free. Beautiful azulejos.</td></tr>
+                <tr><td>12:00 PM</td><td>Lunch in Pinh&atilde;o</td><td>~&euro;40 family. Simple tasca.</td></tr>
+                <tr><td>1:30 PM</td><td><strong>Quinta do Bomfim gardens</strong><a href="https://www.youtube.com/watch?v=dVNwmR7y_4I" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>Free grounds. Kids run in vineyard terraces.</td></tr>
+                <tr><td>2:30 PM</td><td>Train <strong>Pinh&atilde;o &rarr; Porto</strong></td><td>2.5 hrs. Kids nap!</td></tr>
+                <tr><td>5:30 PM</td><td><strong>Foz do Douro seaside</strong><a href="https://www.youtube.com/watch?v=3Q1XhZ3zVWo" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>Free. Rock pools, ice cream, promenade.</td></tr>
+                <tr><td>7:30 PM</td><td>Dinner at <strong>Bras&atilde;o Aliados</strong></td><td>~&euro;40-50 family.</td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> Trains = exciting! Scenery from the train IS the experience. Foz rock pools = sensory play heaven.</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 4 -->
+<div class="itin-day" data-day="4">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">4</div>
+        <div class="day-info">
+            <div class="day-title">Thu Jul 30 &mdash; CAR 1: Porto &rarr; Aveiro &rarr; Tomar</div>
+            <div class="day-theme">Pick up car, canal boat, head to Tomar</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Driving/Car">🚗</span><span class="stat-badge" data-tooltip="Boat Tour">🚤</span><span class="stat-badge" data-tooltip="Photo Stop">📸</span><span class="stat-badge" data-tooltip="Walking">🚶</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>9:00 AM</td><td>Uber to Porto Airport</td><td>~20 min</td></tr>
+                <tr><td>10:00 AM</td><td><strong>PICK UP CAR 1</strong></td><td>Confirm child seats!</td></tr>
+                <tr><td>11:30 AM</td><td><strong>Aveiro canal boat</strong><a href="https://www.youtube.com/watch?v=xKhZZZ_JGRU" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> (moliceiro)</td><td>&euro;15/adult, &euro;8/child. 45 min. Colorful boats!</td></tr>
+                <tr><td>12:30 PM</td><td><strong>Ovos moles</strong> + old town</td><td>Sweet egg pastries &mdash; kids love!</td></tr>
+                <tr><td>1:00 PM</td><td><strong>Costa Nova</strong><a href="https://www.youtube.com/watch?v=eFkN-nTk9DY" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> beach</td><td>Famous stripy houses. Quick photo stop.</td></tr>
+                <tr><td>1:30 PM</td><td>Lunch</td><td>~&euro;35-45 family.</td></tr>
+                <tr><td>2:30 PM</td><td>Drive to <strong>Tomar</strong><a href="https://www.youtube.com/watch?v=F9tQAJGqsT0" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>2 hrs. Kids nap!</td></tr>
+                <tr><td>4:30 PM</td><td>Check into Airbnb</td><td>Central, near river.</td></tr>
+                <tr><td>5:30 PM</td><td><strong>Tomar Old Town &amp; River Walk</strong><a href="https://www.youtube.com/watch?v=F9tQAJGqsT0" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>Free. Waterwheel, playground by river.</td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> Drive splits into chunks. Canal boat = mini-adventure. Playground = perfect arrival activity.</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 5 -->
+<div class="itin-day" data-day="5">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">5</div>
+        <div class="day-info">
+            <div class="day-title">Fri Jul 31 &mdash; KNIGHTS &amp; ISLAND CASTLES</div>
+            <div class="day-theme">Full medieval immersion &mdash; THE highlight day</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Historic Site/Castle">🏰 ×2</span><span class="stat-badge" data-tooltip="Beach/Swimming">🌊</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>9:00 AM</td><td><strong>Convento de Cristo</strong><a href="https://www.youtube.com/watch?v=FGzqe0SYKbk" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> (Knights Templar!)</td><td>&euro;10/adult, free &lt;12. 2.5 hrs. UNMISSABLE!</td></tr>
+                <tr><td>12:00 PM</td><td>Lunch in Tomar</td><td></td></tr>
+                <tr><td>1:00 PM</td><td><strong>REST BREAK</strong></td><td>Nap time.</td></tr>
+                <tr><td>3:30 PM</td><td>Drive to <strong>Castelo de Almourol</strong><a href="https://www.youtube.com/watch?v=nxMqMaUq3Eg" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>30 min south</td></tr>
+                <tr><td>4:00 PM</td><td><strong>Boat to Almourol Castle</strong><a href="https://www.youtube.com/watch?v=nxMqMaUq3Eg" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> (island!)</td><td>&euro;2/person, castle free. Kids will LOVE this!</td></tr>
+                <tr><td>5:30 PM</td><td>Drive back</td><td>30 min</td></tr>
+                <tr><td>6:30 PM</td><td><strong>Castelo de Bode Reservoir</strong><a href="https://www.youtube.com/watch?v=Uu4xfPkqBw4" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> &mdash; swim</td><td>Free. Crystal-clear freshwater. Optional.</td></tr>
+                <tr><td>8:00 PM</td><td>Dinner in Tomar</td><td></td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> Two castles in one day! Almourol boat ride = thrilling. Reservoir swim = great cool-down.</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 6 -->
+<div class="itin-day" data-day="6">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">6</div>
+        <div class="day-info">
+            <div class="day-title">Sat Aug 1 &mdash; UNDERGROUND CAVES &amp; WATER FUN</div>
+            <div class="day-theme">Cool adventures + swimming</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Caves">🕳️</span><span class="stat-badge" data-tooltip="Religious Site">⛪</span><span class="stat-badge" data-tooltip="Historic Site/Castle">🏰 ×2</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>9:30 AM</td><td><strong>Grutas de Mira de Aire</strong><a href="https://www.youtube.com/watch?v=WMUA1Wy9wf4" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> (caves!)</td><td>&euro;7.90/adult, &euro;5.20/child, free &lt;6. 110m underground!</td></tr>
+                <tr><td>10:45 AM</td><td><strong>Aquapark</strong> at caves site</td><td>Water slides, pools. Burn off energy!</td></tr>
+                <tr><td>12:30 PM</td><td>Lunch near caves</td><td></td></tr>
+                <tr><td>2:00 PM</td><td><strong>Alcoba&ccedil;a Monastery</strong></td><td>&euro;10/adult, free &lt;12. MASSIVE interior. 1 hr.</td></tr>
+                <tr><td>4:00 PM</td><td><strong>Castelo de Bode Reservoir</strong><a href="https://www.youtube.com/watch?v=Uu4xfPkqBw4" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> &mdash; swim</td><td>Free. Calm water, perfect for 3-yr-old.</td></tr>
+                <tr><td>7:00 PM</td><td>Farewell dinner in Tomar</td><td></td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> Caves = mind-blowing! Aquapark burns off energy. Can skip Alcoba&ccedil;a for more swim time!</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 7 -->
+<div class="itin-day" data-day="7">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">7</div>
+        <div class="day-info">
+            <div class="day-title">Sun Aug 2 &mdash; TOMAR &rarr; LISBON (via Batalha, Nazar&eacute; &amp; &Oacute;bidos)</div>
+            <div class="day-theme">Medieval stops en route &bull; DROP OFF Car 1</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Aquarium">🐠</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>8:30 AM</td><td>Quick stop: <strong>F&aacute;tima Sanctuary</strong></td><td>Free. 15 min. Impressive scale.</td></tr>
+                <tr><td>9:45 AM</td><td><strong>Batalha</strong><a href="https://www.youtube.com/watch?v=EFU_D3iPt2w" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> &mdash; Unfinished Chapels</td><td>&euro;8/adult, free &lt;12. Roofless chapels = WOW!</td></tr>
+                <tr><td>11:15 AM</td><td><strong>S&iacute;tio Funicular</strong> (Nazar&eacute;)</td><td>&euro;1.50/person. Cliff elevator!</td></tr>
+                <tr><td>12:50 PM</td><td><strong>&Oacute;bidos Walled Town</strong></td><td>Free. Walk ON TOP of walls! Ice cream.</td></tr>
+                <tr><td>1:30 PM</td><td>Lunch in &Oacute;bidos</td><td>~&euro;35-45 family.</td></tr>
+                <tr><td>3:00 PM</td><td>Check into <strong>Holiday Inn Lisbon</strong></td><td>&#x2705; BOOKED</td></tr>
+                <tr><td>3:30 PM</td><td>&#x1F697; <strong>DROP OFF Car 1</strong></td><td>One-way rental complete!</td></tr>
+                <tr><td>4:00 PM</td><td><strong>Ocean&aacute;rio de Lisboa</strong></td><td>&euro;25/adult, free &lt;3, ~&euro;17 ages 4-12. Europe&rsquo;s BEST aquarium! Otters, sharks, rays, sunfish. 1.5 hrs.</td></tr>
+                <tr><td>5:30 PM</td><td><strong>Splash Fountains + Playground</strong> (Parque das Na&ccedil;&otilde;es)</td><td>Free. Same complex! Kids run through water.</td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> 3 medieval stops break up the drive! Ocean&aacute;rio = absolute highlight (otters for the 3-yr-old, sharks for the 7-yr-old). Splash fountains right after!</div>
+            <div class="kids-note" style="background: #e8f5e9; border-left: 4px solid #4caf50;"><strong style="color: #4caf50;">&#x1F697; Car 1 done!</strong> One-way rental complete. Car-free in Lisbon for 4 days &mdash; use metro, tram, Uber.</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 8 -->
+<div class="itin-day" data-day="8">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">8</div>
+        <div class="day-info">
+            <div class="day-title">Mon Aug 3 &mdash; LISBON: HISTORIC CORE</div>
+            <div class="day-theme">Tram, castle, funicular + Santa Justa hack</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Tram/Transport">🚋</span><span class="stat-badge" data-tooltip="Historic Site/Castle">🏰</span><span class="stat-badge" data-tooltip="Walking">🚶</span><span class="stat-badge" data-tooltip="Food/Dining">🍽️</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>8:15 AM</td><td><strong>Tram 28</strong><a href="https://www.youtube.com/watch?v=G9b0eJHMp8I" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>&euro;3.80/ride. GO EARLY! By 9:30 = sardines.</td></tr>
+                <tr><td>9:30 AM</td><td><strong>Castelo de S&atilde;o Jorge</strong></td><td>&euro;15/adult, free &lt;12. Peacocks, city views!</td></tr>
+                <tr><td>11:00 AM</td><td>Walk down through Alfama</td><td>Downhill! Winding streets.</td></tr>
+                <tr><td>12:00 PM</td><td><strong>Time Out Market</strong><a href="https://www.youtube.com/watch?v=OtJ0LsI0lX8" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>&euro;10-20/person. Everyone picks own stall!</td></tr>
+                <tr><td>1:00 PM</td><td><strong>REST BREAK</strong></td><td>Nap time. Lisbon is hilly!</td></tr>
+                <tr><td>4:00 PM</td><td><strong>Ascensor da Bica</strong></td><td>&euro;3.80. Super steep funicular. 3 min thrills!</td></tr>
+                <tr><td>5:00 PM</td><td><strong>Santa Justa viewpoint</strong> (LOCAL HACK!)</td><td>Walk up Rua do Carmo to Carmo Square &mdash; access from TOP. Skip 60-min tourist line!</td></tr>
+                <tr><td>6:00 PM</td><td>Dinner near Bairro Alto</td><td></td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> Tram 28 early = essential. Castle has peacocks! Time Out Market = no dinner arguments.</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 9 -->
+<div class="itin-day" data-day="9">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">9</div>
+        <div class="day-info">
+            <div class="day-title">Tue Aug 4 &mdash; BEL&Eacute;M &amp; RIVERSIDE</div>
+            <div class="day-theme">Iconic landmarks + custard tarts</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Historic Site/Castle">🏰</span><span class="stat-badge" data-tooltip="Monument">🏛️</span><span class="stat-badge" data-tooltip="Pastry/Dessert">🍰</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>9:15 AM</td><td><strong>Past&eacute;is de Bel&eacute;m</strong></td><td>&euro;1.40/tart. THE original since 1837!</td></tr>
+                <tr><td>10:00 AM</td><td><strong>Bel&eacute;m Tower + Monument</strong> (exterior)</td><td>Free. Walk waterfront, kids run on plaza.</td></tr>
+                <tr><td>11:00 AM</td><td><strong>Jardim de Bel&eacute;m</strong> playground</td><td>Free. Good playground.</td></tr>
+                <tr><td>12:00 PM</td><td>Lunch in Bel&eacute;m</td><td></td></tr>
+                <tr><td>1:00 PM</td><td><strong>REST BREAK</strong></td><td>Nap / quiet time</td></tr>
+                <tr><td>3:30 PM</td><td><strong>Ribeira das Naus</strong><a href="https://www.youtube.com/watch?v=Qz4Z8c0ihKc" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> riverfront</td><td>Free. Flat promenade, steps into Tagus.</td></tr>
+                <tr><td>5:30 PM</td><td><strong>LX Factory</strong> (optional)</td><td>Free. Warehouse market. 1 hr max.</td></tr>
+                <tr><td>7:00 PM</td><td>Dinner</td><td></td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> Past&eacute;is de Bel&eacute;m = kids go CRAZY for warm custard! Bel&eacute;m waterfront wide and flat.</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 10 -->
+<div class="itin-day" data-day="10">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">10</div>
+        <div class="day-info">
+            <div class="day-title">Wed Aug 5 &mdash; SINTRA: PALACES &amp; TUNNELS</div>
+            <div class="day-theme">Fairy-tale palaces + secret wells + medieval ramparts</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Historic Site/Castle">🏰 ×3</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>8:00 AM</td><td>Train <strong>Rossio &rarr; Sintra</strong></td><td>~&euro;4.60 return. 40 min.</td></tr>
+                <tr><td>9:30 AM</td><td><strong>Quinta da Regaleira</strong><a href="https://www.youtube.com/watch?v=J2Wv6P9TCQY" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>&euro;12/adult, free &lt;5. Underground tunnels + 27m spiral well! KIDS&rsquo; FAVORITE!</td></tr>
+                <tr><td>11:45 AM</td><td><strong>Moorish Castle ramparts</strong><a href="https://www.youtube.com/watch?v=8LEwYslqpOU" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>&euro;8/adult, free &lt;6. Medieval ruins, EPIC views!</td></tr>
+                <tr><td>12:45 PM</td><td>Quick lunch in Sintra</td><td></td></tr>
+                <tr><td>1:45 PM</td><td><strong>Pena Palace</strong><a href="https://www.youtube.com/watch?v=gqxBW-AHR0w" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> (exterior + gardens)</td><td>&euro;14/adult, free &lt;6. Colorful &ldquo;Disney castle&rdquo;! Skip interior.</td></tr>
+                <tr><td>3:30 PM</td><td>Train back to Lisbon</td><td>Kids may doze.</td></tr>
+                <tr><td>4:30 PM</td><td><strong>REST / Pack for Algarve</strong></td><td>Organize for beach days!</td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> Quinta da Regaleira = FAVORITE of whole trip. Spiral well, dark tunnels = pure magic. Don&rsquo;t drive to Sintra (parking nightmare)!</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 11 -->
+<div class="itin-day" data-day="11">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">11</div>
+        <div class="day-info">
+            <div class="day-title">Thu Aug 6 &mdash; CAR 2: LISBON &rarr; ALGARVE &#x1F389; D&amp;R arrive!</div>
+            <div class="day-theme">Drive to the beach! Group assembles!</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Historic Site/Castle">🏰</span><span class="stat-badge" data-tooltip="Beach/Swimming">🌊</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>7:30 AM</td><td>Uber to Lisbon Airport</td><td>~15 min from Holiday Inn</td></tr>
+                <tr><td>8:00 AM</td><td><strong>PICK UP CAR 2</strong> (upgraded)</td><td>Lisbon Airport. Confirm child seats!</td></tr>
+                <tr><td>9:30 AM</td><td><strong>Drive to Arma&ccedil;&atilde;o de P&ecirc;ra</strong></td><td>2.5 hrs via A2. Kids nap!</td></tr>
+                <tr><td>12:00 PM</td><td>Arrive &mdash; lunch in town</td><td></td></tr>
+                <tr><td>2:00 PM</td><td>Check into <strong>Casa Margarida</strong></td><td>&#x2705; BOOKED. 3 bed, 6 ppl, AC. Host confirmed 2-3 PM.</td></tr>
+                <tr><td>4:00 PM</td><td>&#x1F389; <strong>Darshan &amp; Rika arrive Faro</strong></td><td>Fly from London! ~40 min drive to pick up.</td></tr>
+                <tr><td>5:30 PM</td><td><strong>Arma&ccedil;&atilde;o de P&ecirc;ra beach walk</strong></td><td>Free. Long beach, boardwalk.</td></tr>
+                <tr><td>7:00 PM</td><td>Welcome dinner (whole group!)</td><td>Celebrate the reunion!</td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> 2.5-hour drive = manageable! Arma&ccedil;&atilde;o beach = wide, sandy, right there.</div>
+            <div class="kids-note" style="background: #e8f5e9; border-left: 4px solid #4caf50;"><strong style="color: #4caf50;">&#x1F4CD; Base: Arma&ccedil;&atilde;o de P&ecirc;ra</strong> &mdash; Central Algarve! Benagil ~15 min, Praia da Marinha ~10 min, Silves ~15 min, Lagos ~40 min, Sagres ~1 hr, Faro Airport ~40 min.</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 12 -->
+<div class="itin-day" data-day="12">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">12</div>
+        <div class="day-info">
+            <div class="day-title">Fri Aug 7 &mdash; BENAGIL CAVE BOAT + PRAIA DA MARINHA</div>
+            <div class="day-theme">Bucket-list boat trip + Portugal&rsquo;s most beautiful beach</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Boat Tour">🚤</span><span class="stat-badge" data-tooltip="Beach">🏖️</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>8:30 AM</td><td>Drive to departure point</td><td>Albufeira or Portim&atilde;o marina (~20 min). <strong>BOOK IN ADVANCE!</strong></td></tr>
+                <tr><td>9:30 AM</td><td><strong>Benagil Cave Catamaran + Dolphins</strong><a href="https://www.youtube.com/watch?v=Uxp-BnRz13o" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>&euro;45-60/adult, &euro;25-35/child. 2-3 hrs. Cathedral cave + dolphins!</td></tr>
+                <tr><td>12:00 PM</td><td>Return to shore</td><td></td></tr>
+                <tr><td>12:30 PM</td><td>Lunch at marina</td><td>Simple caf&eacute;</td></tr>
+                <tr><td>1:30 PM</td><td>Drive to <strong>Praia da Marinha</strong><a href="https://www.youtube.com/watch?v=VF3Dqv1gOqM" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>~15 min, basically on the way home</td></tr>
+                <tr><td>2:00 PM</td><td><strong>Praia da Marinha</strong><a href="https://www.youtube.com/watch?v=VF3Dqv1gOqM" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> &mdash; beach time</td><td>One of Portugal&rsquo;s most beautiful. Clear water, dramatic cliffs.</td></tr>
+                <tr><td>4:00 PM</td><td>Head back to Casa Margarida</td><td>Only 10 min home</td></tr>
+                <tr><td>4:30 PM</td><td><strong>Rest / downtime</strong></td><td>Real rest. No forced activity.</td></tr>
+                <tr><td>7:00 PM</td><td>Group dinner</td><td>Book table for 6!</td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> THE catamaran = BIG experience &mdash; dolphins huge hit! <strong>BOOK IN ADVANCE</strong> (August!). Praia da Marinha is on the way back (not a detour). Afternoon = genuine rest.</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 13 -->
+<div class="itin-day" data-day="13">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">13</div>
+        <div class="day-info">
+            <div class="day-title">Sat Aug 8 &mdash; LAGOS + SAGRES LOOP &mdash; The Big Day Out</div>
+            <div class="day-theme">Golden cliffs, fortress, continent&rsquo;s edge &mdash; one epic loop</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Beach/Swimming">🌊</span><span class="stat-badge" data-tooltip="Photo Stop">📸</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>8:30 AM</td><td>Drive to <strong>Lagos</strong><a href="https://www.youtube.com/watch?v=UU8hKDlSIqg" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>~40 min via A22</td></tr>
+                <tr><td>9:15 AM</td><td><strong>Ponta da Piedade</strong><a href="https://www.youtube.com/watch?v=nFvOnMPUq8Q" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>Free. Golden sea stacks + grottoes. Mind kids near edges!</td></tr>
+                <tr><td>10:30 AM</td><td><strong>Praia Dona Ana</strong></td><td>Stunning sheltered cove. Swim + sandcastles!</td></tr>
+                <tr><td>12:00 PM</td><td><strong>Lunch in Lagos Old Town</strong><a href="https://www.youtube.com/watch?v=UU8hKDlSIqg" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>Pretty streets, veggie options plentiful.</td></tr>
+                <tr><td>1:30 PM</td><td>Drive to <strong>Sagres</strong><a href="https://www.youtube.com/watch?v=sRhKBYV0Y8w" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>~30 min along coast</td></tr>
+                <tr><td>2:00 PM</td><td><strong>Sagres Fortress</strong><a href="https://www.youtube.com/watch?v=sRhKBYV0Y8w" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>&euro;3/adult, free &lt;12. Windswept fort. Kids can run!</td></tr>
+                <tr><td>3:15 PM</td><td><strong>Cape St. Vincent</strong> &mdash; &ldquo;End of the World&rdquo;</td><td>Free. Europe&rsquo;s SW tip. VERY windy!</td></tr>
+                <tr><td>4:00 PM</td><td>Drive back (via A22)</td><td>~1 hr inland route, faster</td></tr>
+                <tr><td>5:00 PM</td><td>Arrive home &mdash; rest</td><td>~2.5-3 hrs total driving today</td></tr>
+                <tr><td>7:00 PM</td><td>Group dinner</td><td>Book for 6!</td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> Biggest driving day (~2.5-3 hrs total). Dona Ana beach = break for running. Sagres/Cape = quick stops. They&rsquo;ll sleep on the way back. One loop, no backtracking!</div>
+            <div class="kids-note" style="background: #e8f5e9; border-left: 4px solid #4caf50;"><strong>&#x1F5FA;&#xFE0F; Route:</strong> Arma&ccedil;&atilde;o &rarr; Lagos (40m) &rarr; Sagres (30m) &rarr; Cape (10m) &rarr; home (1hr). All west-to-east. Much smarter than separate trips.</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 14 -->
+<div class="itin-day" data-day="14">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">14</div>
+        <div class="day-info">
+            <div class="day-title">Sun Aug 9 &mdash; REST DAY &mdash; Last Day with D&amp;R</div>
+            <div class="day-theme">No agenda. Local beach, pack, farewell.</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Beach/Swimming">🌊</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>9:00 AM</td><td>Sleep in! Lazy breakfast</td><td>No alarms! Last morning with D&amp;R.</td></tr>
+                <tr><td>10:00 AM</td><td><strong>Local beach &mdash; Praia Grande de P&ecirc;ra</strong></td><td>Walk from casa. Flat, wide, easy with kids.</td></tr>
+                <tr><td>12:30 PM</td><td>Lunch in Arma&ccedil;&atilde;o de P&ecirc;ra</td><td>Simple, walkable, no driving.</td></tr>
+                <tr><td>2:00 PM</td><td><strong>Chill at Casa Margarida</strong></td><td>Pool/rest. Start organizing bags casually.</td></tr>
+                <tr><td>4:00 PM</td><td>Pack up &amp; load car</td><td>Not frantic &mdash; you have until 1-2 PM tomorrow.</td></tr>
+                <tr><td>5:00 PM</td><td>Last ice cream / Old Town walk</td><td>Fishermen&rsquo;s chapel, fortress viewpoint.</td></tr>
+                <tr><td>7:00 PM</td><td><strong>Farewell dinner</strong> (goodbye D&amp;R!)</td><td>Splurge! Celebrate! Book nice table for 6.</td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> Actual rest day &mdash; they need it after yesterday&rsquo;s big loop. Local beach, no car, no schedule. Let them be kids.</div>
+            <div class="kids-note" style="background: #e3f2fd; border-left: 4px solid #2196f3;"><strong style="color: #2196f3;">&#x1F44B; D&amp;R depart</strong> &mdash; fly from Faro (~40 min) tonight or tomorrow AM.</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 15 -->
+<div class="itin-day" data-day="15">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">15</div>
+        <div class="day-info">
+            <div class="day-title">Mon Aug 10 &mdash; ALGARVE &rarr; LISBON (Bel&eacute;m at Golden Hour)</div>
+            <div class="day-theme">One last Algarve morning + Lisbon&rsquo;s best sunset spot</div>
+            <div class="day-stats"><span class="stat-badge" data-tooltip="Historic Site/Castle">🏰</span><span class="stat-badge" data-tooltip="Flight">✈️</span></div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>9:00 AM</td><td>Easy morning at base</td><td>No rush! You don&rsquo;t leave until after lunch.</td></tr>
+                <tr><td>10:00 AM</td><td><strong>Algar Seco, Carvoeiro</strong> (optional)</td><td>~15 min. Rock formations, sea caves, boardwalk. OR: final swim at Praia Grande.</td></tr>
+                <tr><td>12:00 PM</td><td>Lunch in Arma&ccedil;&atilde;o (or Carvoeiro)</td><td>Last Algarve meal!</td></tr>
+                <tr><td>1:00 PM</td><td><strong>Check out of Casa Margarida</strong></td><td>Final sweep &mdash; nothing left behind!</td></tr>
+                <tr><td>2:00&ndash;3:00 PM</td><td><strong>Drive to Lisbon</strong> (Car 2)</td><td>2.5 hrs via A2. Kids nap!</td></tr>
+                <tr><td>3:30 PM</td><td><strong>Stop at Alc&aacute;cer do Sal</strong></td><td>Charming riverside town. Stretch legs, coffee/ice cream. 5 min off motorway.</td></tr>
+                <tr><td>5:00 PM</td><td><strong>Bel&eacute;m at golden hour</strong> &#x2600;&#xFE0F;</td><td>Jer&oacute;nimos exterior, Bel&eacute;m Tower, Monument to Discoveries. Magical photos!</td></tr>
+                <tr><td>6:00 PM</td><td><strong>Past&eacute;is de Bel&eacute;m</strong></td><td>THE original past&eacute;is de nata! Worth a short queue.</td></tr>
+                <tr><td>7:00 PM</td><td><strong>Time Out Market dinner</strong><a href="https://www.youtube.com/watch?v=OtJ0LsI0lX8" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a></td><td>Uber to Cais do Sodr&eacute; (~10 min). Tons of options, kids pick what they want.</td></tr>
+                <tr><td>8:30 PM</td><td>Drive to <strong>Lisbon Airport</strong></td><td>~20 min from Time Out Market.</td></tr>
+                <tr><td>8:50 PM</td><td>&#x1F697; <strong>DROP OFF CAR 2</strong></td><td>Return car TONIGHT. Key-drop if desk closed. Eliminates 5 AM car stress!</td></tr>
+                <tr><td>9:00 PM</td><td>Walk to <strong>Holiday Inn Express Airport</strong></td><td>Hotel is at airport &mdash; 5 min. &#x2705; BOOKED.</td></tr>
+                <tr><td>9:15 PM</td><td><strong>BED!</strong></td><td>Set MULTIPLE alarms!</td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x1F476; Kids note:</strong> Relaxed morning (final swim or Algar Seco boardwalk). They&rsquo;ll sleep in car. Bel&eacute;m = open-air, no tickets. Time Out Market = pick-your-own stalls.</div>
+            <div class="kids-note" style="background: #e8f5e9; border-left: 4px solid #4caf50;"><strong>&#x1F697; Car drop strategy:</strong> Return Car 2 TONIGHT when you arrive at airport area. Paying until 5 AM anyway (24-hr blocks) &mdash; dropping at 9 PM costs nothing extra. Eliminates risky 5 AM sprint.</div>
+            <div class="kids-note" style="background: #fff3e0; border-left: 4px solid #ff9800;"><strong>&#x1F4A4; Sleep math:</strong> Lights-out ~9:30 PM realistically. Wake 4:30 AM = ~7 hrs. <strong>Escape valve:</strong> Skip Time Out, eat in Bel&eacute;m at 6:30 PM &rarr; at hotel by 8 PM &rarr; gain 1 extra hour.</div>
+            <div class="kids-note" style="background: #ffebee; border-left: 4px solid #f44336;"><strong style="color: #f44336;">&#x23F0; CRITICAL:</strong> Flight 7:35 AM! Wake 4:30. Walk to terminal 5:00 (no car!). Check-in 5:15. Gate by 6:45. MULTIPLE ALARMS!</div>
+        </div>
+    </div>
+</div>
+
+<!-- DAY 16 -->
+<div class="itin-day" data-day="16">
+    <div class="itin-day-header" onclick="toggleDay(this)">
+        <div class="day-num">16</div>
+        <div class="day-info">
+            <div class="day-title">Tue Aug 11 &mdash; FLY HOME &#x2708;&#xFE0F;</div>
+            <div class="day-theme">Goodbye Portugal &#x1F1F5;&#x1F1F9;</div>
+        </div>
+        <span class="chevron">&#x203A;</span>
+    </div>
+    <div class="itin-day-body">
+        <div class="itin-day-inner">
+            <table class="itin-table">
+                <tr><th>Time</th><th>Activity</th><th>Notes</th></tr>
+                <tr><td>4:30 AM</td><td><strong>WAKE UP</strong></td><td>Grab pastries if hotel breakfast open.</td></tr>
+                <tr><td>5:00 AM</td><td><strong>Walk to terminal</strong></td><td>Hotel is AT the airport &mdash; 5 min walk. No car! (Returned last night.)</td></tr>
+                <tr><td>5:15 AM</td><td>Check in for flight</td><td>United counter. No rental queue!</td></tr>
+                <tr><td>7:35 AM</td><td><strong>Flight UA 6863</strong></td><td>Lisbon &rarr; London (2h 45m)</td></tr>
+                <tr><td>10:20 AM</td><td>Arrive London Heathrow</td><td>2h 40m connection</td></tr>
+                <tr><td>1:00 PM</td><td><strong>Flight UA 949</strong></td><td>London &rarr; San Francisco (11h)</td></tr>
+                <tr><td>4:00 PM</td><td><strong>Arrive San Francisco!</strong></td><td>Welcome home! &#x1F3E0;</td></tr>
+            </table>
+            <div class="kids-note"><strong>&#x2708;&#xFE0F; Travel tip:</strong> Bring tablets, snacks, coloring books. Kids may sleep on London&rarr;SF leg. Time difference works in your favor!</div>
+            <div class="kids-note" style="background: #e8f5e9; border-left: 4px solid #4caf50;"><strong>&#x2705; Buffer gained:</strong> Car returned last night. Morning is just: walk 5 min &rarr; check in. No rental queue, no fuel check, no finding the desk. ~30 min of risk eliminated.</div>
+        </div>
+    </div>
+</div>
+
+<!-- ACTION ITEMS -->
+<div class="itin-overview" style="background: #ffebee; border-left: 4px solid #f44336;">
+    <h3>&#x26A0;&#xFE0F; ACTION ITEMS</h3>
+    <div style="font-size: 0.9em; line-height: 1.8;">
+        <p><strong>&#x1F697; Car Rentals:</strong></p>
+        <ul style="margin: 0 0 12px 20px;">
+            <li><strong>Book Car 1:</strong> Porto Airport &rarr; Lisbon, Thu Jul 30 &ndash; Sun Aug 2 (one-way, ~3 days)</li>
+            <li><strong>Book Car 2:</strong> Lisbon Airport &rarr; Lisbon Airport, Thu Aug 6 &ndash; Tue Aug 11 5AM (~5 days, upgraded)</li>
+            <li>Confirm child seats at BOTH pickups</li>
+        </ul>
+        <p><strong>&#x1F3E8; Accommodation:</strong></p>
+        <ul style="margin: 0 0 4px 20px;">
+            <li>&#x2705; Porto Jul 27&ndash;30: Boon House Airbnb &mdash; <em>&euro;440</em></li>
+            <li>&#x26A0;&#xFE0F; Tomar Jul 30 &ndash; Aug 1: Os Marias (2 nights, modify) &mdash; <em>~$259</em></li>
+            <li>&#x26A0;&#xFE0F; Lisbon Aug 1&ndash;6: Holiday Inn Continental (add 1 night) &mdash; <em>~120K pts</em></li>
+            <li>&#x2705; Algarve Aug 6&ndash;10: Casa Margarida &mdash; <em>&euro;1,000</em></li>
+            <li>&#x2705; Airport Aug 10&ndash;11: Holiday Inn Express &mdash; <em>Points</em></li>
+        </ul>
+        <p style="margin: 0 0 12px 20px; font-size: 0.85em; color: #666;">Total accommodation: <strong>€1,699 (~$259 + €1,440)</strong> (Lisbon &amp; Airport on points)</p>
+        <p><strong>&#x1F3AB; Book in Advance (August = busy!):</strong></p>
+        <ul style="margin: 0 0 12px 20px;">
+            <li><strong>Livraria Lello</strong><a href="https://www.youtube.com/watch?v=nMQz0NPXMlg" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> &mdash; Timed tickets Tue Jul 28, 9 AM</li>
+            <li><strong>Benagil Cave Catamaran</strong><a href="https://www.youtube.com/watch?v=Uxp-BnRz13o" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> &mdash; Sat Aug 8, 9:30 AM (SELLS OUT!)</li>
+            <li><strong>Quinta da Regaleira</strong><a href="https://www.youtube.com/watch?v=J2Wv6P9TCQY" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> &mdash; Timed tickets Wed Aug 5, 9:30 AM</li>
+            <li><strong>Pena Palace + Moorish Castle</strong><a href="https://www.youtube.com/watch?v=gqxBW-AHR0w" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a><a href="https://www.youtube.com/watch?v=8LEwYslqpOU" target="_blank" class="youtube-link-inline" title="Watch video tour">▶️</a> &mdash; Combo tickets Wed Aug 5</li>
+            <li><strong>Algarve restaurants</strong> &mdash; Book 1-2 days ahead (group of 6!)</li>
+        </ul>
+        <p><strong>&#x1F389; Darshan &amp; Rika:</strong></p>
+        <ul style="margin: 0 0 12px 20px;">
+            <li>Confirm Faro flight times (Aug 6 in, Aug 9/10 out)</li>
+            <li>Confirm pickup or their own transfer from Faro</li>
+        </ul>
+        <p><strong>&#x2708;&#xFE0F; Flight:</strong></p>
+        <ul style="margin: 0 0 0 20px;">
+            <li>Online check-in opens Aug 10, 7:35 AM</li>
+            <li>Set MULTIPLE alarms for 4:30 AM Aug 11!</li>
+        </ul>
+    </div>
+</div>
+
+<!-- TIPS -->
+<div class="itin-overview">
+    <h3>&#x1F4A1; Quick Tips</h3>
+    <div style="font-size: 0.85em; line-height: 1.6;">
+        <p><strong>&#x2615; Coffee:</strong> Bica/Cimbalino = espresso. Gal&atilde;o = latte. Meia de leite = half-half.</p>
+        <p style="margin-top: 8px;"><strong>&#x1F955; Veggie:</strong> &ldquo;Vegetariano, por favor&rdquo; or &ldquo;Sem carne, sem peixe.&rdquo; Soups, cheese, omelets, salads everywhere.</p>
+        <p style="margin-top: 8px;"><strong>&#x1F4B6; Money:</strong> Many places have &euro;10-20 card minimum. Carry cash! Tip 5-10% (not obligatory).</p>
+        <p style="margin-top: 8px;"><strong>&#x1F3D6; August:</strong> Beaches PACKED by 11 AM. 35-40&deg;C inland. Book restaurant tables in Algarve!</p>
+        <p style="margin-top: 8px;"><strong>&#x1F5E3; Phrases:</strong> &ldquo;Com licen&ccedil;a&rdquo; = Excuse me. &ldquo;Obrigado/a&rdquo; = Thank you.</p>
+    </div>
+</div>
+
+
+    
+
+
+
+    
+    
+
+<script>
+        // Toggle day card expand/collapse
+        function toggleDay(headerElement) {
+            const dayCard = headerElement.parentElement;
+            const body = dayCard.querySelector('.itin-day-body');
+            const chevron = headerElement.querySelector('.chevron');
+
+            if (body.style.display === 'none') {
+                body.style.display = 'block';
+                chevron.style.transform = 'rotate(90deg)';
+            } else {
+                body.style.display = 'none';
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        let currentDayNumber = 1;
+
+        function openDayModal(dayNum) {
+            currentDayNumber = dayNum;
+            const modal = document.getElementById('dayModal');
+            const dayCard = document.querySelector(`[data-day="${dayNum}"].itin-day`);
+
+            if (!dayCard) return;
+
+            // Get day content
+            const dayHeader = dayCard.querySelector('.itin-day-header');
+            const dayBody = dayCard.querySelector('.itin-day-inner');
+
+            const title = dayHeader.querySelector('.day-title').textContent;
+            const theme = dayHeader.querySelector('.day-theme')?.textContent || '';
+
+            // Update modal
+            document.getElementById('modalTitle').innerHTML = `
+                <div style="line-height: 1.3;">
+                    <div>${title}</div>
+                    <div style="font-size: 0.7em; opacity: 0.9; font-weight: 400; margin-top: 5px;">${theme}</div>
+                </div>
+            `;
+            document.getElementById('modalBody').innerHTML = dayBody.innerHTML;
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            // Update nav buttons
+            updateNavButtons();
+        }
+
+        function closeDayModal() {
+            const modal = document.getElementById('dayModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOnBackdrop(event) {
+            if (event.target.id === 'dayModal') {
+                closeDayModal();
+            }
+        }
+
+        function navigateDay(direction) {
+            const newDay = currentDayNumber + direction;
+            const totalDays = document.querySelectorAll('[data-day].itin-day').length;
+
+            if (newDay >= 1 && newDay <= totalDays) {
+                openDayModal(newDay);
+            }
+        }
+
+        function updateNavButtons() {
+            const totalDays = document.querySelectorAll('[data-day].itin-day').length;
+            const prevBtn = document.querySelector('.modal-nav[onclick*="-1"]');
+            const nextBtn = document.querySelector('.modal-nav[onclick*="1"]');
+
+            if (prevBtn) prevBtn.disabled = (currentDayNumber === 1);
+            if (nextBtn) nextBtn.disabled = (currentDayNumber === totalDays);
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDayModal();
+            }
+            if (event.key === 'ArrowLeft') {
+                navigateDay(-1);
+            }
+            if (event.key === 'ArrowRight') {
+                navigateDay(1);
+            }
+        });
+
+        function scrollToDay(dayNum) {
+            openDayModal(dayNum);
+        }
+
+        function toggleDayWrapper(headerElement, evt) {
+            evt.stopPropagation();
+            toggleDay(headerElement);
+        }
+    </script>
+</body>
+</html>

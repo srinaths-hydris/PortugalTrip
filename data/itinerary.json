@@ -1,0 +1,1138 @@
+{
+  "trip_info": {
+    "title": "Portugal 2026 Family Trip",
+    "dates": "July 27 - August 11, 2026",
+    "participants": "2 adults + 2 kids (ages 7 and 3)",
+    "guests": "Darshan & Rika join in Algarve Aug 6-10"
+  },
+  "days": [
+    {
+      "day_number": 1,
+      "date": "Mon Jul 27",
+      "title": "ARRIVE PORTO",
+      "subtitle": "Settle in & soak up the atmosphere",
+      "location": "Porto",
+      "activities": [
+        {
+          "time": "Afternoon",
+          "name": "Arrive Porto, check into Boon House",
+          "type": "check-in",
+          "notes": "€440 (3 nights). Rest, settle in."
+        },
+        {
+          "time": "5:00 PM",
+          "name": "São Bento Station tiles",
+          "type": "walking",
+          "notes": "Free. 10 min. Stunning azulejos!"
+        },
+        {
+          "time": "6:00 PM",
+          "name": "Dinner near Aliados",
+          "type": "dining",
+          "notes": "~€35-45 family. Simple tasca — soup, salads, veggie sides."
+        }
+      ],
+      "kids_note": "Easy first day! São Bento is just a quick photo stop."
+    },
+    {
+      "day_number": 2,
+      "date": "Tue Jul 28",
+      "title": "PORTO HIGHLIGHTS",
+      "subtitle": "Harry Potter bookshop, bridge walk, cable car, francesinhas",
+      "location": "Porto",
+      "activities": [
+        {
+          "time": "9:00 AM",
+          "name": "Livraria Lello",
+          "type": "historic-site",
+          "notes": "€8/adult, free <12. 30 min. BOOK IN ADVANCE! Harry Potter vibes!",
+          "cost": "€16 (2 adults)"
+        },
+        {
+          "time": "10:00 AM",
+          "name": "Walk to Ribeira district",
+          "type": "walking",
+          "notes": "Free. Downhill! 15 min. Colorful waterfront."
+        },
+        {
+          "time": "10:30 AM",
+          "name": "Rabelo boat cruise",
+          "type": "boat-tour",
+          "notes": "€17/adult, €8/child, free <3. 50 min. Six Bridges tour. Low-key, scenic.",
+          "cost": "€42 family"
+        },
+        {
+          "time": "12:00 PM",
+          "name": "Gaia Cable Car",
+          "type": "transit",
+          "notes": "€8/adult, €5/child. 5 min ride. Best Douro views!",
+          "cost": "€26 family"
+        },
+        {
+          "time": "12:15 PM",
+          "name": "Quick cellar photo stop (exterior)",
+          "type": "photo-stop",
+          "notes": "Free. See the historic port cellars from outside"
+        },
+        {
+          "time": "12:30 PM",
+          "name": "Lunch in Gaia or walk back to Porto",
+          "type": "dining",
+          "notes": "€35-45 family. Simple local spot — caldo verde soup, salads, bread, cheese"
+        },
+        {
+          "time": "1:30 PM",
+          "name": "Walk Dom Luís I Bridge",
+          "type": "walking",
+          "notes": "Free. Lower deck = stroller-friendly. Upper deck = thrilling!"
+        },
+        {
+          "time": "2:00 PM",
+          "name": "REST BREAK at hotel",
+          "type": "rest",
+          "notes": "Nap time!"
+        },
+        {
+          "time": "4:30 PM",
+          "name": "Crystal Palace Gardens",
+          "type": "park",
+          "notes": "Free. 2-3 hrs. Peacocks, shaded playground, duck ponds. Let kids run wild!"
+        },
+        {
+          "time": "6:30 PM",
+          "name": "Francesinha at Café Santiago",
+          "type": "dining",
+          "notes": "€14-18/sandwich (share between adults). Simple salads/bread for kids."
+        }
+      ],
+      "kids_note": "Lello bookshop = magical for 7-yr-old! Cable car + cruise = exciting. Crystal Palace = let them RUN. Francesinha is Porto's signature dish — adults try it, kids get simple sides."
+    },
+    {
+      "day_number": 3,
+      "date": "Wed Jul 29",
+      "title": "DOURO VALLEY SCENIC TRAIN",
+      "subtitle": "Train through terraced vineyards (skip boat — train views are better!)",
+      "location": "Douro Valley",
+      "activities": [
+        {
+          "time": "8:15 AM",
+          "name": "Train Porto São Bento → Régua → Pinhão",
+          "type": "train",
+          "notes": "€14/adult one-way, free <4. 2.5 hrs. Stunning terraced vineyards FROM THE TRAIN! Pack snacks + tablet.",
+          "cost": "€28 one-way"
+        },
+        {
+          "time": "11:00 AM",
+          "name": "Arrive Pinhão. See blue-tile train station",
+          "type": "photo-stop",
+          "notes": "Free. Beautiful azulejos. 5 min photo stop"
+        },
+        {
+          "time": "11:15 AM",
+          "name": "Walk Pinhão village, explore riverside",
+          "type": "walking",
+          "notes": "Free. Charming tiny village. Kids can run safely."
+        },
+        {
+          "time": "12:00 PM",
+          "name": "Lunch in Pinhão",
+          "type": "dining",
+          "notes": "~€40 family. Simple local tasca — soup, salads, omelets, bread, cheese"
+        },
+        {
+          "time": "1:15 PM",
+          "name": "Walk to Quinta do Bomfim gardens",
+          "type": "walking",
+          "notes": "10 min walk from village. Free entry to grounds. SKIP wine tasting — just explore!"
+        },
+        {
+          "time": "1:30 PM",
+          "name": "Quinta gardens & viewpoint",
+          "type": "outdoor",
+          "notes": "Free (grounds), 1 hr. Kids run in open vineyard terraces. Parents get epic photos."
+        },
+        {
+          "time": "2:30 PM",
+          "name": "Train Pinhão → Porto",
+          "type": "train",
+          "notes": "€14/adult, 2.5 hrs. Kids should nap on return!",
+          "cost": "€28 return"
+        },
+        {
+          "time": "5:00 PM",
+          "name": "Arrive Porto",
+          "type": "transit",
+          "notes": "Earlier return = less exhausted!"
+        },
+        {
+          "time": "5:30 PM",
+          "name": "Foz do Douro seaside",
+          "type": "beach",
+          "notes": "Free. Flat promenade, natural rock pools, ice cream. Perfect wind-down!"
+        },
+        {
+          "time": "7:30 PM",
+          "name": "Dinner at Brasão Aliados",
+          "type": "dining",
+          "notes": "~€40-50 family. Francesinhas, salads, veggie sides."
+        }
+      ],
+      "kids_note": "Trains = exciting! Scenery from the train IS the experience. Quinta gardens = open vineyard spaces to run. Foz rock pools = sensory play heaven.",
+      "tip": "Why skip the Pinhão boat? You're already ON the train beside the river for 2.5 hours — the views are stunning! The boat would show the same scenery."
+    },
+    {
+      "day_number": 4,
+      "date": "Thu Jul 30",
+      "title": "PICK UP CAR 1 — Porto → Aveiro → Tomar",
+      "subtitle": "Get rental car, canal boat, head to Tomar",
+      "location": "Porto → Aveiro → Tomar",
+      "activities": [
+        {
+          "time": "9:00 AM",
+          "name": "Uber to Porto Airport",
+          "type": "transit",
+          "notes": "From Boon House, ~20 min"
+        },
+        {
+          "time": "10:00 AM",
+          "name": "PICK UP CAR 1",
+          "type": "car-rental",
+          "notes": "Porto Airport. Confirm child seats installed!",
+          "cost": "€600 (3 days, one-way)"
+        },
+        {
+          "time": "10:30 AM",
+          "name": "Drive to Aveiro",
+          "type": "drive",
+          "notes": "1 hr south"
+        },
+        {
+          "time": "11:30 AM",
+          "name": "Aveiro canal boat (moliceiro)",
+          "type": "boat-tour",
+          "notes": "€15/adult, €8/child. 45 min. Colorful boats!",
+          "youtube": "https://www.youtube.com/watch?v=xKhZZZ_JGRU",
+          "cost": "€46 family"
+        },
+        {
+          "time": "12:30 PM",
+          "name": "Ovos moles + old town",
+          "type": "walking",
+          "notes": "€2-3/pastry. Sweet egg pastries — kids love!",
+          "youtube": "https://www.youtube.com/watch?v=lJSvX8qTq4I"
+        },
+        {
+          "time": "1:00 PM",
+          "name": "Costa Nova beach",
+          "type": "photo-stop",
+          "notes": "10 min. Famous stripy houses. Quick photo + run on sand",
+          "youtube": "https://www.youtube.com/watch?v=eFkN-nTk9DY"
+        },
+        {
+          "time": "1:30 PM",
+          "name": "Lunch",
+          "type": "dining",
+          "notes": "~€35-45 family. Pizza, pasta, or local tasca"
+        },
+        {
+          "time": "2:30 PM",
+          "name": "Drive to Tomar",
+          "type": "drive",
+          "notes": "2 hrs. Kids nap in car!"
+        },
+        {
+          "time": "4:30 PM",
+          "name": "Check into Os Marias Airbnb",
+          "type": "check-in",
+          "notes": "Olalhas, near Castelo de Bode reservoir"
+        },
+        {
+          "time": "5:30 PM",
+          "name": "Tomar Old Town & River Walk",
+          "type": "walking",
+          "notes": "Free. Waterwheel, playground by river",
+          "youtube": "https://www.youtube.com/watch?v=F9tQAJGqsT0"
+        },
+        {
+          "time": "6:00 PM",
+          "name": "Dinner in Tomar",
+          "type": "dining",
+          "notes": "Kids run in the square"
+        }
+      ],
+      "kids_note": "Drive splits into manageable chunks. Canal boat = mini-adventure. Playground by river = perfect arrival activity."
+    },
+    {
+      "day_number": 5,
+      "date": "Fri Jul 31",
+      "title": "KNIGHTS & ISLAND CASTLES",
+      "subtitle": "Full medieval immersion — THE highlight day",
+      "location": "Tomar + Almourol",
+      "activities": [
+        {
+          "time": "9:00 AM",
+          "name": "Convento de Cristo",
+          "type": "historic-site",
+          "notes": "€10/adult, free <12. 2.5 hrs. Knights Templar fortress! UNMISSABLE!",
+          "youtube": "https://www.youtube.com/watch?v=FGzqe0SYKbk",
+          "cost": "€20 (2 adults)"
+        },
+        {
+          "time": "11:30 AM",
+          "name": "Walk to town for lunch",
+          "type": "walking",
+          "notes": "Downhill walk, or drive"
+        },
+        {
+          "time": "12:00 PM",
+          "name": "Lunch in Tomar",
+          "type": "dining",
+          "notes": ""
+        },
+        {
+          "time": "1:00 PM",
+          "name": "REST BREAK at Airbnb",
+          "type": "rest",
+          "notes": "Nap time. Recharge for afternoon adventure."
+        },
+        {
+          "time": "3:30 PM",
+          "name": "Drive to Castelo de Almourol",
+          "type": "drive",
+          "notes": "30 min drive south",
+          "youtube": "https://www.youtube.com/watch?v=nxMqMaUq3Eg"
+        },
+        {
+          "time": "4:00 PM",
+          "name": "Almourol Castle (island!)",
+          "type": "boat-castle",
+          "notes": "€2/person boat, castle free. Island fortress! KIDS WILL LOVE THIS!",
+          "youtube": "https://www.youtube.com/watch?v=nxMqMaUq3Eg",
+          "cost": "€8 family"
+        },
+        {
+          "time": "5:30 PM",
+          "name": "Drive back",
+          "type": "drive",
+          "notes": "30 min"
+        },
+        {
+          "time": "6:30 PM",
+          "name": "Castelo de Bode Reservoir",
+          "type": "swimming",
+          "notes": "Free. Crystal-clear freshwater. Optional.",
+          "youtube": "https://www.youtube.com/watch?v=Uu4xfPkqBw4"
+        },
+        {
+          "time": "8:00 PM",
+          "name": "Dinner in Tomar",
+          "type": "dining",
+          "notes": ""
+        }
+      ],
+      "kids_note": "Two castles in one day! Templar castle is huge — don't rush it. Almourol = boat ride alone is thrilling. Reservoir swim optional but great cool-down."
+    },
+    {
+      "day_number": 6,
+      "date": "Sat Aug 1",
+      "title": "CHECKOUT & TRANSIT TO LISBON (via Caves, Batalha, Óbidos)",
+      "subtitle": "Long transit day with optional stops — flexible by design",
+      "location": "Tomar → Caves → Batalha → Óbidos → Lisbon",
+      "activities": [
+        {
+          "time": "8:30 AM",
+          "name": "Breakfast, pack, check out",
+          "type": "check-out",
+          "notes": "Take your time"
+        },
+        {
+          "time": "9:15 AM",
+          "name": "Drive to Grutas de Mira de Aire",
+          "type": "drive",
+          "notes": "50 min west (toward coast)"
+        },
+        {
+          "time": "10:00 AM",
+          "name": "Cave tour (Portugal's largest!)",
+          "type": "cave-tour",
+          "notes": "€7.90/adult, €5.20/child, free <6. 110m underground! Nirupa's priority!",
+          "cost": "€21 family"
+        },
+        {
+          "time": "11:45 AM",
+          "name": "Drive to Fátima Sanctuary",
+          "type": "drive",
+          "notes": "~20 min. OPTIONAL — skip if behind schedule or kids are tired"
+        },
+        {
+          "time": "12:00 PM",
+          "name": "Fátima Sanctuary (optional)",
+          "type": "photo-stop",
+          "notes": "Free. 15 min quick stop. Impressive scale but not essential."
+        },
+        {
+          "time": "12:45 PM",
+          "name": "Drive to Batalha Monastery",
+          "type": "drive",
+          "notes": "~20 min from Fátima (or 35 min direct from caves if you skipped Fátima)"
+        },
+        {
+          "time": "1:15 PM",
+          "name": "Lunch near Batalha",
+          "type": "dining",
+          "notes": "~€35-45 family"
+        },
+        {
+          "time": "2:00 PM",
+          "name": "Batalha — Unfinished Chapels",
+          "type": "historic-site",
+          "notes": "€8/adult, free <12. 1 hr. Roofless chapel open to sky = iconic!",
+          "cost": "€16 (2 adults)"
+        },
+        {
+          "time": "3:00 PM",
+          "name": "Drive to Óbidos",
+          "type": "drive",
+          "notes": "1 hr. OPTIONAL — skip if kids are done"
+        },
+        {
+          "time": "4:00 PM",
+          "name": "Óbidos Walled Town (optional)",
+          "type": "walking",
+          "notes": "Free. Walk ON TOP of medieval walls! Ice cream. 1-1.5 hrs."
+        },
+        {
+          "time": "5:00-5:30 PM",
+          "name": "Drive to Lisbon",
+          "type": "drive",
+          "notes": "1 hr from Óbidos, 1.5 hrs from Batalha if you skipped Óbidos"
+        },
+        {
+          "time": "6:00-6:30 PM",
+          "name": "Check into Holiday Inn Lisbon – Continental",
+          "type": "check-in",
+          "notes": "✅ BOOKED (on points)"
+        },
+        {
+          "time": "7:00 PM",
+          "name": "DROP OFF Car 1",
+          "type": "car-rental",
+          "notes": "One-way rental complete!"
+        },
+        {
+          "time": "7:30 PM",
+          "name": "Easy dinner near hotel",
+          "type": "dining",
+          "notes": "No more forced activities — long day done"
+        }
+      ],
+      "kids_note": "Caves = mind-blowing (underground lake!). If they're still good after caves → hit Batalha (best medieval stop). If energy holds → add Óbidos (walk walls). If anyone's melting down → skip stops and drive straight to Lisbon. Decision points: 11:45 AM (after caves), 2 PM (after lunch), 3 PM (after Batalha).",
+      "tip": "FLEX STRATEGY: This is checkout day + 4 stops. Fátima and Óbidos are optional — skip either/both if kids are tired. Caves are non-negotiable (Nirupa's favorite). Batalha is the best medieval stop (roofless chapels). Make real-time calls after caves (11:45 AM) and after lunch (~2 PM). If kids are melting down, drive straight to Lisbon and rest at hotel."
+    },
+    {
+      "day_number": 7,
+      "date": "Sun Aug 2",
+      "title": "LISBON — REST DAY + OCEANÁRIO",
+      "subtitle": "First unscheduled morning, then aquarium + splash fountains",
+      "location": "Lisbon",
+      "activities": [
+        {
+          "time": "9:00 AM",
+          "name": "Sleep in! Lazy hotel breakfast",
+          "type": "rest",
+          "notes": "No alarms. First morning without driving in 4 days."
+        },
+        {
+          "time": "10:00 AM",
+          "name": "Unstructured morning",
+          "type": "rest",
+          "notes": "Pool at hotel? Walk Parque Eduardo VII? Kids' call."
+        },
+        {
+          "time": "12:00 PM",
+          "name": "Lunch near hotel or in Parque das Nações",
+          "type": "dining",
+          "notes": ""
+        },
+        {
+          "time": "1:00 PM",
+          "name": "REST / Nap at hotel",
+          "type": "rest",
+          "notes": "Genuine downtime. No forced activity."
+        },
+        {
+          "time": "4:00 PM",
+          "name": "Oceanário de Lisboa",
+          "type": "aquarium",
+          "notes": "€25/adult, free <3, ~€17 ages 4-12. Europe's BEST aquarium! Otters, sharks, rays, sunfish. 1.5 hrs. Kids will be mesmerized.",
+          "cost": "€59 family"
+        },
+        {
+          "time": "5:30 PM",
+          "name": "Splash Fountains + Playground (Parque das Nações)",
+          "type": "outdoor",
+          "notes": "Free. Same complex! Kids run through water. Bring swimsuits/change clothes."
+        },
+        {
+          "time": "7:00 PM",
+          "name": "Dinner at Time Out Market or Parque das Nações",
+          "type": "dining",
+          "notes": "Uber 15 min to Time Out. Everyone picks their own stall!"
+        }
+      ],
+      "kids_note": "First genuinely unscheduled morning since Porto. Oceanário = absolute highlight (otters for 3-yr-old, sharks for 7-yr-old). Splash fountains right after = perfect combo."
+    },
+    {
+      "day_number": 8,
+      "date": "Mon Aug 3",
+      "title": "LISBON — HISTORIC CORE",
+      "subtitle": "Tram, castle, funicular + Santa Justa hack",
+      "location": "Lisbon",
+      "activities": [
+        {
+          "time": "8:15 AM",
+          "name": "Metro to Tram 28 stop (Martim Moniz)",
+          "type": "transit",
+          "notes": "€3.80/ride. GO EARLY — by 9:30 sardines + pickpockets!"
+        },
+        {
+          "time": "8:45 AM",
+          "name": "Ride Tram 28 through Alfama + Graça",
+          "type": "transit",
+          "notes": "The tram itself IS the experience"
+        },
+        {
+          "time": "9:30 AM",
+          "name": "Walk to Castelo de São Jorge",
+          "type": "historic-site",
+          "notes": "€15/adult, free <12. Castle walls, peacocks, city panorama!",
+          "cost": "€30 (2 adults)"
+        },
+        {
+          "time": "11:00 AM",
+          "name": "Walk down through Alfama",
+          "type": "walking",
+          "notes": "Free. Downhill! Winding streets, laundry lines"
+        },
+        {
+          "time": "11:30 AM",
+          "name": "Snack stop + viewpoint",
+          "type": "dining",
+          "notes": ""
+        },
+        {
+          "time": "12:00 PM",
+          "name": "Lunch at Time Out Market",
+          "type": "dining",
+          "notes": "€10-20/person. Food hall — everyone picks own stall! Solves picky eaters."
+        },
+        {
+          "time": "1:00 PM",
+          "name": "REST BREAK at hotel",
+          "type": "rest",
+          "notes": "Nap time. Lisbon is hilly!"
+        },
+        {
+          "time": "4:00 PM",
+          "name": "Ascensor da Bica",
+          "type": "transit",
+          "notes": "€3.80/ride. Super steep funicular. 3 min of thrills!"
+        },
+        {
+          "time": "4:30 PM",
+          "name": "Walk Bairro Alto / Chiado",
+          "type": "walking",
+          "notes": "Free. Shops, street performers, tiles"
+        },
+        {
+          "time": "5:00 PM",
+          "name": "Santa Justa Elevator viewpoint (LOCAL HACK!)",
+          "type": "viewpoint",
+          "notes": "Walk up Rua do Carmo to Carmo Square, access from TOP. €1.50 or free with coffee! Skip the 60-min tourist line!"
+        },
+        {
+          "time": "6:00 PM",
+          "name": "Dinner near Bairro Alto",
+          "type": "dining",
+          "notes": "Simple local tasca — soup, salads, eggs"
+        }
+      ],
+      "kids_note": "Tram 28 early = essential. Castle has peacocks! Bica funicular SHORT but thrilling. Time Out Market = no dinner arguments.",
+      "tip": "Santa Justa LOCAL HACK: Walk up Rua do Carmo to Carmo Square (10 min uphill). Access the viewing platform from the TOP for €1.50 or free with a coffee. Skip the 60-minute tourist line at the bottom!"
+    },
+    {
+      "day_number": 9,
+      "date": "Tue Aug 4",
+      "title": "BELÉM & RIVERSIDE",
+      "subtitle": "Iconic landmarks + waterfront",
+      "location": "Lisbon - Belém",
+      "activities": [
+        {
+          "time": "9:00 AM",
+          "name": "Tram/Uber to Belém",
+          "type": "transit",
+          "notes": "20 min from center"
+        },
+        {
+          "time": "9:15 AM",
+          "name": "Pastéis de Belém",
+          "type": "dining",
+          "notes": "€1.40/tart. THE original since 1837. Warm, cinnamon. Go early!"
+        },
+        {
+          "time": "10:00 AM",
+          "name": "Belém Tower + Monument (exterior)",
+          "type": "photo-stop",
+          "notes": "Free. DON'T go inside. Walk waterfront, photos, kids run on plaza."
+        },
+        {
+          "time": "11:00 AM",
+          "name": "Jardim de Belém playground",
+          "type": "park",
+          "notes": "Free. Good playground. Let kids burn energy."
+        },
+        {
+          "time": "12:00 PM",
+          "name": "Lunch in Belém",
+          "type": "dining",
+          "notes": "Simple local café — prato do dia with veggie option"
+        },
+        {
+          "time": "1:00 PM",
+          "name": "REST BREAK at hotel",
+          "type": "rest",
+          "notes": "Nap / quiet time"
+        },
+        {
+          "time": "3:30 PM",
+          "name": "Walk Ribeira das Naus riverfront",
+          "type": "walking",
+          "notes": "Free. Flat waterfront promenade, steps into Tagus"
+        },
+        {
+          "time": "5:30 PM",
+          "name": "LX Factory (optional, quick visit)",
+          "type": "shopping",
+          "notes": "Free. Warehouse market. 1 hr max. Skip if kids tired."
+        },
+        {
+          "time": "7:00 PM",
+          "name": "Dinner near hotel",
+          "type": "dining",
+          "notes": "Simple restaurant — pasta, salads, veggie options"
+        }
+      ],
+      "kids_note": "Pastéis de Belém = kids go CRAZY for warm custard! Belém waterfront wide and flat. LX Factory optional — keep brief."
+    },
+    {
+      "day_number": 10,
+      "date": "Wed Aug 5",
+      "title": "SINTRA — PALACES, TUNNELS & CASTLE",
+      "subtitle": "Fairy-tale palaces + secret wells + medieval ramparts",
+      "location": "Sintra",
+      "activities": [
+        {
+          "time": "8:00 AM",
+          "name": "Train Rossio → Sintra",
+          "type": "train",
+          "notes": "~€4.60 return. 40 min. Frequent trains.",
+          "cost": "€10 family"
+        },
+        {
+          "time": "8:45 AM",
+          "name": "Grab pastry at Piriquita",
+          "type": "dining",
+          "notes": "~€3-4. Travesseiros — local specialty!"
+        },
+        {
+          "time": "9:15 AM",
+          "name": "Uber/tuk-tuk to Quinta da Regaleira",
+          "type": "transit",
+          "notes": "€5-10 for tuk-tuk. ARRIVE AT OPENING!"
+        },
+        {
+          "time": "9:30 AM",
+          "name": "Quinta da Regaleira",
+          "type": "historic-site",
+          "notes": "€12/adult, free <5. 2 hrs. Underground tunnels + 27m spiral well! KIDS' FAVORITE!",
+          "cost": "€24 (2 adults)"
+        },
+        {
+          "time": "11:30 AM",
+          "name": "Tuk-tuk up to Moorish Castle",
+          "type": "transit",
+          "notes": "€5-10 ride"
+        },
+        {
+          "time": "11:45 AM",
+          "name": "Moorish Castle ramparts",
+          "type": "historic-site",
+          "notes": "€8/adult, free <6. 1 hr. Medieval ruins, EPIC views! Kids love climbing the walls.",
+          "cost": "€16 (2 adults)"
+        },
+        {
+          "time": "12:45 PM",
+          "name": "Quick lunch in Sintra town",
+          "type": "dining",
+          "notes": "Simple café — sandwiches, salads"
+        },
+        {
+          "time": "1:30 PM",
+          "name": "Bus 434 or tuk-tuk to Pena Palace",
+          "type": "transit",
+          "notes": "Just 5 min from Moorish Castle!"
+        },
+        {
+          "time": "1:45 PM",
+          "name": "Pena Palace (exterior + gardens)",
+          "type": "historic-site",
+          "notes": "€14/adult, free <6. 1 hr. Colorful 'Disney castle'! Skip interior (long queue), gardens are FREE and best part.",
+          "cost": "€28 (2 adults)"
+        },
+        {
+          "time": "3:00 PM",
+          "name": "Head back down to station",
+          "type": "transit",
+          "notes": "Bus or tuk-tuk"
+        },
+        {
+          "time": "3:30 PM",
+          "name": "Train back to Lisbon",
+          "type": "train",
+          "notes": "40 min. Kids may doze."
+        },
+        {
+          "time": "4:30 PM",
+          "name": "REST / Pack for Algarve tomorrow",
+          "type": "rest",
+          "notes": "Organize for beach days!"
+        },
+        {
+          "time": "7:00 PM",
+          "name": "Dinner near hotel",
+          "type": "dining",
+          "notes": ""
+        }
+      ],
+      "kids_note": "Quinta da Regaleira = FAVORITE of whole trip. Spiral well, dark tunnels, waterfall = pure magic. Moorish Castle = kids LOVE climbing ramparts. Pena Palace exterior is best — skip interior queue.",
+      "tip": "Don't drive to Sintra (parking nightmare). Take the train!"
+    },
+    {
+      "day_number": 11,
+      "date": "Thu Aug 6",
+      "title": "PICK UP CAR 2 — LISBON → ALGARVE",
+      "subtitle": "Drive to the beach! Group assembles! 🎉 Darshan & Rika arrive!",
+      "location": "Lisbon → Algarve",
+      "activities": [
+        {
+          "time": "9:00 AM",
+          "name": "Leisurely hotel breakfast",
+          "type": "dining",
+          "notes": "No rush — packing and prep"
+        },
+        {
+          "time": "10:00 AM",
+          "name": "Check out of Holiday Inn",
+          "type": "check-out",
+          "notes": "Load bags in Uber"
+        },
+        {
+          "time": "10:30 AM",
+          "name": "Uber to Lisbon Airport",
+          "type": "transit",
+          "notes": "~15 min from Holiday Inn"
+        },
+        {
+          "time": "11:00 AM",
+          "name": "PICK UP CAR 2 (upgraded larger vehicle)",
+          "type": "car-rental",
+          "notes": "Lisbon Airport. Confirm child seats! Fits the whole group.",
+          "cost": "€950 (5 days round-trip)"
+        },
+        {
+          "time": "11:30 AM",
+          "name": "Lunch at airport food court or nearby",
+          "type": "dining",
+          "notes": "Light meal before drive"
+        },
+        {
+          "time": "1:00 PM",
+          "name": "Final bathroom break, kids ready for car",
+          "type": "rest",
+          "notes": "Load snacks, water, set up tablets. Text D&R: 'On our way!'"
+        },
+        {
+          "time": "1:30 PM",
+          "name": "🚗 START DRIVE to Faro Airport",
+          "type": "drive",
+          "notes": "2.5 hrs Lisbon→Faro via A2. KIDS NAP TIME! Aim to reach Faro arrivals around 2:50 PM."
+        },
+        {
+          "time": "2:50 PM",
+          "name": "🎉 Darshan & Rika LAND at Faro Airport (FAO)",
+          "type": "flight",
+          "notes": "easyJet EZY8532 from London Gatwick (LGW) lands at 14:50 (2:50 PM local)."
+        },
+        {
+          "time": "3:30 PM",
+          "name": "Pick up Darshan & Rika at FAO Arrivals",
+          "type": "transit",
+          "notes": "40-min buffer for deplaning + baggage claim. Text them when you arrive!"
+        },
+        {
+          "time": "3:45 PM",
+          "name": "Drive to Armação de Pêra with D&R",
+          "type": "drive",
+          "notes": "~40 min from Faro to Armação. Everyone together! 6 people in upgraded Car 2."
+        },
+        {
+          "time": "4:30 PM",
+          "name": "Arrive + Check into Casa Margarida",
+          "type": "check-in",
+          "notes": "✅ BOOKED. 3 bedrooms, 6 people, AC. Check-in 5 PM or later — host flexible!",
+          "cost": "€1,000 (4 nights)"
+        },
+        {
+          "time": "5:00 PM",
+          "name": "Unpack, settle in, show D&R around",
+          "type": "rest",
+          "notes": "Quick unpack. Kids show D&R their rooms. Everyone relaxes."
+        },
+        {
+          "time": "6:00 PM",
+          "name": "Quick local beach walk — Praia Grande de Pêra",
+          "type": "beach",
+          "notes": "5 min walk from casa. Stretch legs after travel. Quick dip or just feet in water!"
+        },
+        {
+          "time": "7:30 PM",
+          "name": "Welcome dinner in Armação de Pêra",
+          "type": "dining",
+          "notes": "Nice seafood restaurant in town — group of 6! Celebrate the reunion!"
+        }
+      ],
+      "kids_note": "After a 2.5-hour drive + settling in, don't force a 40-min detour to Lagos. Local beach is RIGHT THERE. Save Lagos for Day 13 when you'll do it properly.",
+      "tip": "Base: Armação de Pêra — Central Algarve! Drive times: Benagil ~15 min, Praia da Marinha ~10 min, Lagos ~40 min, Sagres ~55 min, Silves ~15 min, Faro Airport ~40 min."
+    },
+    {
+      "day_number": 12,
+      "date": "Fri Aug 7",
+      "title": "BENAGIL CAVE BOAT + PRAIA DA MARINHA",
+      "subtitle": "Bucket-list boat trip + Portugal's most beautiful beach",
+      "location": "Algarve",
+      "activities": [
+        {
+          "time": "8:30 AM",
+          "name": "Drive to departure point",
+          "type": "drive",
+          "notes": "Albufeira or Portimão marina (~20 min). BOOK IN ADVANCE!"
+        },
+        {
+          "time": "9:30 AM",
+          "name": "Benagil Cave Catamaran + Dolphins",
+          "type": "boat-tour",
+          "notes": "€45-60/adult, €25-35/child. 2-3 hrs. Cathedral-ceiling cave + wild dolphins! Life jackets for kids.",
+          "cost": "€150-180 family"
+        },
+        {
+          "time": "12:00 PM",
+          "name": "Return to shore",
+          "type": "transit",
+          "notes": ""
+        },
+        {
+          "time": "12:30 PM",
+          "name": "Lunch at marina",
+          "type": "dining",
+          "notes": "Simple café — sandwiches, salads"
+        },
+        {
+          "time": "1:30 PM",
+          "name": "Drive to Praia da Marinha",
+          "type": "drive",
+          "notes": "~15 min, basically on the way home"
+        },
+        {
+          "time": "2:00 PM",
+          "name": "Praia da Marinha — beach time",
+          "type": "beach",
+          "notes": "One of Portugal's most beautiful beaches. Clear water, dramatic cliffs. Steep stairs down!"
+        },
+        {
+          "time": "4:00 PM",
+          "name": "Head back to Casa Margarida",
+          "type": "drive",
+          "notes": "Only 10 min home"
+        },
+        {
+          "time": "4:30 PM",
+          "name": "Rest / downtime",
+          "type": "rest",
+          "notes": "Real rest. Local beach or just chill. No forced activity."
+        },
+        {
+          "time": "7:00 PM",
+          "name": "Dinner in Armação de Pêra",
+          "type": "dining",
+          "notes": "Group dinner — book a table for 6!"
+        }
+      ],
+      "kids_note": "THE catamaran = BIG experience — dolphins huge hit! BOOK IN ADVANCE (August!). Morning = calmer seas. Praia da Marinha is on the way back (not a detour). Afternoon = genuine rest, they'll be tired from the boat.",
+      "tip": "No Ponta da Piedade today — that's a 40-min special trip from your base. You'll see it properly on the Lagos day (Day 13)."
+    },
+    {
+      "day_number": 13,
+      "date": "Sat Aug 8",
+      "title": "LAGOS + SAGRES LOOP — The Big Day Out",
+      "subtitle": "Golden cliffs, fortress, continent's edge — one epic loop",
+      "location": "Lagos + Sagres",
+      "activities": [
+        {
+          "time": "8:30 AM",
+          "name": "Drive to Lagos",
+          "type": "drive",
+          "notes": "~40 min via A22 from Armação de Pêra"
+        },
+        {
+          "time": "9:15 AM",
+          "name": "Ponta da Piedade",
+          "type": "scenic-viewpoint",
+          "notes": "Free. Dramatic golden sea stacks + grottoes. Short clifftop walk. Mind the kids near edges!"
+        },
+        {
+          "time": "10:30 AM",
+          "name": "Praia Dona Ana",
+          "type": "beach",
+          "notes": "Stunning sheltered cove beach. Swim + sandcastles."
+        },
+        {
+          "time": "12:00 PM",
+          "name": "Lunch in Lagos Old Town",
+          "type": "dining",
+          "notes": "Walk the pretty streets, pick a restaurant. Veggie options plentiful."
+        },
+        {
+          "time": "1:30 PM",
+          "name": "Drive to Sagres",
+          "type": "drive",
+          "notes": "~30 min along the coast"
+        },
+        {
+          "time": "2:00 PM",
+          "name": "Sagres Fortress",
+          "type": "historic-site",
+          "notes": "€3/adult, free <12. Windswept fort at continent's edge. Wide open spaces — kids can run!",
+          "cost": "€6 (2 adults)"
+        },
+        {
+          "time": "3:00 PM",
+          "name": "Drive to Cape St. Vincent",
+          "type": "drive",
+          "notes": "10 min from Sagres"
+        },
+        {
+          "time": "3:15 PM",
+          "name": "Cape St. Vincent — 'End of the World'",
+          "type": "scenic-viewpoint",
+          "notes": "Free. Europe's south-western tip. Dramatic cliffs, lighthouse. VERY windy — hold onto hats/kids!"
+        },
+        {
+          "time": "4:00 PM",
+          "name": "Drive back to Armação de Pêra",
+          "type": "drive",
+          "notes": "~1 hr via A22 (inland route, faster)"
+        },
+        {
+          "time": "5:00 PM",
+          "name": "Arrive home — rest",
+          "type": "rest",
+          "notes": "Wind down. ~2.5-3 hrs total driving today."
+        },
+        {
+          "time": "7:00 PM",
+          "name": "Group dinner — Armação or Albufeira",
+          "type": "dining",
+          "notes": "Nice restaurant, book for 6!"
+        }
+      ],
+      "kids_note": "Biggest driving day in Algarve (~2.5-3 hrs total). Dona Ana beach = break for running around. Sagres/Cape = quick stops, wide open. They'll sleep in the car on the way back. Combine it all in one loop — no backtracking!",
+      "tip": "Route logic: Armação → Lagos (40m) → Sagres (30m) → Cape (10m) → home (1hr). Total ~2.5 hrs driving, all west-to-east progression. Much smarter than doing these as separate day trips."
+    },
+    {
+      "day_number": 14,
+      "date": "Sun Aug 9",
+      "title": "REST DAY — Last Full Day with D&R 👨‍👩‍👧‍👦",
+      "subtitle": "Easy local day together. D&R fly home tomorrow morning.",
+      "location": "Armação de Pêra (local day)",
+      "activities": [
+        {
+          "time": "8:30 AM",
+          "name": "Breakfast at Casa Margarida",
+          "type": "dining",
+          "notes": "Slow morning. No airport drive today."
+        },
+        {
+          "time": "10:00 AM",
+          "name": "Local beach time — Praia Grande de Pêra",
+          "type": "beach",
+          "notes": "Walkable, easy, low-stress family morning."
+        },
+        {
+          "time": "12:30 PM",
+          "name": "Lunch in Armação de Pêra",
+          "type": "dining",
+          "notes": "Keep it local and simple."
+        },
+        {
+          "time": "2:00 PM",
+          "name": "Chill at Casa Margarida / pool time",
+          "type": "rest",
+          "notes": "Pack slowly for tomorrow. Keep energy for travel day."
+        },
+        {
+          "time": "5:30 PM",
+          "name": "Farewell dinner with D&R",
+          "type": "dining",
+          "notes": "Final evening together before tomorrow's airport drop."
+        },
+        {
+          "time": "7:30 PM",
+          "name": "REST at casa & final pack for tomorrow",
+          "type": "rest",
+          "notes": "Early night recommended. Faro drop + Lisbon drive tomorrow."
+        }
+      ],
+      "kids_note": "True recovery day: beach + pool + easy dinner. Keep everyone fresh for tomorrow's airport drop and Lisbon drive.",
+      "tip": "No Faro run today. D&R fly out tomorrow (Mon Aug 10, 11:35 AM), so keep this day light and pack tonight."
+    },
+    {
+      "day_number": 15,
+      "date": "Mon Aug 10",
+      "title": "ALGARVE → FARO AIRPORT (D&R drop) → LISBON",
+      "subtitle": "Drop D&R for 11:35 AM flight, then drive north",
+      "location": "Armação → Faro Airport → Lisbon",
+      "activities": [
+        {
+          "time": "7:00 AM",
+          "name": "Checkout + load bags",
+          "type": "check-out",
+          "notes": "Light breakfast/snacks. Start early for Faro airport drop."
+        },
+        {
+          "time": "7:45 AM",
+          "name": "Drive to Faro Airport with D&R",
+          "type": "drive",
+          "notes": "~40 min from Armação de Pêra. Everyone in Car 2 together for final ride."
+        },
+        {
+          "time": "8:30 AM",
+          "name": "👋 Drop D&R at FAO Departures",
+          "type": "transit",
+          "notes": "easyJet EZY8532 to London Gatwick departs 11:35 AM. 3-hour buffer for security + bag check. Say goodbye!"
+        },
+        {
+          "time": "8:45 AM",
+          "name": "🚗 Start drive to Lisbon",
+          "type": "drive",
+          "notes": "~2.5-3 hrs via A2. Early start = beat traffic. Optional lunch/coffee break en route."
+        },
+        {
+          "time": "12:00 PM",
+          "name": "Arrive Lisbon airport area",
+          "type": "arrival",
+          "notes": "Lunch near airport before car return."
+        },
+        {
+          "time": "1:00 PM",
+          "name": "🚗 DROP OFF CAR 2 at airport rental desk",
+          "type": "car-rental",
+          "notes": "Car returned! No 5 AM stress tomorrow. Fuel check + return complete."
+        },
+        {
+          "time": "1:30 PM",
+          "name": "Check into Holiday Inn Express Airport",
+          "type": "check-in",
+          "notes": "5 min walk from terminal. Drop all bags. REST! ✅ BOOKED (on points)"
+        },
+        {
+          "time": "2:00 PM",
+          "name": "REST at hotel — shower, unwind, relax",
+          "type": "rest",
+          "notes": "Everyone decompress. Kids watch TV. Parents rest. Long afternoon nap. No agenda!"
+        },
+        {
+          "time": "5:30 PM",
+          "name": "Early dinner near hotel OR order room service",
+          "type": "dining",
+          "notes": "Simple, easy. Walk to nearby restaurant or order in. No Uber to city tonight — just REST!"
+        },
+        {
+          "time": "7:30 PM",
+          "name": "Final packing & organize for flight",
+          "type": "rest",
+          "notes": "Make sure everything's ready for 4:30 AM wake-up!"
+        },
+        {
+          "time": "8:30 PM",
+          "name": "BED! EARLY!",
+          "type": "rest",
+          "notes": "Set multiple alarms! Flight is 7:35 AM. Sleep by 9 PM = 7.5 hrs before 4:30 AM wake-up!"
+        }
+      ],
+      "kids_note": "Early Faro drop-off, then long nap window in the car to Lisbon. Arrive Lisbon by noon = full afternoon rest at hotel before flight tomorrow.",
+      "tip": "D&R flight timeline: EZY8532 departs Faro 11:35 AM, arrives London Gatwick 2:25 PM (Mon Aug 10). Drop them by 8:30 AM for 3-hour buffer. Earlier Lisbon arrival = more rest time for your family."
+    },
+    {
+      "day_number": 16,
+      "date": "Tue Aug 11",
+      "title": "FLY HOME ✈️",
+      "subtitle": "Goodbye Portugal 🇵🇹",
+      "location": "Lisbon → Home",
+      "activities": [
+        {
+          "time": "4:30 AM",
+          "name": "WAKE UP",
+          "type": "transit",
+          "notes": "Quick breakfast at hotel (if open) or grab pastries"
+        },
+        {
+          "time": "5:00 AM",
+          "name": "Walk to Lisbon Airport terminal",
+          "type": "transit",
+          "notes": "Hotel is AT the airport — 5 min walk. No car stress! (Car returned last night.)"
+        },
+        {
+          "time": "5:15 AM",
+          "name": "Check in for flight",
+          "type": "transit",
+          "notes": "LIS → LHR → SFO. United counter."
+        },
+        {
+          "time": "7:35 AM",
+          "name": "Flight UA 6863 departs",
+          "type": "flight",
+          "notes": "Lisbon → London (2h 45m)"
+        },
+        {
+          "time": "10:20 AM",
+          "name": "Arrive London Heathrow",
+          "type": "flight",
+          "notes": "2h 40m connection"
+        },
+        {
+          "time": "1:00 PM",
+          "name": "Flight UA 949 departs",
+          "type": "flight",
+          "notes": "London → San Francisco (11h)"
+        },
+        {
+          "time": "4:00 PM",
+          "name": "Arrive San Francisco (same day!)",
+          "type": "arrival",
+          "notes": "Welcome home! 🏠"
+        }
+      ],
+      "tip": "Long flight day! Bring tablets, snacks, coloring books. Kids may sleep on London → SF leg. Time difference works in your favor! Buffer gained: By dropping the car last night, your morning is: walk 5 min → check in. No rental return queue, no fuel check, no finding the desk. You saved ~30 min of risk."
+    }
+  ]
+}

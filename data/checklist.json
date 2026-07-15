@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "text": "Book Tomar hotel (3 nights)",
+      "completed": false,
+      "priority": "high"
+    },
+    {
+      "id": 2,
+      "text": "Book Pena Palace tickets (Day 10 - Aug 5)",
+      "completed": false,
+      "priority": "high"
+    },
+    {
+      "id": 3,
+      "text": "Book Benagil catamaran tour (Day 12 - Aug 7)",
+      "completed": false,
+      "priority": "high"
+    },
+    {
+      "id": 4,
+      "text": "Book Algarve restaurants (group of 6)",
+      "completed": false,
+      "priority": "medium"
+    },
+    {
+      "id": 5,
+      "text": "Confirm Darshan & Rika Faro flight times",
+      "completed": false,
+      "priority": "medium"
+    },
+    {
+      "id": 6,
+      "text": "Set multiple alarms for 4:30 AM on Aug 11",
+      "completed": false,
+      "priority": "high"
+    },
+    {
+      "id": 7,
+      "text": "Download offline maps for Portugal",
+      "completed": false,
+      "priority": "low"
+    },
+    {
+      "id": 8,
+      "text": "Print hotel confirmations",
+      "completed": false,
+      "priority": "low"
+    }
+  ]
+}
