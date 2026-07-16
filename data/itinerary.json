@@ -3,42 +3,70 @@
     "title": "Portugal 2026 Family Trip",
     "dates": "July 27 - August 11, 2026",
     "participants": "2 adults + 2 kids (ages 7 and 3)",
-    "guests": "Darshan & Rika join in Algarve Aug 6-10"
+    "guests": "Sriram joins in Porto Jul 26-28 (evening) | Darshan & Rika join in Algarve Aug 6-9"
   },
   "days": [
     {
+      "day_number": 0,
+      "date": "Sun Jul 26",
+      "title": "SRIRAM ARRIVES PORTO 🎉",
+      "subtitle": "Day before trip starts - Sriram's arrival from London",
+      "location": "Porto",
+      "activities": [
+        {
+          "time": "6:10 PM",
+          "name": "Sriram departs London Gatwick (LGW)",
+          "type": "flight",
+          "notes": "BA 2668, 2h 30m flight"
+        },
+        {
+          "time": "8:40 PM",
+          "name": "🎉 Sriram arrives Porto (OPO)",
+          "type": "arrival",
+          "notes": "BA 2668 lands. He'll check into Boon House on his own (or nearby hotel if you haven't checked in yet)."
+        },
+        {
+          "time": "Evening",
+          "name": "Optional: Meet Sriram for late dinner",
+          "type": "dining",
+          "notes": "If you're already in Porto! Otherwise he settles in solo and you meet tomorrow."
+        }
+      ],
+      "kids_note": "Optional pre-trip day. Only if you arrive Porto early on July 26!"
+    },
+    {
       "day_number": 1,
       "date": "Mon Jul 27",
-      "title": "ARRIVE PORTO",
-      "subtitle": "Settle in & soak up the atmosphere",
+      "title": "ARRIVE PORTO (Group of 5!)",
+      "subtitle": "Your family arrives - reunite with Sriram!",
       "location": "Porto",
       "activities": [
         {
           "time": "Afternoon",
           "name": "Arrive Porto, check into Boon House",
           "type": "check-in",
-          "notes": "€440 (3 nights). Rest, settle in."
+          "notes": "€440 (3 nights). Rest, settle in. Sriram already here!"
         },
         {
           "time": "5:00 PM",
-          "name": "São Bento Station tiles",
+          "name": "São Bento Station tiles (with Sriram!)",
           "type": "walking",
-          "notes": "Free. 10 min. Stunning azulejos!"
+          "notes": "Free. 10 min. Stunning azulejos! Group of 5 now."
         },
         {
           "time": "6:00 PM",
-          "name": "Dinner near Aliados",
+          "name": "Welcome dinner near Aliados",
           "type": "dining",
-          "notes": "~€35-45 family. Simple tasca — soup, salads, veggie sides."
+          "notes": "~€50-60 for 5 people. Celebrate reunion! Simple tasca — soup, salads, veggie sides."
         }
       ],
-      "kids_note": "Easy first day! São Bento is just a quick photo stop."
+      "kids_note": "Easy first day! São Bento is just a quick photo stop. Kids meet Uncle Sriram!"
     },
     {
       "day_number": 2,
       "date": "Tue Jul 28",
-      "title": "PORTO HIGHLIGHTS",
-      "subtitle": "Harry Potter bookshop, bridge walk, cable car, francesinhas",
+      "title": "PORTO HIGHLIGHTS (Sriram's last day)",
+      "subtitle": "Harry Potter bookshop, bridge walk, cable car, farewell dinner",
       "location": "Porto",
       "activities": [
         {
@@ -100,12 +128,24 @@
         },
         {
           "time": "6:30 PM",
-          "name": "Francesinha at Café Santiago",
+          "name": "Farewell dinner with Sriram",
           "type": "dining",
-          "notes": "€14-18/sandwich (share between adults). Simple salads/bread for kids."
+          "notes": "€50-60 for 5. Francesinha at Café Santiago or Brasão Aliados. Last meal together!"
+        },
+        {
+          "time": "7:30 PM",
+          "name": "Head back to hotel / Sriram prepares to leave",
+          "type": "rest",
+          "notes": "Sriram packs for airport"
+        },
+        {
+          "time": "8:55 PM",
+          "name": "👋 Sriram departs Porto (OPO)",
+          "type": "flight",
+          "notes": "BA 2669 to London Gatwick, arrives 11:10 PM local. Safe travels!"
         }
       ],
-      "kids_note": "Lello bookshop = magical for 7-yr-old! Cable car + cruise = exciting. Crystal Palace = let them RUN. Francesinha is Porto's signature dish — adults try it, kids get simple sides."
+      "kids_note": "Lello bookshop = magical for 7-yr-old! Cable car + cruise = exciting. Crystal Palace = let them RUN. Say goodbye to Uncle Sriram after dinner!"
     },
     {
       "day_number": 3,
