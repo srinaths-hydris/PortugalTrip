@@ -93,19 +93,19 @@
       "name": "Livraria Lello",
       "date": "Tue Jul 28, 2026",
       "time": "9:00 AM",
-      "cost": "€8/adult (€16 total)",
+      "cost": "€8/adult, free <12 (€24 for 3 adults)",
       "status": "Need to book",
       "confirmation": "TBD",
-      "notes": "Timed tickets required. Book in advance!"
+      "notes": "⚠️ 3 ADULTS (Sriram joins!) + 2 kids free. Timed tickets required. Book in advance!"
     },
     {
       "name": "Benagil Cave Catamaran",
       "date": "Fri Aug 7, 2026",
       "time": "9:30 AM departure",
-      "cost": "€45-60/adult, €25-35/child (€150-180 family)",
+      "cost": "€45-60/adult, €25-35/child (€250-330 for 6 people)",
       "status": "Need to book",
       "confirmation": "TBD",
-      "notes": "SELLS OUT! Book ASAP — August peak season."
+      "notes": "⚠️ 6 PEOPLE (4 adults: you, Nirupa, Darshan, Rika + 2 kids). SELLS OUT! Book ASAP — August peak season."
     },
     {
       "name": "Quinta da Regaleira",
@@ -136,8 +136,49 @@
   ],
   "flights": [
     {
+      "flight_number": "BA 2668",
+      "route": "London Gatwick → Porto",
+      "passenger": "Sriram",
+      "date": "Sun Jul 26, 2026",
+      "departure": "6:10 PM",
+      "arrival": "8:40 PM",
+      "duration": "2h 30m",
+      "status": "Booked (by Sriram)"
+    },
+    {
+      "flight_number": "BA 2669",
+      "route": "Porto → London Gatwick",
+      "passenger": "Sriram",
+      "date": "Tue Jul 28, 2026",
+      "departure": "8:55 PM",
+      "arrival": "11:10 PM",
+      "duration": "2h 15m",
+      "status": "Booked (by Sriram)"
+    },
+    {
+      "flight_number": "EZY8532",
+      "route": "London Gatwick → Faro",
+      "passenger": "Darshan & Rika",
+      "date": "Thu Aug 6, 2026",
+      "departure": "11:55 AM",
+      "arrival": "2:50 PM",
+      "duration": "2h 55m",
+      "status": "Booked (by D&R)"
+    },
+    {
+      "flight_number": "EZY8532",
+      "route": "Faro → London Gatwick",
+      "passenger": "Darshan & Rika",
+      "date": "Mon Aug 10, 2026",
+      "departure": "11:35 AM",
+      "arrival": "2:25 PM",
+      "duration": "2h 50m",
+      "status": "Booked (by D&R)"
+    },
+    {
       "flight_number": "UA 6863",
       "route": "Lisbon → London Heathrow",
+      "passenger": "Your family",
       "date": "Tue Aug 11, 2026",
       "departure": "7:35 AM",
       "arrival": "10:20 AM",
@@ -147,6 +188,7 @@
     {
       "flight_number": "UA 949",
       "route": "London Heathrow → San Francisco",
+      "passenger": "Your family",
       "date": "Tue Aug 11, 2026",
       "departure": "1:00 PM",
       "arrival": "4:00 PM (same day)",
@@ -173,7 +215,14 @@
     {
       "item": "Confirm Darshan & Rika Faro flight times",
       "priority": "Medium",
-      "completed": false
+      "completed": true,
+      "notes": "✅ EZY8532: Arrive Aug 6 at 2:50 PM, Depart Aug 10 at 11:35 AM"
+    },
+    {
+      "item": "Confirm Sriram Porto flight times",
+      "priority": "Medium",
+      "completed": true,
+      "notes": "✅ BA 2668/2669: Arrive Jul 26 at 8:40 PM, Depart Jul 28 at 8:55 PM"
     },
     {
       "item": "Book Algarve restaurants (group of 6)",
