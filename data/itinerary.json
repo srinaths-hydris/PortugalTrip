@@ -23,16 +23,22 @@
           "time": "8:40 PM",
           "name": "🎉 Sriram arrives Porto (OPO)",
           "type": "arrival",
-          "notes": "BA 2668 lands. He'll check into Boon House on his own (or nearby hotel if you haven't checked in yet)."
+          "notes": "BA 2668 lands"
+        },
+        {
+          "time": "9:30 PM",
+          "name": "Check into Holiday Inn Express Porto - Boavista",
+          "type": "check-in",
+          "notes": "Baggage claim + airport exit + transport to hotel (~50 min buffer). 17,000 IHG points (1 night). Your family joins him tomorrow morning!"
         },
         {
           "time": "Evening",
-          "name": "Optional: Meet Sriram for late dinner",
+          "name": "Settle in, grab a late snack near hotel",
           "type": "dining",
-          "notes": "If you're already in Porto! Otherwise he settles in solo and you meet tomorrow."
+          "notes": "Your family isn't here yet — they arrive tomorrow morning at 7 AM. Sriram explores solo tonight."
         }
       ],
-      "kids_note": "Optional pre-trip day. Only if you arrive Porto early on July 26!"
+      "kids_note": "Sriram-only day! Your family isn't in Porto yet — you arrive tomorrow (Day 1) at 7:00 AM."
     },
     {
       "day_number": 1,
@@ -42,25 +48,49 @@
       "location": "Porto",
       "activities": [
         {
-          "time": "Afternoon",
-          "name": "Arrive Porto, check into Boon House",
-          "type": "check-in",
-          "notes": "€440 (3 nights). Rest, settle in. Sriram already here!"
+          "time": "7:00 AM",
+          "name": "✈️ YOUR FAMILY arrives Porto Airport (OPO)",
+          "type": "arrival",
+          "notes": "Flight lands 7:00 AM"
         },
         {
-          "time": "5:00 PM",
+          "time": "9:30 AM",
+          "name": "Check into Holiday Inn Express Porto - Boavista",
+          "type": "check-in",
+          "notes": "2-2.5 hour buffer: baggage claim + transport from airport + early check-in. Meet Sriram! He checked in last night. Rest, regroup, breakfast."
+        },
+        {
+          "time": "12:00 PM",
+          "name": "Check out Holiday Inn, check into VIVA Miragaia (Boon House)",
+          "type": "check-in",
+          "notes": "€440 (3 nights). Two-bedroom apartment downtown. Standard check-in 4 PM but can store luggage and explore."
+        },
+        {
+          "time": "1:00 PM",
+          "name": "Lunch near Miragaia / Ribeira",
+          "type": "dining",
+          "notes": "Simple waterfront lunch for 5. €40-50."
+        },
+        {
+          "time": "3:00 PM",
           "name": "São Bento Station tiles (with Sriram!)",
           "type": "walking",
           "notes": "Free. 10 min. Stunning azulejos! Group of 5 now."
         },
         {
-          "time": "6:00 PM",
+          "time": "4:00 PM",
+          "name": "Settle into Boon House apartment",
+          "type": "check-in",
+          "notes": "Apartment ready by 4 PM. Unpack, rest."
+        },
+        {
+          "time": "6:30 PM",
           "name": "Welcome dinner near Aliados",
           "type": "dining",
           "notes": "~€50-60 for 5 people. Celebrate reunion! Simple tasca — soup, salads, veggie sides."
         }
       ],
-      "kids_note": "Easy first day! São Bento is just a quick photo stop. Kids meet Uncle Sriram!"
+      "kids_note": "Long travel day! Morning buffer at Holiday Inn = crucial rest. Afternoon = light sightseeing. São Bento is just a quick photo stop. Kids meet Uncle Sriram!"
     },
     {
       "day_number": 2,
@@ -74,7 +104,7 @@
           "name": "Livraria Lello",
           "type": "historic-site",
           "notes": "€8/adult, free <12. 30 min. BOOK IN ADVANCE! Harry Potter vibes!",
-          "cost": "€16 (2 adults)"
+          "cost": "€24 (3 adults — Sriram joins!)"
         },
         {
           "time": "10:00 AM",
