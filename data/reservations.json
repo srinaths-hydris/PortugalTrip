@@ -33,12 +33,22 @@
     {
       "name": "Holiday Inn Lisbon – Continental",
       "location": "Lisbon",
-      "dates": "Aug 1-6, 2026 (5 nights)",
-      "cost": "120,000 IHG Points",
-      "status": "Booked",
+      "dates": "Aug 1-2, 2026 (1 night)",
+      "cost": "~24,000 IHG Points (1 night)",
+      "status": "Booked - Need to modify to 1 night",
       "confirmation": "28003005",
       "document": "Lisbon.pdf",
-      "notes": "✅ 1 King Bed Standard. Rua Laura Alves 9, Lisbon. 5 nights total."
+      "notes": "✅ 1 King Bed Standard. Rua Laura Alves 9, Lisbon. ⚠️ MODIFY booking from 5 nights → 1 night (Aug 1-2 only)"
+    },
+    {
+      "name": "Atlantic Views Lisbon 1 (Airbnb)",
+      "location": "Lisbon",
+      "dates": "Aug 2-6, 2026 (4 nights)",
+      "cost": "TBD (Airbnb)",
+      "status": "Booked",
+      "confirmation": "HMECEBTRT2",
+      "document": "4-Lisbon-Airbnb.pdf",
+      "notes": "✅ Home hosted by Sarah E Pedro Apartments. Avenida Doutor Mário Moutinho 31, Lisbon 1400-408. Check-in: Sun Aug 2, 3:00 PM. Checkout: Thu Aug 6, 11:00 AM. Self check-in with Lockbox. 2 adults, 1 child, 1 infant. WiFi details provided 24hrs before check-in."
     },
     {
       "name": "Casa Margarida",
@@ -201,6 +211,12 @@
   ],
   "action_items": {
     "pending": [
+      {
+        "item": "Modify Holiday Inn Lisbon booking (5 nights → 1 night)",
+        "priority": "High",
+        "completed": false,
+        "notes": "Confirmation 28003005. Change from Aug 1-6 to Aug 1-2 only (1 night). Airbnb takes over Aug 2-6."
+      },
       {
         "item": "Book Livraria Lello tickets (Day 2 - Jul 28, 9:00 AM)",
         "priority": "High",
