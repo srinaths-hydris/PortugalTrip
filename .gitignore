@@ -16,9 +16,6 @@ instance/
 .webassets-cache
 flask.log
 
-# PDFs and sensitive docs
-*.pdf
-
 # OS files
 .DS_Store
 .DS_Store?
