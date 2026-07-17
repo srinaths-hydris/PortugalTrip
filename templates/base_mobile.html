@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#667eea">
+    <title>{% block title %}Portugal Trip 2026{% endblock %}</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5568d3;
+            --secondary: #764ba2;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --border: #e5e7eb;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding-bottom: 80px; /* Space for bottom nav */
+            padding-top: 60px; /* Space for top header */
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Header - Sticky */
+        .mobile-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            z-index: 1000;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mobile-header-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-header-user {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-header-user img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        /* Bottom Navigation - iOS/Android style */
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            padding-bottom: env(safe-area-inset-bottom, 0);
+        }
+
+        .mobile-nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.5rem;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .mobile-nav-item.active {
+            color: var(--primary);
+        }
+
+        .mobile-nav-item.active::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 20%;
+            right: 20%;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 0 0 3px 3px;
+        }
+
+        .mobile-nav-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Content Area */
+        .mobile-content {
+            padding: 1rem;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Card Components */
+        .mobile-card {
+            background: var(--bg-primary);
+            border-radius: 16px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .mobile-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-card-icon {
+            font-size: 1.75rem;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            color: white;
+        }
+
+        .mobile-card-title {
+            flex: 1;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .mobile-card-body {
+            font-size: 0.95rem;
+        }
+
+        /* List Items */
+        .mobile-list-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-list-item-icon {
+            font-size: 1.25rem;
+            margin-right: 0.75rem;
+            opacity: 0.6;
+        }
+
+        .mobile-list-item-content {
+            flex: 1;
+        }
+
+        .mobile-list-item-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .mobile-list-item-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Badges */
+        .mobile-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mobile-badge-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .mobile-badge-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .mobile-badge-info {
+            background: rgba(102, 126, 234, 0.1);
+            color: var(--primary);
+        }
+
+        /* Buttons */
+        .mobile-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .mobile-btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .mobile-btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        .mobile-btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        /* Pull to Refresh Indicator */
+        .pull-indicator {
+            position: fixed;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 1rem;
+            background: var(--bg-primary);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: none;
+            z-index: 999;
+        }
+
+        /* Flash Messages */
+        .mobile-flash {
+            margin: 0 1rem 1rem 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .mobile-flash-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .mobile-flash-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .mobile-flash-info {
+            background: rgba(102, 126, 234, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        /* Collapsible sections */
+        .mobile-accordion {
+            background: var(--bg-primary);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .mobile-accordion-header {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .mobile-accordion-header:active {
+            background: var(--bg-secondary);
+        }
+
+        .mobile-accordion-icon {
+            transition: transform 0.3s;
+        }
+
+        .mobile-accordion-icon.open {
+            transform: rotate(180deg);
+        }
+
+        .mobile-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .mobile-accordion-content.open {
+            max-height: 2000px;
+        }
+
+        .mobile-accordion-body {
+            padding: 0 1rem 1rem 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            body {
+                padding-bottom: 0;
+            }
+            .mobile-nav {
+                display: none;
+            }
+            .mobile-content {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Loading spinner */
+        .mobile-spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Haptic feedback simulation */
+        @media (hover: none) and (pointer: coarse) {
+            .mobile-btn:active,
+            .mobile-nav-item:active,
+            .mobile-accordion-header:active {
+                opacity: 0.7;
+            }
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    {% if user %}
+    <!-- Top Header -->
+    <div class="mobile-header">
+        <div class="mobile-header-title">
+            <span>🇵🇹</span>
+            <span>{% block page_title %}Portugal 2026{% endblock %}</span>
+        </div>
+        <div class="mobile-header-user">
+            {% if user.picture %}
+            <img src="{{ user.picture }}" alt="{{ user.name }}">
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Pull to Refresh Indicator -->
+    <div class="pull-indicator" id="pullIndicator">↓ Pull to refresh</div>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="mobile-flash mobile-flash-{{ category }}">
+                <span>
+                    {% if category == 'success' %}✓{% elif category == 'error' %}✕{% else %}ℹ{% endif %}
+                </span>
+                <span>{{ message }}</span>
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% endif %}
+
+    <!-- Main Content -->
+    <div class="mobile-content">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% if user %}
+    <!-- Bottom Navigation -->
+    <nav class="mobile-nav">
+        <a href="{{ url_for('dashboard') }}" class="mobile-nav-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
+            <div class="mobile-nav-icon">🏠</div>
+            <div>Home</div>
+        </a>
+        <a href="{{ url_for('itinerary') }}" class="mobile-nav-item {% if request.endpoint == 'itinerary' %}active{% endif %}">
+            <div class="mobile-nav-icon">📅</div>
+            <div>Days</div>
+        </a>
+        <a href="{{ url_for('reservations') }}" class="mobile-nav-item {% if request.endpoint == 'reservations' %}active{% endif %}">
+            <div class="mobile-nav-icon">🎫</div>
+            <div>Bookings</div>
+        </a>
+        <a href="{{ url_for('dining') }}" class="mobile-nav-item {% if request.endpoint == 'dining' %}active{% endif %}">
+            <div class="mobile-nav-icon">🍽️</div>
+            <div>Food</div>
+        </a>
+        <a href="{{ url_for('checklist') }}" class="mobile-nav-item {% if request.endpoint == 'checklist' %}active{% endif %}">
+            <div class="mobile-nav-icon">✓</div>
+            <div>Tasks</div>
+        </a>
+    </nav>
+    {% endif %}
+
+    <script>
+        // Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordions = document.querySelectorAll('.mobile-accordion-header');
+            accordions.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.mobile-accordion-icon');
+
+                    content.classList.toggle('open');
+                    icon.classList.toggle('open');
+                });
+            });
+        });
+
+        // Pull to refresh
+        let touchStartY = 0;
+        let pullIndicator = document.getElementById('pullIndicator');
+
+        document.addEventListener('touchstart', function(e) {
+            if (window.scrollY === 0) {
+                touchStartY = e.touches[0].clientY;
+            }
+        });
+
+        document.addEventListener('touchmove', function(e) {
+            if (window.scrollY === 0) {
+                let touchY = e.touches[0].clientY;
+                let pullDistance = touchY - touchStartY;
+
+                if (pullDistance > 80) {
+                    pullIndicator.style.display = 'block';
+                    pullIndicator.textContent = '↻ Release to refresh';
+                } else if (pullDistance > 0) {
+                    pullIndicator.style.display = 'block';
+                    pullIndicator.textContent = '↓ Pull to refresh';
+                } else {
+                    pullIndicator.style.display = 'none';
+                }
+            }
+        });
+
+        document.addEventListener('touchend', function(e) {
+            if (pullIndicator.textContent === '↻ Release to refresh') {
+                pullIndicator.textContent = '↻ Refreshing...';
+                setTimeout(() => {
+                    location.reload();
+                }, 500);
+            } else {
+                pullIndicator.style.display = 'none';
+            }
+            touchStartY = 0;
+        });
+    </script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

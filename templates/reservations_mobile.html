@@ -1,0 +1,213 @@
+{% extends "base_mobile.html" %}
+
+{% block page_title %}Bookings{% endblock %}
+
+{% block content %}
+<!-- Flights Section -->
+<div class="mobile-card">
+    <div class="mobile-card-header">
+        <div class="mobile-card-icon">✈️</div>
+        <div class="mobile-card-title">Flights</div>
+    </div>
+    <div class="mobile-card-body">
+        {% for flight in reservations.flights %}
+        <div class="mobile-list-item">
+            <div class="mobile-list-item-icon">
+                {% if 'Porto' in flight.route or 'Faro' in flight.route %}🛬{% else %}🛫{% endif %}
+            </div>
+            <div class="mobile-list-item-content">
+                <div class="mobile-list-item-title">
+                    <strong>{{ flight.flight_number }}</strong> — {{ flight.passenger }}
+                </div>
+                <div class="mobile-list-item-subtitle" style="margin-top: 0.25rem;">
+                    {{ flight.route }}
+                </div>
+                <div class="mobile-list-item-subtitle" style="margin-top: 0.25rem;">
+                    📅 {{ flight.date }}<br>
+                    🕐 Depart: {{ flight.departure }} → Arrive: {{ flight.arrival }}<br>
+                    ⏱️ {{ flight.duration }}
+                </div>
+            </div>
+            <div>
+                <span class="mobile-badge mobile-badge-success">✓</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Accommodations Section -->
+<div class="mobile-card">
+    <div class="mobile-card-header">
+        <div class="mobile-card-icon">🏨</div>
+        <div class="mobile-card-title">Hotels & Stays</div>
+    </div>
+    <div class="mobile-card-body">
+        {% for hotel in reservations.accommodations %}
+        <div class="mobile-accordion">
+            <div class="mobile-accordion-header">
+                <div style="flex: 1;">
+                    <div style="font-weight: 600; margin-bottom: 0.25rem;">{{ hotel.name }}</div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">{{ hotel.dates }}</div>
+                </div>
+                <div class="mobile-accordion-icon">▼</div>
+            </div>
+            <div class="mobile-accordion-content">
+                <div class="mobile-accordion-body">
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">📍 Location</div>
+                        <div>{{ hotel.location }}</div>
+                    </div>
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">💰 Cost</div>
+                        <div>{{ hotel.cost }}</div>
+                    </div>
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">🔖 Confirmation</div>
+                        <div style="font-family: monospace; font-size: 0.9rem;">{{ hotel.confirmation }}</div>
+                    </div>
+                    {% if hotel.notes %}
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">📝 Notes</div>
+                        <div style="font-size: 0.9rem; line-height: 1.5;">{{ hotel.notes }}</div>
+                    </div>
+                    {% endif %}
+                    {% if hotel.document %}
+                    <a href="{{ url_for('static', filename='documents/' + hotel.document) }}" target="_blank" class="mobile-btn mobile-btn-outline" style="margin-top: 0.5rem;">
+                        📄 View Confirmation
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Car Rentals Section -->
+<div class="mobile-card">
+    <div class="mobile-card-header">
+        <div class="mobile-card-icon">🚗</div>
+        <div class="mobile-card-title">Car Rentals</div>
+    </div>
+    <div class="mobile-card-body">
+        {% for car in reservations.car_rentals %}
+        <div class="mobile-accordion">
+            <div class="mobile-accordion-header">
+                <div style="flex: 1;">
+                    <div style="font-weight: 600; margin-bottom: 0.25rem;">{{ car.name }}</div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">{{ car.dates }}</div>
+                </div>
+                <div class="mobile-accordion-icon">▼</div>
+            </div>
+            <div class="mobile-accordion-content">
+                <div class="mobile-accordion-body">
+                    {% if car.vehicle %}
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">🚙 Vehicle</div>
+                        <div style="font-size: 0.9rem;">{{ car.vehicle }}</div>
+                    </div>
+                    {% endif %}
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">📍 Pickup</div>
+                        <div>{{ car.pickup }}</div>
+                    </div>
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">📍 Dropoff</div>
+                        <div>{{ car.dropoff }}</div>
+                    </div>
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">💰 Cost</div>
+                        <div>{{ car.cost }}</div>
+                    </div>
+                    {% if car.confirmation and car.confirmation != 'TBD' %}
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">🔖 Confirmation</div>
+                        <div style="font-family: monospace; font-size: 0.9rem;">{{ car.confirmation }}</div>
+                    </div>
+                    {% endif %}
+                    {% if car.notes %}
+                    <div style="margin-bottom: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.25rem;">📝 Notes</div>
+                        <div style="font-size: 0.9rem; line-height: 1.5;">{{ car.notes }}</div>
+                    </div>
+                    {% endif %}
+                    {% if car.document %}
+                    <a href="{{ url_for('static', filename='documents/' + car.document) }}" target="_blank" class="mobile-btn mobile-btn-outline" style="margin-top: 0.5rem;">
+                        📄 View Confirmation
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Tickets Section -->
+<div class="mobile-card">
+    <div class="mobile-card-header">
+        <div class="mobile-card-icon">🎫</div>
+        <div class="mobile-card-title">Tickets & Tours</div>
+    </div>
+    <div class="mobile-card-body">
+        {% for ticket in reservations.tickets %}
+        <div class="mobile-list-item">
+            <div class="mobile-list-item-icon">
+                {% if ticket.status == 'Booked' %}✓{% else %}⏱️{% endif %}
+            </div>
+            <div class="mobile-list-item-content">
+                <div class="mobile-list-item-title">{{ ticket.name }}</div>
+                <div class="mobile-list-item-subtitle" style="margin-top: 0.25rem;">
+                    📅 {{ ticket.date }} at {{ ticket.time }}<br>
+                    💰 {{ ticket.cost }}
+                </div>
+                {% if ticket.notes %}
+                <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.4;">
+                    {{ ticket.notes }}
+                </div>
+                {% endif %}
+            </div>
+            <div>
+                {% if ticket.status == 'Booked' %}
+                <span class="mobile-badge mobile-badge-success">Booked</span>
+                {% else %}
+                <span class="mobile-badge mobile-badge-warning">To Do</span>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Restaurants Section -->
+{% if reservations.restaurants %}
+<div class="mobile-card">
+    <div class="mobile-card-header">
+        <div class="mobile-card-icon">🍽️</div>
+        <div class="mobile-card-title">Restaurant Reservations</div>
+    </div>
+    <div class="mobile-card-body">
+        {% for restaurant in reservations.restaurants %}
+        <div class="mobile-list-item">
+            <div class="mobile-list-item-icon">🍴</div>
+            <div class="mobile-list-item-content">
+                <div class="mobile-list-item-title">{{ restaurant.name }}</div>
+                <div class="mobile-list-item-subtitle" style="margin-top: 0.25rem;">
+                    {{ restaurant.date }}
+                </div>
+                {% if restaurant.notes %}
+                <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                    {{ restaurant.notes }}
+                </div>
+                {% endif %}
+            </div>
+            <div>
+                <span class="mobile-badge mobile-badge-warning">To Do</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -43,6 +43,13 @@ def save_data(filename, data):
     with open(filepath, 'w') as f:
         json.dump(data, f, indent=2)
 
+# Helper: detect mobile device
+def is_mobile():
+    """Detect if request is from mobile device."""
+    user_agent = request.headers.get('User-Agent', '').lower()
+    mobile_keywords = ['iphone', 'android', 'mobile', 'webos', 'blackberry', 'windows phone']
+    return any(keyword in user_agent for keyword in mobile_keywords)
+
 # =====================
 # AUTH ROUTES
 # =====================
@@ -130,8 +137,11 @@ def reservations():
     """Reservations page."""
     user = auth.get_user()
     user['is_admin'] = auth.is_admin(user['email'])
+    user['is_mobile'] = is_mobile()
     reservations_data = load_data('reservations.json')
-    return render_template('reservations.html',
+
+    template = 'reservations_mobile.html' if user['is_mobile'] else 'reservations.html'
+    return render_template(template,
                          user=user,
                          reservations=reservations_data)
 
