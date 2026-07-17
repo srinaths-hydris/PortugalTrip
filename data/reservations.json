@@ -21,13 +21,14 @@
       "notes": "✅ Two-Bedroom Apartment. 3 adults, 2 children. Rua São Pedro de Miragaia, 4050-565 Porto. Check-in Mon Jul 27, 16:00-00:00"
     },
     {
-      "name": "Os Marias: Retreat in Castelo de Bode",
-      "location": "Olalhas, Tomar (near Castelo de Bode reservoir)",
+      "name": "Varandas do Nabão",
+      "location": "Tomar, Portugal",
       "dates": "Jul 30 - Aug 1, 2026 (2 nights)",
-      "cost": "$259 (modified from 3 nights)",
+      "cost": "$252 (€220) approx for 4 guests",
       "status": "Booked",
-      "confirmation": "HMMBQAYSPE",
-      "notes": "✅ Airbnb. Host: Carla +351 916 590 672. Check-in Thu Jul 30, 3:00 PM. ⚠️ Need to modify from 3→2 nights"
+      "confirmation": "6011.224.849 | PIN: 6746",
+      "document": "2_Tomar_Booking.com_ Confirmation.pdf",
+      "notes": "✅ Two-Bedroom Apartment. Rua dos Moinhos 1 B 2º, 2300-575 Tomar. Check-in Thu Jul 30, 16:00-20:00. Check-out Sat Aug 1, until 11:00. Phone: +351 927 444 144. License: 105002/AL,143406/AL. Private bathroom, balcony, AC, kitchen, WiFi free."
     },
     {
       "name": "Holiday Inn Lisbon – Continental",
@@ -198,9 +199,10 @@
   ],
   "action_items": [
     {
-      "item": "Book Tomar hotel (3 nights)",
+      "item": "Book Tomar hotel",
       "priority": "High",
-      "completed": false
+      "completed": true,
+      "notes": "✅ Varandas do Nabão booked via Booking.com (2 nights: Jul 30 - Aug 1). Confirmation: 6011.224.849"
     },
     {
       "item": "Book Pena Palace tickets (Day 10 - Aug 5)",
