@@ -1,126 +1,136 @@
 {% extends "base_mobile.html" %}
 
-{% block page_title %}Checklist{% endblock %}
+{% block page_title %}Tasks{% endblock %}
 
 {% block content %}
-<!-- Progress Card -->
-<div class="mobile-card" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; margin-bottom: 1rem;">
-    <div style="text-align: center;">
-        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">Pre-Trip Checklist</div>
+{% set completed_count = checklist.items | selectattr('completed', 'equalto', true) | list | length %}
+{% set total_count = checklist.items | length %}
+{% set progress = ((completed_count / total_count) * 100) | int if total_count > 0 else 0 %}
 
-        <!-- Progress Bar -->
-        <div style="margin-bottom: 1rem;">
-            <div style="height: 12px; background: rgba(255,255,255,0.3); border-radius: 12px; overflow: hidden;">
-                <div style="height: 100%; width: {{ (checklist.items|selectattr('completed')|list|length / checklist.items|length * 100) if checklist.items|length > 0 else 0 }}%; background: white; border-radius: 12px; transition: width 0.3s;"></div>
+<!-- Progress Hero -->
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 24px; padding: 2rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.25);">
+    <div style="text-align: center; color: white;">
+        <!-- Circular Progress -->
+        <div style="position: relative; width: 120px; height: 120px; margin: 0 auto 1.5rem;">
+            <svg style="transform: rotate(-90deg);" width="120" height="120">
+                <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="8"/>
+                <circle cx="60" cy="60" r="54" fill="none" stroke="white" stroke-width="8"
+                        stroke-dasharray="{{ (2 * 3.14159 * 54) }}"
+                        stroke-dashoffset="{{ (2 * 3.14159 * 54 * (100 - progress) / 100) }}"
+                        stroke-linecap="round"
+                        style="transition: stroke-dashoffset 0.5s ease;"/>
+            </svg>
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                <div style="font-size: 2rem; font-weight: 800; line-height: 1;">{{ completed_count }}</div>
+                <div style="font-size: 0.75rem; opacity: 0.9;">of {{ total_count }}</div>
             </div>
         </div>
-
-        <!-- Stats -->
-        <div style="display: flex; justify-content: center; gap: 2rem; font-size: 0.9rem; opacity: 0.95;">
-            <div>
-                <div style="font-size: 1.5rem; font-weight: 700;">{{ checklist.items|selectattr('completed')|list|length }}</div>
-                <div style="font-size: 0.85rem; opacity: 0.9;">Completed</div>
-            </div>
-            <div>
-                <div style="font-size: 1.5rem; font-weight: 700;">{{ checklist.items|rejectattr('completed')|list|length }}</div>
-                <div style="font-size: 0.85rem; opacity: 0.9;">Remaining</div>
-            </div>
+        <div style="font-size: 1rem; font-weight: 600; opacity: 0.95;">
+            {% if completed_count == total_count %}
+            🎉 All set for Portugal!
+            {% elif completed_count == 0 %}
+            Let's get started
+            {% else %}
+            {{ total_count - completed_count }} task{% if total_count - completed_count != 1 %}s{% endif %} left
+            {% endif %}
         </div>
     </div>
 </div>
 
-<!-- High Priority Items -->
-{% set high_priority = checklist.items|selectattr('priority', 'equalto', 'high')|list %}
-{% if high_priority %}
-<div class="mobile-card">
-    <div class="mobile-card-header">
-        <div class="mobile-card-icon" style="background: linear-gradient(135deg, var(--danger), #dc2626);">⚠️</div>
-        <div class="mobile-card-title">High Priority</div>
-    </div>
-    <div class="mobile-card-body">
-        {% for item in high_priority %}
-        <div class="mobile-list-item" style="cursor: pointer;" onclick="toggleItem({{ item.id }})">
-            <div class="mobile-list-item-icon" style="font-size: 1.5rem;">
-                <input type="checkbox" id="check-{{ item.id }}" {% if item.completed %}checked{% endif %} style="width: 24px; height: 24px; cursor: pointer;" onclick="event.stopPropagation(); toggleItem({{ item.id }})">
-            </div>
-            <div class="mobile-list-item-content">
-                <div class="mobile-list-item-title" style="{% if item.completed %}text-decoration: line-through; opacity: 0.6;{% endif %}">
-                    {{ item.text }}
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
+<!-- Tasks List -->
+{% for item in checklist.items %}
+{% if loop.first or checklist.items[loop.index0 - 1].priority != item.priority %}
+<div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #9ca3af; margin: 1.5rem 0 0.75rem 0.5rem;">
+    {% if item.priority == 'high' %}🔴 High Priority
+    {% elif item.priority == 'medium' %}🟡 Medium Priority
+    {% else %}🟢 Low Priority
+    {% endif %}
 </div>
 {% endif %}
 
-<!-- Medium Priority Items -->
-{% set medium_priority = checklist.items|selectattr('priority', 'equalto', 'medium')|list %}
-{% if medium_priority %}
-<div class="mobile-card">
-    <div class="mobile-card-header">
-        <div class="mobile-card-icon" style="background: linear-gradient(135deg, var(--warning), #f59e0b);">📋</div>
-        <div class="mobile-card-title">Medium Priority</div>
-    </div>
-    <div class="mobile-card-body">
-        {% for item in medium_priority %}
-        <div class="mobile-list-item" style="cursor: pointer;" onclick="toggleItem({{ item.id }})">
-            <div class="mobile-list-item-icon" style="font-size: 1.5rem;">
-                <input type="checkbox" id="check-{{ item.id }}" {% if item.completed %}checked{% endif %} style="width: 24px; height: 24px; cursor: pointer;" onclick="event.stopPropagation(); toggleItem({{ item.id }})">
-            </div>
-            <div class="mobile-list-item-content">
-                <div class="mobile-list-item-title" style="{% if item.completed %}text-decoration: line-through; opacity: 0.6;{% endif %}">
-                    {{ item.text }}
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
-{% endif %}
+<div class="task-card {% if item.completed %}completed{% endif %}" data-id="{{ item.id }}" onclick="toggleTask({{ item.id }})"
+     style="background: white; border-radius: 16px; padding: 1.25rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: all 0.2s; cursor: pointer; border: 2px solid transparent;">
 
-<!-- Low Priority Items -->
-{% set low_priority = checklist.items|selectattr('priority', 'equalto', 'low')|list %}
-{% if low_priority %}
-<div class="mobile-card">
-    <div class="mobile-card-header">
-        <div class="mobile-card-icon" style="background: linear-gradient(135deg, var(--success), #10b981);">✓</div>
-        <div class="mobile-card-title">Low Priority</div>
+    <!-- Custom Checkbox -->
+    <div class="checkbox {% if item.completed %}checked{% endif %}" style="width: 28px; height: 28px; border-radius: 50%; border: 3px solid {% if item.completed %}#10b981{% else %}#d1d5db{% endif %}; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s;">
+        {% if item.completed %}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="color: #10b981;">
+            <path d="M13.5 4L6 11.5L2.5 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {% endif %}
     </div>
-    <div class="mobile-card-body">
-        {% for item in low_priority %}
-        <div class="mobile-list-item" style="cursor: pointer;" onclick="toggleItem({{ item.id }})">
-            <div class="mobile-list-item-icon" style="font-size: 1.5rem;">
-                <input type="checkbox" id="check-{{ item.id }}" {% if item.completed %}checked{% endif %} style="width: 24px; height: 24px; cursor: pointer;" onclick="event.stopPropagation(); toggleItem({{ item.id }})">
-            </div>
-            <div class="mobile-list-item-content">
-                <div class="mobile-list-item-title" style="{% if item.completed %}text-decoration: line-through; opacity: 0.6;{% endif %}">
-                    {{ item.text }}
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+
+    <!-- Task Text -->
+    <div style="flex: 1; {% if item.completed %}text-decoration: line-through; color: #9ca3af;{% else %}color: #1f2937;{% endif %} font-size: 0.95rem; line-height: 1.4; transition: all 0.2s;">
+        {{ item.text }}
     </div>
 </div>
-{% endif %}
+{% endfor %}
+
+<style>
+.task-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.task-card.completed {
+    background: #f9fafb !important;
+}
+
+@keyframes checkmark {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.checkbox svg {
+    animation: checkmark 0.3s ease;
+}
+</style>
 
 <script>
-function toggleItem(itemId) {
+function toggleTask(itemId) {
+    const card = document.querySelector(`.task-card[data-id="${itemId}"]`);
+
+    // Optimistic UI update
+    card.classList.toggle('completed');
+    const checkbox = card.querySelector('.checkbox');
+    const isCompleted = card.classList.contains('completed');
+
+    if (isCompleted) {
+        checkbox.classList.add('checked');
+        checkbox.style.borderColor = '#10b981';
+        checkbox.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="color: #10b981;"><path d="M13.5 4L6 11.5L2.5 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        card.querySelector('div[style*="flex: 1"]').style.textDecoration = 'line-through';
+        card.querySelector('div[style*="flex: 1"]').style.color = '#9ca3af';
+        card.style.background = '#f9fafb';
+    } else {
+        checkbox.classList.remove('checked');
+        checkbox.style.borderColor = '#d1d5db';
+        checkbox.innerHTML = '';
+        card.querySelector('div[style*="flex: 1"]').style.textDecoration = 'none';
+        card.querySelector('div[style*="flex: 1"]').style.color = '#1f2937';
+        card.style.background = 'white';
+    }
+
+    // Send to server
     fetch(`/api/checklist/toggle/${itemId}`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        headers: { 'Content-Type': 'application/json' }
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Reload to update progress bar and counts
-            location.reload();
+            // Update progress circle
+            setTimeout(() => location.reload(), 300);
+        } else {
+            // Revert on error
+            card.classList.toggle('completed');
         }
     })
-    .catch(error => {
-        console.error('Error toggling checklist item:', error);
+    .catch(() => {
+        // Revert on error
+        card.classList.toggle('completed');
     });
 }
 </script>
