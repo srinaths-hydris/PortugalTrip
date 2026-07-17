@@ -50,6 +50,12 @@ def is_mobile():
     mobile_keywords = ['iphone', 'android', 'mobile', 'webos', 'blackberry', 'windows phone']
     return any(keyword in user_agent for keyword in mobile_keywords)
 
+# Context processor: make is_mobile available to all templates
+@app.context_processor
+def inject_mobile_detection():
+    """Inject mobile detection into all templates."""
+    return {'is_mobile': is_mobile()}
+
 # =====================
 # AUTH ROUTES
 # =====================
