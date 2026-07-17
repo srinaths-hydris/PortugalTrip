@@ -64,29 +64,31 @@
   "car_rentals": [
     {
       "name": "Car 1 - Sicily by Car",
-      "pickup": "Porto Airport (2026-07-30 09:00)",
-      "dropoff": "Lisbon Airport (2026-08-02 09:00)",
+      "pickup": "Porto Airport (Jul 30, 2026 09:00)",
+      "dropoff": "Lisbon Airport (Aug 2, 2026 09:00)",
       "dates": "Wed Jul 30 - Fri Aug 2, 2026 (3 days)",
-      "vehicle": "SUV Compacto Plus Auto Peugeot 2008 or similar",
-      "cost": "€374.24 (€47.18/day + €140.01 one-way + €30.90/day Gold Protection)",
+      "vehicle": "FSA SUV COMPACTO PLUS AUTO",
+      "cost": "€374.24 (3 days)",
       "status": "Booked",
-      "confirmation": "39661",
-      "document": "CarOne.pdf",
-      "pickup_address": "Porto Aeroporto, Rua do Pinhal 267, MAIA, 4470-640",
-      "pickup_phone": "+351223177791",
-      "dropoff_address": "Lisboa Aeroporto, Avenida Severiano Falcão 2, PRIOR VELHO, 2685-378",
-      "dropoff_phone": "+351 210944974",
-      "notes": "✅ Includes CDW, THW, Road Assistance Premium, Smart Gold + Silver Protection. Zero excess. Unlimited km. Confirm child seats at pickup."
+      "confirmation": "PT 000039661",
+      "document": "Car1_Reservation_39661.pdf",
+      "pickup_address": "Porto Aeroporto",
+      "dropoff_address": "Lisboa Aeroporto",
+      "notes": "✅ Includes: Collision Damage Waiver, One Way Nacional (€113.83), Smart Gold Protect (€25.12), Road Assistance Premium. Driver: Srinivasan, Srinath. Phone: +13153962489. Total without tax: €304.26"
     },
     {
-      "name": "Car 2",
-      "pickup": "Lisbon Airport",
-      "dropoff": "Lisbon Airport",
-      "dates": "Thu Aug 6 - Mon Aug 10 evening (~5 days)",
-      "cost": "€950",
-      "status": "Need to book",
-      "confirmation": "TBD",
-      "notes": "Upgraded larger vehicle for 6 people. Return EVENING of Aug 10 (not 5 AM Aug 11). Confirm child seats."
+      "name": "Car 2 - Sicily by Car",
+      "pickup": "Lisbon Airport (Aug 6, 2026 10:00)",
+      "dropoff": "Lisbon Airport (Aug 10, 2026 22:00)",
+      "dates": "Thu Aug 6 - Mon Aug 10, 2026 (5 days)",
+      "vehicle": "NAP MINIVAN 5 + 2 LUGARES (Larger vehicle for 6 people)",
+      "cost": "€744.88 (5 days)",
+      "status": "Booked",
+      "confirmation": "PT 000039662",
+      "document": "Car2_Reservation_39662.pdf",
+      "pickup_address": "Lisboa Aeroporto",
+      "dropoff_address": "Lisboa Aeroporto",
+      "notes": "✅ Includes: Collision Damage Waiver, Smart Gold Protect (€26.75), Theft Protection. Driver: Srinivasan, Srinath. Phone: +13153962489. Total without tax: €605.59. Return 10:00 PM Aug 10 (evening return confirmed!)"
     }
   ],
   "tickets": [
@@ -218,21 +220,16 @@
         "notes": "6 people (4 adults + 2 kids) = €250-330. SELLS OUT in August!"
       },
       {
-        "item": "Book Car 2 rental (Lisbon Airport round-trip, Aug 6-10)",
-        "priority": "High",
-        "completed": false,
-        "notes": "Upgraded vehicle for 6 people, €950 estimate"
-      },
-      {
         "item": "Book Algarve restaurants (group of 6)",
         "priority": "Medium",
         "completed": false,
         "notes": "1-2 days ahead, August peak season"
       },
       {
-        "item": "Confirm child seats for Car 1 at pickup (Jul 30)",
+        "item": "Confirm child seats at pickup",
         "priority": "Medium",
-        "completed": false
+        "completed": false,
+        "notes": "Car 1 pickup Jul 30, Car 2 pickup Aug 6. Need 2 child seats (ages 7 & 3)."
       },
       {
         "item": "Set multiple alarms for 4:30 AM on Aug 11",
@@ -256,6 +253,18 @@
         "priority": "High",
         "completed": true,
         "notes": "✅ Varandas do Nabão booked via Booking.com (2 nights: Jul 30 - Aug 1). Confirmation: 6011.224.849"
+      },
+      {
+        "item": "Book Car 1 rental (Porto → Lisbon)",
+        "priority": "High",
+        "completed": true,
+        "notes": "✅ Sicily by Car, 3 days (Jul 30 - Aug 2), €374.24. Confirmation: PT 000039661"
+      },
+      {
+        "item": "Book Car 2 rental (Lisbon round-trip for Algarve)",
+        "priority": "High",
+        "completed": true,
+        "notes": "✅ Sicily by Car, Minivan 5+2 seats, 5 days (Aug 6-10), €744.88. Confirmation: PT 000039662. Return 10:00 PM Aug 10."
       },
       {
         "item": "Confirm Darshan & Rika Faro flight times",
