@@ -9,7 +9,7 @@
 
 | Dates | Region | Nights | Accommodation | Cost | Car |
 |-------|--------|--------|---------------|------|-----|
-| Jul 27–30 | Porto | 3 | **Boon House Airbnb** ⏳ | €440 | No |
+| Jul 27–30 | Porto | 3 | **VIVA Miragaia Airbnb** ⏳ | €440 | No |
 | Jul 30 – Aug 2 | Tomar & Central | 3 | Airbnb (need to book) | TBD | Car 1 (€600) |
 | Aug 2–5 | Lisbon | 4 | **Holiday Inn Continental** ✅ | Points | No car |
 | Aug 6–9 | Algarve (Armação de Pêra) | 4 | **Casa Margarida** ✅ | €1,000 | Car 2 (€950) |
@@ -53,7 +53,7 @@
 |----------|------|-------|
 | 🚗 Car 1 (Porto → Lisbon) | €600 | One-way, 3 days |
 | 🚗 Car 2 (Lisbon ↔ Algarve) | €950 | Round-trip, 5 days, upgraded |
-| 🏨 Porto (Boon House) | €440 | 3 nights |
+| 🏨 Porto (VIVA Miragaia) | €440 | 3 nights |
 | 🏨 Tomar (Airbnb TBD) | TBD | 3 nights |
 | 🏨 Lisbon (Holiday Inn) | Points | 4 nights |
 | 🏨 Algarve (Casa Margarida) | €1,000 | 4 nights, 3 bed |
@@ -80,7 +80,7 @@ Lisbon (metro + tram, 4 days) → [Car 2 pickup] → Algarve (4 days) → Lisbon
 
 | Time | Activity | Notes |
 |------|----------|-------|
-| Afternoon | Arrive Porto, check into **Boon House Airbnb** | Central Porto. Rest, freshen up. ⏳ Waiting for host confirmation |
+| Afternoon | Arrive Porto, check into **VIVA Miragaia Airbnb** | Central Porto. Rest, freshen up. ⏳ Waiting for host confirmation |
 | 5:00 PM | **São Bento Station tiles** | 10 min stop. Free. Stroller-friendly. |
 | 6:00 PM | **Ribeira Evening Stroll** | Twinkling lights, street performers, gelato |
 | 7:30 PM | Dinner at Ribeira | Simple tasca — soup, salads, bread, cheese |
@@ -136,7 +136,7 @@ Lisbon (metro + tram, 4 days) → [Car 2 pickup] → Algarve (4 days) → Lisbon
 
 | Time | Activity | Type | Notes |
 |------|----------|------|-------|
-| 9:00 AM | Uber to **Porto Airport** | 🚗 Transit | From Boon House, ~20 min |
+| 9:00 AM | Uber to **Porto Airport** | 🚗 Transit | From VIVA Miragaia, ~20 min |
 | 10:00 AM | **PICK UP CAR 1** | 🚗 Car Rental | Porto Airport. Confirm child seats installed! |
 | 10:30 AM | Drive to **Aveiro** | 🚗 Drive | 1 hr south |
 | 11:30 AM | **Aveiro canal boat** (moliceiro) | 🚤 Boat Tour | €15/adult, €8/child. 45 min. Colorful boats!<br>🎥 [Moliceiro ride](https://www.youtube.com/watch?v=xKhZZZ_JGRU) |
@@ -431,7 +431,7 @@ Lisbon (metro + tram, 4 days) → [Car 2 pickup] → Algarve (4 days) → Lisbon
 ### 🏨 Accommodation Status
 | Stay | Dates | Cost | Status |
 |------|-------|------|--------|
-| **Porto** — Boon House Airbnb | Jul 27–30 (3 nights) | **€440** | ⏳ Pending |
+| **Porto** — VIVA Miragaia Airbnb | Jul 27–30 (3 nights) | **€440** | ⏳ Pending |
 | **Tomar** — Airbnb (TBD) | Jul 30 – Aug 2 (3 nights) | TBD | ❌ Need to book |
 | **Lisbon** — Holiday Inn Continental | Aug 2–6 (4 nights) | **Points** | ✅ BOOKED |
 | **Algarve** — Casa Margarida | Aug 6–10 (4 nights) | **€1,000** | ✅ BOOKED |

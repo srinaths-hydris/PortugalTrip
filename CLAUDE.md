@@ -21,7 +21,7 @@ Brother-in-law Darshan & sister-in-law Rika join in Algarve Aug 6-9 (fly into Fa
 - Split car rental: Car 1 Porto>Lisbon (€600, 3 days), Car 2 Lisbon Airport round-trip via Algarve (€950, 5 days)
 - Car 2 returned EVENING of Aug 10 (not 5 AM Aug 11) — eliminates flight-morning risk
 - Algarve base: Armacao de Pera (Casa Margarida, €1,000, 3 bed)
-- Porto: Boon House Airbnb (€440)
+- Porto: VIVA Miragaia Airbnb (€440)
 - Lisbon + Airport hotels: on points
 - Tomar: still needs booking
 - Benagil catamaran on Day 12 (Fri Aug 7)

@@ -61,7 +61,7 @@
         },
         {
           "time": "12:00 PM",
-          "name": "Check out Holiday Inn, check into VIVA Miragaia (Boon House)",
+          "name": "Check out Holiday Inn, check into VIVA Miragaia (VIVA Miragaia)",
           "type": "check-in",
           "notes": "€440 (3 nights). Two-bedroom apartment downtown. Standard check-in 4 PM but can store luggage and explore."
         },
@@ -79,7 +79,7 @@
         },
         {
           "time": "4:00 PM",
-          "name": "Settle into Boon House apartment",
+          "name": "Settle into VIVA Miragaia apartment",
           "type": "check-in",
           "notes": "Apartment ready by 4 PM. Unpack, rest."
         },
@@ -261,7 +261,7 @@
           "time": "9:00 AM",
           "name": "Uber to Porto Airport",
           "type": "transit",
-          "notes": "From Boon House, ~20 min"
+          "notes": "From VIVA Miragaia, ~20 min"
         },
         {
           "time": "10:00 AM",
