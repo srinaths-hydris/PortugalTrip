@@ -38,7 +38,7 @@
       "status": "Booked",
       "confirmation": "28003005",
       "document": "Lisbon.pdf",
-      "notes": "✅ 1 King Bed Standard. Rua Laura Alves 9, Lisbon. ⚠️ Need to add 1 night (Aug 1-2) for ~24,000 pts"
+      "notes": "✅ 1 King Bed Standard. Rua Laura Alves 9, Lisbon. 5 nights total."
     },
     {
       "name": "Casa Margarida",
@@ -197,54 +197,78 @@
       "status": "Booked"
     }
   ],
-  "action_items": [
-    {
-      "item": "Book Tomar hotel",
-      "priority": "High",
-      "completed": true,
-      "notes": "✅ Varandas do Nabão booked via Booking.com (2 nights: Jul 30 - Aug 1). Confirmation: 6011.224.849"
-    },
-    {
-      "item": "Book Pena Palace tickets (Day 10 - Aug 5)",
-      "priority": "High",
-      "completed": false
-    },
-    {
-      "item": "Book Benagil catamaran tour (Day 12 - Aug 7)",
-      "priority": "High",
-      "completed": false
-    },
-    {
-      "item": "Confirm Darshan & Rika Faro flight times",
-      "priority": "Medium",
-      "completed": true,
-      "notes": "✅ EZY8532: Arrive Aug 6 at 2:50 PM, Depart Aug 10 at 11:35 AM"
-    },
-    {
-      "item": "Confirm Sriram Porto flight times",
-      "priority": "Medium",
-      "completed": true,
-      "notes": "✅ BA 2668/2669: Arrive Jul 26 at 8:40 PM, Depart Jul 28 at 8:55 PM"
-    },
-    {
-      "item": "Book Algarve restaurants (group of 6)",
-      "priority": "Medium",
-      "completed": false
-    },
-    {
-      "item": "Set multiple alarms for 4:30 AM on Aug 11",
-      "priority": "High",
-      "completed": false
-    },
-    {
-      "item": "Download offline maps for Portugal",
-      "priority": "Low",
-      "completed": false
-    },
-    {
-      "item": "Print hotel confirmations",
-      "priority": "Low",
-      "completed": false
-    }
-  ]
+  "action_items": {
+    "pending": [
+      {
+        "item": "Book Livraria Lello tickets (Day 2 - Jul 28, 9:00 AM)",
+        "priority": "High",
+        "completed": false,
+        "notes": "3 adults + 2 kids free = €24 total"
+      },
+      {
+        "item": "Book Pena Palace + Moorish Castle tickets (Day 10 - Aug 5)",
+        "priority": "High",
+        "completed": false,
+        "notes": "€44 total for 2 adults"
+      },
+      {
+        "item": "Book Benagil catamaran tour (Day 12 - Aug 7, 9:30 AM)",
+        "priority": "High",
+        "completed": false,
+        "notes": "6 people (4 adults + 2 kids) = €250-330. SELLS OUT in August!"
+      },
+      {
+        "item": "Book Car 2 rental (Lisbon Airport round-trip, Aug 6-10)",
+        "priority": "High",
+        "completed": false,
+        "notes": "Upgraded vehicle for 6 people, €950 estimate"
+      },
+      {
+        "item": "Book Algarve restaurants (group of 6)",
+        "priority": "Medium",
+        "completed": false,
+        "notes": "1-2 days ahead, August peak season"
+      },
+      {
+        "item": "Confirm child seats for Car 1 at pickup (Jul 30)",
+        "priority": "Medium",
+        "completed": false
+      },
+      {
+        "item": "Set multiple alarms for 4:30 AM on Aug 11",
+        "priority": "High",
+        "completed": false
+      },
+      {
+        "item": "Download offline maps for Portugal",
+        "priority": "Low",
+        "completed": false
+      },
+      {
+        "item": "Print hotel confirmations",
+        "priority": "Low",
+        "completed": false
+      }
+    ],
+    "completed": [
+      {
+        "item": "Book Tomar hotel",
+        "priority": "High",
+        "completed": true,
+        "notes": "✅ Varandas do Nabão booked via Booking.com (2 nights: Jul 30 - Aug 1). Confirmation: 6011.224.849"
+      },
+      {
+        "item": "Confirm Darshan & Rika Faro flight times",
+        "priority": "Medium",
+        "completed": true,
+        "notes": "✅ EZY8532: Arrive Aug 6 at 2:50 PM, Depart Aug 10 at 11:35 AM (they stay overnight at airport hotel Aug 9)"
+      },
+      {
+        "item": "Confirm Sriram Porto flight times",
+        "priority": "Medium",
+        "completed": true,
+        "notes": "✅ BA 2668/2669: Arrive Jul 26 at 8:40 PM, Depart Jul 28 at 8:55 PM"
+      }
+    ]
+  }
 }
