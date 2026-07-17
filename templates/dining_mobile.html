@@ -1,0 +1,110 @@
+{% extends "base_mobile.html" %}
+
+{% block page_title %}Dining{% endblock %}
+
+{% block content %}
+<!-- Guide Info -->
+<div class="mobile-card" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; margin-bottom: 1rem;">
+    <div style="text-align: center;">
+        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">{{ dining.guide_info.title }}</div>
+        <div style="font-size: 0.9rem; opacity: 0.9;">{{ dining.guide_info.description }}</div>
+        {% if dining.guide_info.notes %}
+        <div style="font-size: 0.85rem; opacity: 0.85; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.3);">
+            💡 {{ dining.guide_info.notes }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Day Cards -->
+{% for day in dining.days %}
+<div class="mobile-accordion">
+    <div class="mobile-accordion-header">
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary); background: rgba(102, 126, 234, 0.1); padding: 0.25rem 0.5rem; border-radius: 6px;">DAY {{ day.day_number }}</span>
+                <span style="font-size: 0.85rem; color: var(--text-secondary);">{{ day.date }}</span>
+            </div>
+            <div style="font-weight: 600; color: var(--text-primary);">📍 {{ day.location }}</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">{{ day.meals|length }} meal{% if day.meals|length != 1 %}s{% endif %}</div>
+        </div>
+        <div class="mobile-accordion-icon">▼</div>
+    </div>
+    <div class="mobile-accordion-content">
+        <div class="mobile-accordion-body">
+            {% for meal in day.meals %}
+            <div style="margin-bottom: {% if not loop.last %}1.5rem{% else %}0{% endif %}; padding-bottom: {% if not loop.last %}1.5rem{% else %}0{% endif %}; {% if not loop.last %}border-bottom: 1px solid var(--border);{% endif %}">
+                <!-- Meal Header -->
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <div style="font-size: 1.5rem;">
+                        {% if meal.meal_type == 'breakfast' %}🌅
+                        {% elif meal.meal_type == 'lunch' %}☀️
+                        {% elif meal.meal_type == 'dinner' %}🌙
+                        {% elif meal.meal_type == 'snack' %}🥐
+                        {% else %}🍽️
+                        {% endif %}
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 600; color: var(--primary); letter-spacing: 0.5px; margin-bottom: 0.25rem;">
+                            {{ meal.meal_type }} {% if meal.time %}• {{ meal.time }}{% endif %}
+                        </div>
+                        <div style="font-weight: 600; font-size: 1.05rem;">{{ meal.restaurant_name }}</div>
+                    </div>
+                    {% if meal.booking_needed %}
+                    <span class="mobile-badge mobile-badge-warning">Book</span>
+                    {% endif %}
+                </div>
+
+                <!-- Details -->
+                <div style="margin-bottom: 0.75rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <span style="font-size: 0.85rem; color: var(--text-secondary);">📍 {{ meal.area }}</span>
+                        {% if meal.cuisine %}
+                        <span style="font-size: 0.85rem; color: var(--text-secondary);">• {{ meal.cuisine }}</span>
+                        {% endif %}
+                    </div>
+
+                    {% if meal.what_to_get %}
+                    <div style="margin-bottom: 0.5rem;">
+                        <div style="font-size: 0.8rem; font-weight: 600; color: var(--primary); margin-bottom: 0.25rem;">🍴 What to Get</div>
+                        <div style="font-size: 0.9rem; line-height: 1.5;">{{ meal.what_to_get }}</div>
+                    </div>
+                    {% endif %}
+
+                    {% if meal.notes %}
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.5rem;">
+                        💡 {{ meal.notes }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Footer Badges -->
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+                    {% if meal.estimated_cost %}
+                    <span style="font-size: 0.75rem; padding: 0.25rem 0.5rem; background: rgba(102, 126, 234, 0.1); color: var(--primary); border-radius: 6px; font-weight: 600;">
+                        💰 {{ meal.estimated_cost }}
+                    </span>
+                    {% endif %}
+                    {% if meal.kid_friendly %}
+                    <span style="font-size: 0.75rem; padding: 0.25rem 0.5rem; background: rgba(16, 185, 129, 0.1); color: var(--success); border-radius: 6px; font-weight: 600;">
+                        👶 Kid Friendly
+                    </span>
+                    {% endif %}
+                    {% if meal.vegetarian_friendly %}
+                    <span style="font-size: 0.75rem; padding: 0.25rem 0.5rem; background: rgba(34, 197, 94, 0.1); color: #22c55e; border-radius: 6px; font-weight: 600;">
+                        🥬 Veggie Options
+                    </span>
+                    {% endif %}
+                    {% if meal.must_try %}
+                    <span style="font-size: 0.75rem; padding: 0.25rem 0.5rem; background: rgba(245, 158, 11, 0.1); color: var(--warning); border-radius: 6px; font-weight: 600;">
+                        ⭐ Must Try
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

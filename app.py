@@ -108,6 +108,7 @@ def dashboard():
     """Dashboard with overview."""
     user = auth.get_user()
     user['is_admin'] = auth.is_admin(user['email'])
+    user['is_mobile'] = is_mobile()
     trip_date = datetime(2026, 7, 27)
     days_until = (trip_date - datetime.now()).days
 
@@ -119,7 +120,8 @@ def dashboard():
         total_items = len(checklist['items'])
         completed_items = sum(1 for item in checklist['items'] if item.get('completed', False))
 
-    return render_template('dashboard.html',
+    template = 'dashboard_mobile.html' if user['is_mobile'] else 'dashboard.html'
+    return render_template(template,
                          user=user,
                          days_until=days_until,
                          trip_date=trip_date,
@@ -132,8 +134,10 @@ def itinerary():
     """Full itinerary page."""
     user = auth.get_user()
     user['is_admin'] = auth.is_admin(user['email'])
+    user['is_mobile'] = is_mobile()
     itinerary_data = load_data('itinerary.json')
-    return render_template('itinerary.html',
+    template = 'itinerary_mobile.html' if user['is_mobile'] else 'itinerary.html'
+    return render_template(template,
                          user=user,
                          itinerary=itinerary_data)
 
@@ -157,6 +161,7 @@ def checklist():
     """Pre-trip checklist."""
     user = auth.get_user()
     user['is_admin'] = auth.is_admin(user['email'])
+    user['is_mobile'] = is_mobile()
     checklist_data = load_data('checklist.json') or {
         'items': [
             {'id': 1, 'text': 'Book Tomar hotel', 'completed': False, 'priority': 'high'},
@@ -169,7 +174,8 @@ def checklist():
             {'id': 8, 'text': 'Print hotel confirmations', 'completed': False, 'priority': 'low'},
         ]
     }
-    return render_template('checklist.html',
+    template = 'checklist_mobile.html' if user['is_mobile'] else 'checklist.html'
+    return render_template(template,
                          user=user,
                          checklist=checklist_data)
 
@@ -192,8 +198,10 @@ def dining():
     """Dining guide - where to eat each day."""
     user = auth.get_user()
     user['is_admin'] = auth.is_admin(user['email'])
+    user['is_mobile'] = is_mobile()
     dining_data = load_data('dining.json')
-    return render_template('dining.html',
+    template = 'dining_mobile.html' if user['is_mobile'] else 'dining.html'
+    return render_template(template,
                          user=user,
                          dining=dining_data)
 

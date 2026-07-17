@@ -1,0 +1,127 @@
+{% extends "base_mobile.html" %}
+
+{% block page_title %}Checklist{% endblock %}
+
+{% block content %}
+<!-- Progress Card -->
+<div class="mobile-card" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; margin-bottom: 1rem;">
+    <div style="text-align: center;">
+        <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">Pre-Trip Checklist</div>
+
+        <!-- Progress Bar -->
+        <div style="margin-bottom: 1rem;">
+            <div style="height: 12px; background: rgba(255,255,255,0.3); border-radius: 12px; overflow: hidden;">
+                <div style="height: 100%; width: {{ (checklist.items|selectattr('completed')|list|length / checklist.items|length * 100) if checklist.items|length > 0 else 0 }}%; background: white; border-radius: 12px; transition: width 0.3s;"></div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div style="display: flex; justify-content: center; gap: 2rem; font-size: 0.9rem; opacity: 0.95;">
+            <div>
+                <div style="font-size: 1.5rem; font-weight: 700;">{{ checklist.items|selectattr('completed')|list|length }}</div>
+                <div style="font-size: 0.85rem; opacity: 0.9;">Completed</div>
+            </div>
+            <div>
+                <div style="font-size: 1.5rem; font-weight: 700;">{{ checklist.items|rejectattr('completed')|list|length }}</div>
+                <div style="font-size: 0.85rem; opacity: 0.9;">Remaining</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- High Priority Items -->
+{% set high_priority = checklist.items|selectattr('priority', 'equalto', 'high')|list %}
+{% if high_priority %}
+<div class="mobile-card">
+    <div class="mobile-card-header">
+        <div class="mobile-card-icon" style="background: linear-gradient(135deg, var(--danger), #dc2626);">⚠️</div>
+        <div class="mobile-card-title">High Priority</div>
+    </div>
+    <div class="mobile-card-body">
+        {% for item in high_priority %}
+        <div class="mobile-list-item" style="cursor: pointer;" onclick="toggleItem({{ item.id }})">
+            <div class="mobile-list-item-icon" style="font-size: 1.5rem;">
+                <input type="checkbox" id="check-{{ item.id }}" {% if item.completed %}checked{% endif %} style="width: 24px; height: 24px; cursor: pointer;" onclick="event.stopPropagation(); toggleItem({{ item.id }})">
+            </div>
+            <div class="mobile-list-item-content">
+                <div class="mobile-list-item-title" style="{% if item.completed %}text-decoration: line-through; opacity: 0.6;{% endif %}">
+                    {{ item.text }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Medium Priority Items -->
+{% set medium_priority = checklist.items|selectattr('priority', 'equalto', 'medium')|list %}
+{% if medium_priority %}
+<div class="mobile-card">
+    <div class="mobile-card-header">
+        <div class="mobile-card-icon" style="background: linear-gradient(135deg, var(--warning), #f59e0b);">📋</div>
+        <div class="mobile-card-title">Medium Priority</div>
+    </div>
+    <div class="mobile-card-body">
+        {% for item in medium_priority %}
+        <div class="mobile-list-item" style="cursor: pointer;" onclick="toggleItem({{ item.id }})">
+            <div class="mobile-list-item-icon" style="font-size: 1.5rem;">
+                <input type="checkbox" id="check-{{ item.id }}" {% if item.completed %}checked{% endif %} style="width: 24px; height: 24px; cursor: pointer;" onclick="event.stopPropagation(); toggleItem({{ item.id }})">
+            </div>
+            <div class="mobile-list-item-content">
+                <div class="mobile-list-item-title" style="{% if item.completed %}text-decoration: line-through; opacity: 0.6;{% endif %}">
+                    {{ item.text }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Low Priority Items -->
+{% set low_priority = checklist.items|selectattr('priority', 'equalto', 'low')|list %}
+{% if low_priority %}
+<div class="mobile-card">
+    <div class="mobile-card-header">
+        <div class="mobile-card-icon" style="background: linear-gradient(135deg, var(--success), #10b981);">✓</div>
+        <div class="mobile-card-title">Low Priority</div>
+    </div>
+    <div class="mobile-card-body">
+        {% for item in low_priority %}
+        <div class="mobile-list-item" style="cursor: pointer;" onclick="toggleItem({{ item.id }})">
+            <div class="mobile-list-item-icon" style="font-size: 1.5rem;">
+                <input type="checkbox" id="check-{{ item.id }}" {% if item.completed %}checked{% endif %} style="width: 24px; height: 24px; cursor: pointer;" onclick="event.stopPropagation(); toggleItem({{ item.id }})">
+            </div>
+            <div class="mobile-list-item-content">
+                <div class="mobile-list-item-title" style="{% if item.completed %}text-decoration: line-through; opacity: 0.6;{% endif %}">
+                    {{ item.text }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<script>
+function toggleItem(itemId) {
+    fetch(`/api/checklist/toggle/${itemId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Reload to update progress bar and counts
+            location.reload();
+        }
+    })
+    .catch(error => {
+        console.error('Error toggling checklist item:', error);
+    });
+}
+</script>
+{% endblock %}

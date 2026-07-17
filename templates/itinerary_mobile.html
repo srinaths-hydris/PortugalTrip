@@ -1,0 +1,92 @@
+{% extends "base_mobile.html" %}
+
+{% block page_title %}Itinerary{% endblock %}
+
+{% block content %}
+<!-- Trip Info Header -->
+<div class="mobile-card" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; margin-bottom: 1rem;">
+    <div style="text-align: center;">
+        <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">{{ itinerary.trip_info.title }}</div>
+        <div style="font-size: 0.95rem; opacity: 0.9; margin-bottom: 0.25rem;">{{ itinerary.trip_info.dates }}</div>
+        <div style="font-size: 0.9rem; opacity: 0.85;">{{ itinerary.trip_info.participants }}</div>
+        {% if itinerary.trip_info.guests %}
+        <div style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.3);">
+            {{ itinerary.trip_info.guests }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Day Cards -->
+{% for day in itinerary.days %}
+<div class="mobile-accordion">
+    <div class="mobile-accordion-header">
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary); background: rgba(102, 126, 234, 0.1); padding: 0.25rem 0.5rem; border-radius: 6px;">DAY {{ day.day_number }}</span>
+                <span style="font-size: 0.85rem; color: var(--text-secondary);">{{ day.date }}</span>
+            </div>
+            <div style="font-weight: 600; margin-bottom: 0.25rem;">{{ day.title }}</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">📍 {{ day.location }}</div>
+        </div>
+        <div class="mobile-accordion-icon">▼</div>
+    </div>
+    <div class="mobile-accordion-content">
+        <div class="mobile-accordion-body">
+            {% if day.subtitle %}
+            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; padding: 0.75rem; background: var(--bg-secondary); border-radius: 8px;">
+                {{ day.subtitle }}
+            </div>
+            {% endif %}
+
+            <!-- Activities -->
+            {% for activity in day.activities %}
+            <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 1rem; {% if not loop.last %}border-bottom: 1px solid var(--border);{% endif %}">
+                <div style="flex-shrink: 0; width: 60px; font-size: 0.8rem; font-weight: 600; color: var(--primary);">
+                    {{ activity.time }}
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-weight: 600; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.5rem;">
+                        {% if activity.type == 'flight' %}✈️
+                        {% elif activity.type == 'arrival' %}🛬
+                        {% elif activity.type == 'check-in' or activity.type == 'check-out' %}🏨
+                        {% elif activity.type == 'drive' %}🚗
+                        {% elif activity.type == 'sightseeing' %}👀
+                        {% elif activity.type == 'dining' %}🍽️
+                        {% elif activity.type == 'beach' %}🏖️
+                        {% elif activity.type == 'tour' %}🎫
+                        {% elif activity.type == 'shopping' %}🛍️
+                        {% else %}📍
+                        {% endif %}
+                        <span>{{ activity.name }}</span>
+                    </div>
+                    {% if activity.notes %}
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-top: 0.25rem;">
+                        {{ activity.notes }}
+                    </div>
+                    {% endif %}
+                    {% if activity.cost %}
+                    <div style="font-size: 0.85rem; color: var(--primary); margin-top: 0.25rem; font-weight: 600;">
+                        💰 {{ activity.cost }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+            {% if day.kids_note %}
+            <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(16, 185, 129, 0.1); border-radius: 8px; font-size: 0.85rem; color: var(--success); border: 1px solid rgba(16, 185, 129, 0.3);">
+                👶 <strong>Kids Note:</strong> {{ day.kids_note }}
+            </div>
+            {% endif %}
+
+            {% if day.must_book %}
+            <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(245, 158, 11, 0.1); border-radius: 8px; font-size: 0.85rem; color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.3);">
+                ⚠️ <strong>Must Book:</strong> {{ day.must_book }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
