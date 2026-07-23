@@ -102,12 +102,36 @@
     <p>Important tasks before departure</p>
 </div>
 
+<!-- Progress Summary -->
+<div style="max-width: 800px; margin: 0 auto 2rem auto;">
+    <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
+        {% set pending_items = checklist['items'] | selectattr('completed', 'equalto', false) | list %}
+        {% set completed_items = checklist['items'] | selectattr('completed', 'equalto', true) | list %}
+        {% set total = checklist['items'] | length %}
+
+        <div>
+            <div style="font-size: 2rem; font-weight: 700; color: #dc3545;">{{ pending_items | length }}</div>
+            <div style="color: #666; font-size: 0.9rem;">Pending</div>
+        </div>
+        <div>
+            <div style="font-size: 2rem; font-weight: 700; color: #28a745;">{{ completed_items | length }}</div>
+            <div style="color: #666; font-size: 0.9rem;">Completed</div>
+        </div>
+        <div>
+            <div style="font-size: 2rem; font-weight: 700; color: #667eea;">{{ "%.0f"|format((completed_items|length / total * 100) if total > 0 else 0) }}%</div>
+            <div style="color: #666; font-size: 0.9rem;">Progress</div>
+        </div>
+    </div>
+</div>
+
+<!-- Pending Tasks -->
 <div class="checklist-container">
-    {% if checklist and checklist['items'] %}
-        {% for item in checklist['items'] %}
-        <div class="checklist-item {% if item.completed %}completed{% endif %}">
-            <div class="checkbox {% if item.completed %}completed{% endif %}"
-                 onclick="toggleChecklistItem({{ item.id }})"></div>
+    <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #333;">⏳ Pending Tasks</h2>
+    {% set pending = checklist['items'] | selectattr('completed', 'equalto', false) | list %}
+    {% if pending %}
+        {% for item in pending %}
+        <div class="checklist-item">
+            <div class="checkbox" onclick="toggleChecklistItem({{ item.id }})"></div>
             <div class="checklist-text">{{ item.text }}</div>
             <span class="priority-badge priority-{{ item.priority }}">
                 {{ item.priority }}
@@ -115,9 +139,26 @@
         </div>
         {% endfor %}
     {% else %}
-        <p style="text-align: center; color: #666;">No checklist items yet</p>
+        <p style="text-align: center; color: #666; padding: 2rem;">🎉 All tasks completed!</p>
     {% endif %}
 </div>
+
+<!-- Completed Tasks (Collapsed) -->
+{% set completed = checklist.get('completed_items', []) %}
+{% if completed %}
+<div class="checklist-container" style="margin-top: 2rem; opacity: 0.7;">
+    <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #28a745;">✅ Completed ({{ completed | length }})</h2>
+    {% for item in completed %}
+    <div class="checklist-item completed">
+        <div class="checkbox completed"></div>
+        <div class="checklist-text">{{ item.text }}</div>
+        {% if item.notes %}
+        <span style="font-size: 0.85rem; color: #999;">{{ item.notes }}</span>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
 
 <script>
 function toggleChecklistItem(itemId) {

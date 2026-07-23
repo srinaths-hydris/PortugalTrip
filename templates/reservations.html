@@ -15,73 +15,102 @@
         margin-bottom: 0.5rem;
     }
 
-    .summary-cards {
+    /* Overview Cards Grid */
+    .overview-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        margin-bottom: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
     }
 
-    .summary-card {
+    .overview-card {
         background: white;
+        border-radius: 16px;
         padding: 1.5rem;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
     }
 
-    .summary-card .number {
-        font-size: 2.5rem;
-        font-weight: 700;
+    .overview-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 20px rgba(102,126,234,0.2);
+        border-color: #667eea;
+    }
+
+    .overview-icon {
+        font-size: 3rem;
         margin-bottom: 0.5rem;
     }
 
-    .summary-card .label {
-        color: #666;
-        font-size: 0.9rem;
+    .overview-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 0.75rem;
     }
 
-    .summary-card.booked .number { color: #28a745; }
-    .summary-card.pending .number { color: #ffc107; }
-    .summary-card.need .number { color: #dc3545; }
-
-    /* Tabs */
-    .tabs {
+    .overview-stats {
         display: flex;
         gap: 0.5rem;
-        margin-bottom: 2rem;
-        border-bottom: 2px solid #e5e5e5;
-        overflow-x: auto;
+        flex-wrap: wrap;
+        margin-bottom: 0.75rem;
     }
 
-    .tab {
-        padding: 1rem 1.5rem;
-        background: transparent;
-        border: none;
-        border-bottom: 3px solid transparent;
-        cursor: pointer;
-        font-size: 1rem;
+    .overview-stats span {
+        padding: 0.35rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
         font-weight: 600;
+    }
+
+    .stat-good {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .stat-warn {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .stat-bad {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .stat-info {
+        background: #d1ecf1;
+        color: #0c5460;
+    }
+
+    .overview-details {
+        font-size: 0.9rem;
         color: #666;
-        transition: all 0.2s;
-        white-space: nowrap;
+        line-height: 1.5;
     }
 
-    .tab:hover {
-        color: #667eea;
+    .section-divider {
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #e5e5e5, transparent);
+        margin: 3rem 0;
     }
 
-    .tab.active {
-        color: #667eea;
-        border-bottom-color: #667eea;
+    .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid #667eea;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
     }
 
-    .tab-content {
-        display: none;
-    }
-
-    .tab-content.active {
-        display: block;
+    .section-title .icon {
+        font-size: 2.5rem;
     }
 
     /* Reservation items */
@@ -89,7 +118,7 @@
         background: white;
         border-radius: 12px;
         padding: 1.5rem;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
         box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         border-left: 4px solid #667eea;
     }
@@ -125,6 +154,7 @@
         border-radius: 12px;
         font-size: 0.85rem;
         font-weight: 600;
+        white-space: nowrap;
     }
 
     .status-booked {
@@ -203,8 +233,8 @@
     }
 
     @media (max-width: 768px) {
-        .tabs {
-            flex-wrap: nowrap;
+        .overview-grid {
+            grid-template-columns: 1fr;
         }
 
         .reservation-header {
@@ -216,6 +246,10 @@
             grid-template-columns: 1fr;
         }
     }
+
+    html {
+        scroll-behavior: smooth;
+    }
 </style>
 {% endblock %}
 
@@ -225,37 +259,101 @@
     <p>Portugal Trip 2026 • Jul 27 - Aug 11</p>
 </div>
 
-<!-- Summary Cards -->
-<div class="summary-cards">
-    <div class="summary-card booked">
-        <div class="number">6</div>
-        <div class="label">✅ Confirmed</div>
+<!-- Overview Cards Grid -->
+<div class="overview-grid">
+    <!-- Accommodation Card -->
+    <div class="overview-card" onclick="scrollToSection('accommodation')">
+        <div class="overview-icon">🏨</div>
+        <div class="overview-title">Accommodation</div>
+        <div class="overview-stats">
+            <span class="stat-good">6 booked</span>
+            <span class="stat-warn">1 needs modify</span>
+        </div>
+        <div class="overview-details">
+            Holiday Inn Porto • VIVA Miragaia • Varandas do Nabão • Lisbon Airbnb • Casa Margarida • Airport
+        </div>
     </div>
-    <div class="summary-card pending">
-        <div class="number">1</div>
-        <div class="label">⏳ Pending</div>
+
+    <!-- Activities Card -->
+    <div class="overview-card" onclick="scrollToSection('activities')">
+        <div class="overview-icon">🎫</div>
+        <div class="overview-title">Activities</div>
+        <div class="overview-stats">
+            <span class="stat-good">3 booked</span>
+            <span class="stat-bad">1 need to book</span>
+        </div>
+        <div class="overview-details">
+            ✅ Benagil Caves • Moorish Castle • Quinta da Regaleira<br>
+            ❌ Pena Palace
+        </div>
     </div>
-    <div class="summary-card need">
-        <div class="number">7</div>
-        <div class="label">❌ Need to Book</div>
+
+    <!-- Car Rentals Card -->
+    <div class="overview-card" onclick="scrollToSection('cars')">
+        <div class="overview-icon">🚗</div>
+        <div class="overview-title">Car Rentals</div>
+        <div class="overview-stats">
+            <span class="stat-good">Both booked</span>
+            <span class="stat-info">€1,119 total</span>
+        </div>
+        <div class="overview-details">
+            Sicily by Car<br>
+            Car 1: Porto→Lisbon (€374)<br>
+            Car 2: Lisbon round-trip (€745)
+        </div>
+    </div>
+
+    <!-- Dining Card -->
+    <div class="overview-card" onclick="scrollToSection('dining')">
+        <div class="overview-icon">🍽️</div>
+        <div class="overview-title">Dining</div>
+        <div class="overview-stats">
+            <span class="stat-warn">Book 1-2 days ahead</span>
+        </div>
+        <div class="overview-details">
+            Algarve restaurants for group of 6 (Aug 6-9)
+        </div>
     </div>
 </div>
 
-<!-- Tabs -->
-<div class="tabs">
-    <button class="tab active" onclick="switchTab('accommodation')">🏨 Accommodation</button>
-    <button class="tab" onclick="switchTab('activities')">🎫 Activities</button>
-    <button class="tab" onclick="switchTab('cars')">🚗 Car Rentals</button>
-    <button class="tab" onclick="switchTab('dining')">🍽️ Dining</button>
-</div>
+<div class="section-divider"></div>
 
-<!-- Accommodation Tab -->
-<div id="accommodation" class="tab-content active">
-    <!-- Porto -->
-    <div class="reservation-item pending">
+<!-- Detailed Sections -->
+
+<!-- Accommodation Section -->
+<div id="accommodation">
+    <h2 class="section-title"><span class="icon">🏨</span> Accommodation Details</h2>
+
+    <!-- Holiday Inn Porto -->
+    <div class="reservation-item booked">
         <div class="reservation-header">
-            <div class="reservation-name">🏘️ VIVA Miragaia Airbnb — Porto</div>
-            <span class="status-badge status-pending">⏳ Pending Confirmation</span>
+            <div class="reservation-name">Holiday Inn Express Porto - Boavista</div>
+            <span class="status-badge status-booked">✅ Booked</span>
+        </div>
+        <div class="reservation-details">
+            <div class="detail-item">
+                <span class="detail-label">Dates</span>
+                <span class="detail-value">Jul 26-27, 2026 (1 night)</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Cost</span>
+                <span class="detail-value">17,000 IHG Points</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Confirmation</span>
+                <span class="detail-value">41044494</span>
+            </div>
+        </div>
+        <div class="notes">
+            1 Queen Standard Single Sofa Bed with Free Breakfast. Check-in 3:00 PM. 5 R. de Outubro 578, Porto
+        </div>
+    </div>
+
+    <!-- VIVA Miragaia Porto -->
+    <div class="reservation-item booked">
+        <div class="reservation-header">
+            <div class="reservation-name">VIVA Miragaia Downtown (Porto Apartment)</div>
+            <span class="status-badge status-booked">✅ Booked</span>
         </div>
         <div class="reservation-details">
             <div class="detail-item">
@@ -264,44 +362,74 @@
             </div>
             <div class="detail-item">
                 <span class="detail-label">Cost</span>
-                <span class="detail-value">€440</span>
+                <span class="detail-value">$532 (€466)</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Location</span>
-                <span class="detail-value">Central Porto</span>
+                <span class="detail-label">Confirmation</span>
+                <span class="detail-value">6562.491.759 | PIN: 5035</span>
             </div>
         </div>
         <div class="notes">
-            ⏳ Waiting for host confirmation
+            Two-Bedroom Apartment. 3 adults, 2 children. Rua São Pedro de Miragaia, 4050-565 Porto. Check-in Mon Jul 27, 16:00-00:00
         </div>
     </div>
 
     <!-- Tomar -->
-    <div class="reservation-item need-to-book">
+    <div class="reservation-item booked">
         <div class="reservation-header">
-            <div class="reservation-name">🏡 Tomar Accommodation (TBD)</div>
-            <span class="status-badge status-need-to-book">❌ Need to Book</span>
+            <div class="reservation-name">Varandas do Nabão — Tomar</div>
+            <span class="status-badge status-booked">✅ Booked</span>
         </div>
         <div class="reservation-details">
             <div class="detail-item">
                 <span class="detail-label">Dates</span>
-                <span class="detail-value">Jul 30 - Aug 2, 2026 (3 nights)</span>
+                <span class="detail-value">Jul 30 - Aug 1, 2026 (2 nights)</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Area</span>
-                <span class="detail-value">Tomar or near Castelo de Bode</span>
+                <span class="detail-label">Cost</span>
+                <span class="detail-value">$252 (€220)</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Confirmation</span>
+                <span class="detail-value">6011.224.849 | PIN: 6746</span>
             </div>
         </div>
         <div class="notes">
-            🔍 Search Airbnb near Tomar for July 30 - Aug 2
+            Two-Bedroom Apartment. Rua dos Moinhos 1 B 2º, 2300-575 Tomar. Check-in Thu Jul 30, 16:00-20:00. Check-out Sat Aug 1, until 11:00. Phone: +351 927 444 144
         </div>
     </div>
 
-    <!-- Lisbon -->
+    <!-- Lisbon Holiday Inn -->
     <div class="reservation-item booked">
         <div class="reservation-header">
-            <div class="reservation-name">🏨 Holiday Inn Continental — Lisbon</div>
-            <span class="status-badge status-booked">✅ Booked (Points)</span>
+            <div class="reservation-name">Holiday Inn Lisbon – Continental</div>
+            <span class="status-badge status-pending">⚠️ Needs Modify</span>
+        </div>
+        <div class="reservation-details">
+            <div class="detail-item">
+                <span class="detail-label">Current Booking</span>
+                <span class="detail-value">Aug 1-6, 2026 (5 nights)</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Need to Change To</span>
+                <span class="detail-value">Aug 1-2, 2026 (1 night only)</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Confirmation</span>
+                <span class="detail-value">28003005</span>
+            </div>
+        </div>
+        <div class="notes">
+            ⚠️ <strong>ACTION NEEDED:</strong> Modify from 5 nights → 1 night (Aug 1-2 only). Airbnb takes over Aug 2-6.<br>
+            1 King Bed Standard. Rua Laura Alves 9, Lisbon
+        </div>
+    </div>
+
+    <!-- Lisbon Airbnb -->
+    <div class="reservation-item booked">
+        <div class="reservation-header">
+            <div class="reservation-name">Atlantic Views Lisbon 1 (Airbnb)</div>
+            <span class="status-badge status-booked">✅ Booked</span>
         </div>
         <div class="reservation-details">
             <div class="detail-item">
@@ -309,24 +437,19 @@
                 <span class="detail-value">Aug 2-6, 2026 (4 nights)</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Cost</span>
-                <span class="detail-value">Hotel Points</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Location</span>
-                <span class="detail-value">Lisbon City Center</span>
+                <span class="detail-label">Confirmation</span>
+                <span class="detail-value">HMECEBTRT2</span>
             </div>
         </div>
         <div class="notes">
-            ⚠️ <strong>Cancellation Policy:</strong> Free cancellation before 3:00 PM on Aug 1. Partial refund if canceled before check-in (3:00 PM Aug 2).<br>
-            🔄 May cancel if Holiday Inn offers upgrade
+            Home hosted by Sarah E Pedro Apartments. Avenida Doutor Mário Moutinho 31, Lisbon 1400-408. Check-in: Sun Aug 2, 3:00 PM. Checkout: Thu Aug 6, 11:00 AM
         </div>
     </div>
 
     <!-- Algarve -->
     <div class="reservation-item booked">
         <div class="reservation-header">
-            <div class="reservation-name">🏖️ Casa Margarida — Armação de Pêra (Algarve)</div>
+            <div class="reservation-name">Casa Margarida — Armação de Pêra (Algarve)</div>
             <span class="status-badge status-booked">✅ Booked</span>
         </div>
         <div class="reservation-details">
@@ -336,23 +459,23 @@
             </div>
             <div class="detail-item">
                 <span class="detail-label">Cost</span>
-                <span class="detail-value">€1,000</span>
+                <span class="detail-value">€1,000-1,200</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Capacity</span>
-                <span class="detail-value">3 bedrooms, 6 people, AC</span>
+                <span class="detail-label">Confirmation</span>
+                <span class="detail-value">VRBO: egti-M4J-Y6M-0B5W</span>
             </div>
         </div>
         <div class="notes">
-            👨‍👩‍👧‍👦 Darshan & Rika join here (Aug 6-9). Check-in 2-3 PM.
+            3 bedrooms, 6 people, AC. Check-in Thu Aug 6, 5:00 PM or later. 👨‍👩‍👧‍👦 Darshan & Rika join here (Aug 6-9)
         </div>
     </div>
 
     <!-- Airport -->
     <div class="reservation-item booked">
         <div class="reservation-header">
-            <div class="reservation-name">✈️ Holiday Inn Express — Lisbon Airport</div>
-            <span class="status-badge status-booked">✅ Booked (Points)</span>
+            <div class="reservation-name">Holiday Inn Express — Lisbon Airport</div>
+            <span class="status-badge status-booked">✅ Booked</span>
         </div>
         <div class="reservation-details">
             <div class="detail-item">
@@ -361,21 +484,25 @@
             </div>
             <div class="detail-item">
                 <span class="detail-label">Cost</span>
-                <span class="detail-value">Hotel Points</span>
+                <span class="detail-value">24,000 IHG Points</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Location</span>
-                <span class="detail-value">At Lisbon Airport (5 min walk to terminal)</span>
+                <span class="detail-label">Confirmation</span>
+                <span class="detail-value">81447033</span>
             </div>
         </div>
         <div class="notes">
-            ✈️ Flight departs 7:35 AM Aug 11. Hotel is AT the airport — perfect for early flight!
+            1 Double Standard with Free Breakfast. Rua Guine, no. 18-18b, Lisbon. ✈️ Flight departs 7:35 AM Aug 11. Hotel is AT the airport — perfect for early flight!
         </div>
     </div>
 </div>
 
-<!-- Activities Tab -->
-<div id="activities" class="tab-content">
+<div class="section-divider"></div>
+
+<!-- Activities Section -->
+<div id="activities">
+    <h2 class="section-title"><span class="icon">🎫</span> Activities & Tickets</h2>
+
     <!-- Benagil Caves -->
     <div class="reservation-item booked">
         <div class="reservation-header">
@@ -422,11 +549,11 @@
             </div>
             <div class="detail-item">
                 <span class="detail-label">Type</span>
-                <span class="detail-value">Entry Tickets + Audio Guide</span>
+                <span class="detail-value">Entry + Audio Guide</span>
             </div>
             <div class="detail-item">
                 <span class="detail-label">Guests</span>
-                <span class="detail-value">2 Adults, 2 Children (FREE)</span>
+                <span class="detail-value">2 Adults (kids FREE)</span>
             </div>
         </div>
         <div class="confirmation-box">
@@ -435,8 +562,7 @@
             <strong>Provider:</strong> Headout
         </div>
         <div class="notes">
-            🚫 This ticket can't be cancelled or rescheduled.<br>
-            Part of combo deal with Quinta da Regaleira
+            🚫 This ticket can't be cancelled or rescheduled. Part of combo deal with Quinta da Regaleira
         </div>
         <a href="{{ url_for('static', filename='tickets/Moorish_Castle_ticket.pdf') }}" class="ticket-download" download>📄 Download Ticket PDF</a>
     </div>
@@ -458,18 +584,16 @@
             </div>
             <div class="detail-item">
                 <span class="detail-label">Guests</span>
-                <span class="detail-value">2 Adults, 2 Children (FREE)</span>
+                <span class="detail-value">2 Adults (kids FREE)</span>
             </div>
         </div>
         <div class="confirmation-box">
             <strong>Booking ID:</strong> 32925204<br>
             <strong>Total Paid:</strong> $84.87<br>
-            <strong>Provider:</strong> Headout<br>
-            <strong>Status:</strong> Tickets preparing (takes 2 hours from booking)
+            <strong>Provider:</strong> Headout
         </div>
         <div class="notes">
-            📧 Tickets will be emailed when ready<br>
-            Part of combo deal with Moorish Castle (5% discount)
+            📧 Tickets will be emailed when ready. Part of combo deal with Moorish Castle (5% discount)
         </div>
         <a href="{{ url_for('static', filename='tickets/Quinta_Sintara_Tickets.pdf') }}" class="ticket-download" download>📄 Download Ticket PDF</a>
     </div>
@@ -487,7 +611,7 @@
             </div>
             <div class="detail-item">
                 <span class="detail-label">Type</span>
-                <span class="detail-value">Gardens + Exterior (skip interior)</span>
+                <span class="detail-value">Gardens + Exterior only</span>
             </div>
             <div class="detail-item">
                 <span class="detail-label">Cost</span>
@@ -499,103 +623,95 @@
             Skip interior (long queues) — gardens are the best part!
         </div>
     </div>
-
-    <!-- Clérigos Tower -->
-    <div class="reservation-item need-to-book">
-        <div class="reservation-header">
-            <div class="reservation-name">🗼 Clérigos Tower — Porto (Optional)</div>
-            <span class="status-badge status-need-to-book">⏸️ Decide Day-Of</span>
-        </div>
-        <div class="reservation-details">
-            <div class="detail-item">
-                <span class="detail-label">Options</span>
-                <span class="detail-value">Day 1 evening OR Day 2 morning</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Cost</span>
-                <span class="detail-value">€8/adult, FREE <10</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Duration</span>
-                <span class="detail-value">45 minutes (225 steps)</span>
-            </div>
-        </div>
-        <div class="notes">
-            ⚖️ Flexible: If energetic after arriving Day 1 → do it at 5:30 PM. If tired → skip and do Day 2 at 9 AM.
-        </div>
-    </div>
 </div>
 
-<!-- Car Rentals Tab -->
-<div id="cars" class="tab-content">
+<div class="section-divider"></div>
+
+<!-- Car Rentals Section -->
+<div id="cars">
+    <h2 class="section-title"><span class="icon">🚗</span> Car Rentals</h2>
+
     <!-- Car 1 -->
-    <div class="reservation-item need-to-book">
+    <div class="reservation-item booked">
         <div class="reservation-header">
-            <div class="reservation-name">🚗 Car Rental 1: Porto → Lisbon (One-way)</div>
-            <span class="status-badge status-need-to-book">❌ Need to Book</span>
+            <div class="reservation-name">Car 1 - Sicily by Car (Porto → Lisbon)</div>
+            <span class="status-badge status-booked">✅ Booked</span>
         </div>
         <div class="reservation-details">
             <div class="detail-item">
                 <span class="detail-label">Pick-up</span>
-                <span class="detail-value">Thu, Jul 30, 10:00 AM — Porto Airport</span>
+                <span class="detail-value">Wed, Jul 30, 9:00 AM — Porto Airport</span>
             </div>
             <div class="detail-item">
                 <span class="detail-label">Drop-off</span>
-                <span class="detail-value">Sun, Aug 2 — Lisbon (airport or city)</span>
+                <span class="detail-value">Fri, Aug 2, 9:00 AM — Lisbon Airport</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Duration</span>
-                <span class="detail-value">~3 days</span>
+                <span class="detail-label">Vehicle</span>
+                <span class="detail-value">FSA SUV COMPACTO PLUS AUTO</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Estimated Cost</span>
-                <span class="detail-value">€600 (incl. taxes)</span>
+                <span class="detail-label">Cost</span>
+                <span class="detail-value">€374.24 (3 days)</span>
             </div>
         </div>
+        <div class="confirmation-box">
+            <strong>Confirmation:</strong> PT 000039661<br>
+            <strong>Driver:</strong> Srinivasan, Srinath<br>
+            <strong>Phone:</strong> +13153962489
+        </div>
         <div class="notes">
-            🚙 <strong>Covers:</strong> Aveiro, Tomar, drive to Lisbon via Batalha/Nazaré/Óbidos<br>
-            👶 <strong>MUST confirm:</strong> 2 child seats at pickup!
+            Includes: Collision Damage Waiver, One Way Nacional (€113.83), Smart Gold Protect (€25.12), Road Assistance Premium<br>
+            👶 <strong>MUST confirm 2 child seats at pickup!</strong>
         </div>
     </div>
 
     <!-- Car 2 -->
-    <div class="reservation-item need-to-book">
+    <div class="reservation-item booked">
         <div class="reservation-header">
-            <div class="reservation-name">🚗 Car Rental 2: Lisbon Airport Round-trip (via Algarve)</div>
-            <span class="status-badge status-need-to-book">❌ Need to Book</span>
+            <div class="reservation-name">Car 2 - Sicily by Car (Lisbon Round-trip via Algarve)</div>
+            <span class="status-badge status-booked">✅ Booked</span>
         </div>
         <div class="reservation-details">
             <div class="detail-item">
                 <span class="detail-label">Pick-up</span>
-                <span class="detail-value">Thu, Aug 6, early AM — Lisbon Airport</span>
+                <span class="detail-value">Thu, Aug 6, 10:00 AM — Lisbon Airport</span>
             </div>
             <div class="detail-item">
                 <span class="detail-label">Drop-off</span>
-                <span class="detail-value">Tue, Aug 11, 5:00 AM — Lisbon Airport</span>
+                <span class="detail-value">Mon, Aug 10, 10:00 PM — Lisbon Airport</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Duration</span>
-                <span class="detail-value">~5 days (5 × 24-hr blocks)</span>
+                <span class="detail-label">Vehicle</span>
+                <span class="detail-value">NAP MINIVAN 5+2 LUGARES</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Estimated Cost</span>
-                <span class="detail-value">€950 (incl. taxes)</span>
+                <span class="detail-label">Cost</span>
+                <span class="detail-value">€744.88 (5 days)</span>
             </div>
         </div>
+        <div class="confirmation-box">
+            <strong>Confirmation:</strong> PT 000039662<br>
+            <strong>Driver:</strong> Srinivasan, Srinath<br>
+            <strong>Phone:</strong> +13153962489
+        </div>
         <div class="notes">
-            🚙 <strong>Vehicle:</strong> UPGRADED larger car (fits 6 with Darshan & Rika)<br>
-            🚗 <strong>Covers:</strong> Algarve round-trip + final airport drop<br>
-            👶 <strong>MUST confirm:</strong> 2 child seats at pickup!<br>
-            💡 <strong>Why split rentals?</strong> Cheaper than one 12-day rental. No car needed in Lisbon (4 days parking saved).
+            Larger vehicle for 6 people (with Darshan & Rika). Includes: Collision Damage Waiver, Smart Gold Protect (€26.75), Theft Protection<br>
+            👶 <strong>MUST confirm 2 child seats at pickup!</strong><br>
+            💡 Return 10:00 PM Aug 10 (evening return confirmed!)
         </div>
     </div>
 </div>
 
-<!-- Dining Tab -->
-<div id="dining" class="tab-content">
+<div class="section-divider"></div>
+
+<!-- Dining Section -->
+<div id="dining">
+    <h2 class="section-title"><span class="icon">🍽️</span> Dining Reservations</h2>
+
     <div class="reservation-item need-to-book">
         <div class="reservation-header">
-            <div class="reservation-name">🍽️ Lagos Restaurants (Group of 6)</div>
+            <div class="reservation-name">Lagos Restaurants (Group of 6)</div>
             <span class="status-badge status-need-to-book">❌ Book 1-2 Days Ahead</span>
         </div>
         <div class="reservation-details">
@@ -627,20 +743,11 @@
 </div>
 
 <script>
-function switchTab(tabName) {
-    // Hide all tab contents
-    const contents = document.querySelectorAll('.tab-content');
-    contents.forEach(content => content.classList.remove('active'));
-
-    // Remove active from all tabs
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => tab.classList.remove('active'));
-
-    // Show selected tab content
-    document.getElementById(tabName).classList.add('active');
-
-    // Mark selected tab as active
-    event.target.classList.add('active');
+function scrollToSection(sectionId) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 </script>
 {% endblock %}
