@@ -8,43 +8,67 @@
     },
     {
       "id": 2,
-      "text": "Book Pena Palace tickets (Day 10 - Aug 5)",
+      "text": "Book Car Rental 1: Porto → Lisbon (Jul 30 - Aug 2)",
       "completed": false,
       "priority": "high"
     },
     {
       "id": 3,
-      "text": "Book Benagil catamaran tour (Day 12 - Aug 7)",
+      "text": "Book Car Rental 2: Lisbon round-trip via Algarve (Aug 6-11)",
       "completed": false,
       "priority": "high"
     },
     {
       "id": 4,
-      "text": "Book Algarve restaurants (group of 6)",
+      "text": "Book Pena Palace tickets (Day 10 - Aug 5)",
+      "completed": false,
+      "priority": "high"
+    },
+    {
+      "id": 5,
+      "text": "Book Moorish Castle + Quinta da Regaleira (Sintra - Aug 5)",
+      "completed": true,
+      "priority": "high"
+    },
+    {
+      "id": 6,
+      "text": "Book Benagil catamaran tour (Day 12 - Aug 7)",
+      "completed": true,
+      "priority": "high"
+    },
+    {
+      "id": 7,
+      "text": "Book Algarve restaurants for group of 6 (1-2 days ahead)",
       "completed": false,
       "priority": "medium"
     },
     {
-      "id": 5,
+      "id": 8,
       "text": "Confirm Darshan & Rika Faro flight times",
       "completed": false,
       "priority": "medium"
     },
     {
-      "id": 6,
-      "text": "Set multiple alarms for 4:30 AM on Aug 11",
+      "id": 9,
+      "text": "Confirm Porto Airbnb booking status",
+      "completed": false,
+      "priority": "medium"
+    },
+    {
+      "id": 10,
+      "text": "Set multiple alarms for 4:30 AM on Aug 11 (flight day)",
       "completed": false,
       "priority": "high"
     },
     {
-      "id": 7,
+      "id": 11,
       "text": "Download offline maps for Portugal",
       "completed": false,
       "priority": "low"
     },
     {
-      "id": 8,
-      "text": "Print hotel confirmations",
+      "id": 12,
+      "text": "Print/download all hotel confirmations and tickets",
       "completed": false,
       "priority": "low"
     }
