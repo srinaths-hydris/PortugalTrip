@@ -2,75 +2,109 @@
   "items": [
     {
       "id": 1,
-      "text": "Book Tomar hotel (3 nights)",
+      "text": "Modify Holiday Inn Lisbon booking (5 nights → 1 night: Aug 1-2 only)",
       "completed": false,
       "priority": "high"
     },
     {
       "id": 2,
-      "text": "Book Car Rental 1: Porto → Lisbon (Jul 30 - Aug 2)",
-      "completed": false,
-      "priority": "high"
-    },
-    {
-      "id": 3,
-      "text": "Book Car Rental 2: Lisbon round-trip via Algarve (Aug 6-11)",
-      "completed": false,
-      "priority": "high"
-    },
-    {
-      "id": 4,
       "text": "Book Pena Palace tickets (Day 10 - Aug 5)",
       "completed": false,
       "priority": "high"
     },
     {
+      "id": 3,
+      "text": "Confirm 2 child seats at Car 1 pickup (Jul 30, Porto Airport)",
+      "completed": false,
+      "priority": "medium"
+    },
+    {
+      "id": 4,
+      "text": "Confirm 2 child seats at Car 2 pickup (Aug 6, Lisbon Airport)",
+      "completed": false,
+      "priority": "medium"
+    },
+    {
       "id": 5,
-      "text": "Book Moorish Castle + Quinta da Regaleira (Sintra - Aug 5)",
-      "completed": true,
-      "priority": "high"
-    },
-    {
-      "id": 6,
-      "text": "Book Benagil catamaran tour (Day 12 - Aug 7)",
-      "completed": true,
-      "priority": "high"
-    },
-    {
-      "id": 7,
       "text": "Book Algarve restaurants for group of 6 (1-2 days ahead)",
       "completed": false,
       "priority": "medium"
     },
     {
-      "id": 8,
-      "text": "Confirm Darshan & Rika Faro flight times",
-      "completed": false,
-      "priority": "medium"
-    },
-    {
-      "id": 9,
-      "text": "Confirm Porto Airbnb booking status",
-      "completed": false,
-      "priority": "medium"
-    },
-    {
-      "id": 10,
+      "id": 6,
       "text": "Set multiple alarms for 4:30 AM on Aug 11 (flight day)",
       "completed": false,
       "priority": "high"
     },
     {
-      "id": 11,
+      "id": 7,
       "text": "Download offline maps for Portugal",
       "completed": false,
       "priority": "low"
     },
     {
-      "id": 12,
+      "id": 8,
       "text": "Print/download all hotel confirmations and tickets",
       "completed": false,
       "priority": "low"
+    }
+  ],
+  "completed_items": [
+    {
+      "id": 101,
+      "text": "Book Tomar hotel (Varandas do Nabão - 2 nights)",
+      "completed": true,
+      "priority": "high",
+      "notes": "✅ Confirmation: 6011.224.849"
+    },
+    {
+      "id": 102,
+      "text": "Book Porto accommodations (Holiday Inn + VIVA Miragaia Airbnb)",
+      "completed": true,
+      "priority": "high",
+      "notes": "✅ Both booked"
+    },
+    {
+      "id": 103,
+      "text": "Book Car Rental 1: Porto → Lisbon (Sicily by Car)",
+      "completed": true,
+      "priority": "high",
+      "notes": "✅ PT 000039661, €374.24"
+    },
+    {
+      "id": 104,
+      "text": "Book Car Rental 2: Lisbon round-trip via Algarve (Sicily by Car)",
+      "completed": true,
+      "priority": "high",
+      "notes": "✅ PT 000039662, €744.88, Minivan 5+2 seats"
+    },
+    {
+      "id": 105,
+      "text": "Book Moorish Castle + Quinta da Regaleira (Sintra)",
+      "completed": true,
+      "priority": "high",
+      "notes": "✅ Booking IDs: 32925203, 32925204"
+    },
+    {
+      "id": 106,
+      "text": "Book Benagil catamaran tour (Day 12 - Aug 7)",
+      "completed": true,
+      "priority": "high",
+      "notes": "✅ GYGKBF8VW22L, 6 people, 9:00 AM"
+    },
+    {
+      "id": 107,
+      "text": "Confirm Darshan & Rika Faro flight times",
+      "completed": true,
+      "priority": "medium",
+      "notes": "✅ EZY8532: Arrive Aug 6 at 2:50 PM"
+    },
+    {
+      "id": 108,
+      "text": "Confirm Sriram Porto flight times",
+      "completed": true,
+      "priority": "medium",
+      "notes": "✅ BA 2668/2669: Arrive Jul 26 at 8:40 PM"
     }
   ]
 }
