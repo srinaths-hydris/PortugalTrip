@@ -205,6 +205,14 @@ def dining():
                          user=user,
                          dining=dining_data)
 
+@app.route('/lisboa-card')
+@login_required
+def lisboa_card():
+    """Lisboa Card cost analysis."""
+    user = auth.get_user()
+    user['is_admin'] = auth.is_admin(user['email'])
+    return render_template('lisboa_card.html', user=user)
+
 @app.route('/budget')
 @login_required
 def budget():

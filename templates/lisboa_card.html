@@ -1,0 +1,661 @@
+{% extends "base.html" %}
+
+{% block title %}Lisboa Card Analysis - Portugal Trip 2026{% endblock %}
+
+{% block extra_head %}
+<style>
+    .card-analysis {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        overflow: hidden;
+        margin-bottom: 2rem;
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .card-header h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-header .subtitle {
+        opacity: 0.9;
+        font-size: 1.1rem;
+    }
+
+    .verdict-banner {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        color: white;
+        padding: 1.5rem;
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+
+    .verdict-banner .savings {
+        font-size: 2rem;
+        margin-top: 0.5rem;
+    }
+
+    .section {
+        padding: 2rem;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .section:last-child {
+        border-bottom: none;
+    }
+
+    .section h2 {
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+    }
+
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .price-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+        border: 2px solid #e9ecef;
+    }
+
+    .price-card.total {
+        background: linear-gradient(135deg, #667eea20 0%, #764ba240 100%);
+        border-color: #667eea;
+    }
+
+    .price-card .label {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .price-card .price {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+    }
+
+    .price-card .detail {
+        color: #888;
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+    }
+
+    thead {
+        background: #f8f9fa;
+    }
+
+    th {
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+        color: #333;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    td {
+        padding: 1rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    tbody tr:hover {
+        background: #f8f9fa;
+    }
+
+    .day-header {
+        background: linear-gradient(135deg, #667eea15 0%, #764ba230 100%);
+        font-weight: 700;
+        color: #667eea;
+    }
+
+    .subtotal-row {
+        background: #f8f9fa;
+        font-weight: 700;
+    }
+
+    .grand-total-row {
+        background: linear-gradient(135deg, #667eea20 0%, #764ba240 100%);
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .savings-cell {
+        color: #38ef7d;
+        font-weight: 600;
+    }
+
+    .with-card-cell {
+        color: #667eea;
+        font-weight: 600;
+    }
+
+    .without-card-cell {
+        color: #dc3545;
+        font-weight: 600;
+    }
+
+    .note-box {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 1rem 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 4px;
+    }
+
+    .note-box strong {
+        color: #856404;
+    }
+
+    .info-box {
+        background: #d1ecf1;
+        border-left: 4px solid #17a2b8;
+        padding: 1rem 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 4px;
+    }
+
+    .info-box strong {
+        color: #0c5460;
+    }
+
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .benefit-item {
+        display: flex;
+        align-items: start;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .benefit-item .icon {
+        font-size: 1.5rem;
+    }
+
+    .benefit-item .text {
+        flex: 1;
+    }
+
+    .benefit-item .text strong {
+        display: block;
+        margin-bottom: 0.25rem;
+        color: #333;
+    }
+
+    .benefit-item .text span {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .action-box {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .action-box h3 {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .action-box ul {
+        text-align: left;
+        max-width: 600px;
+        margin: 1.5rem auto;
+        line-height: 1.8;
+    }
+
+    .action-box li {
+        margin-bottom: 0.5rem;
+    }
+
+    .comparison-summary {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .comparison-card {
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .comparison-card.with-card {
+        background: linear-gradient(135deg, #11998e15 0%, #38ef7d30 100%);
+        border: 2px solid #11998e;
+    }
+
+    .comparison-card.without-card {
+        background: linear-gradient(135deg, #dc354515 0%, #dc354530 100%);
+        border: 2px solid #dc3545;
+    }
+
+    .comparison-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .comparison-card .amount {
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 1rem 0;
+    }
+
+    .comparison-card.with-card .amount {
+        color: #11998e;
+    }
+
+    .comparison-card.without-card .amount {
+        color: #dc3545;
+    }
+
+    .comparison-card .breakdown {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .comparison-summary {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        table {
+            font-size: 0.85rem;
+        }
+
+        th, td {
+            padding: 0.5rem;
+        }
+
+        .card-header h1 {
+            font-size: 1.5rem;
+        }
+
+        .verdict-banner {
+            font-size: 1.1rem;
+        }
+
+        .verdict-banner .savings {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card-analysis">
+    <div class="card-header">
+        <h1>💳 Lisboa Card Analysis</h1>
+        <div class="subtitle">Family of 4 (2 adults + kids ages 5 & 3) • Days 7-10 (Aug 2-5, 2026)</div>
+    </div>
+
+    <div class="verdict-banner" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);">
+        ❌ SKIP THE CARD — Pay-As-You-Go Instead
+        <div class="savings">Save €30-50 vs buying the card!</div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div class="section">
+        <h2>💰 Card Pricing (If You Were to Buy It)</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div class="label">Adult Card (×2)</div>
+                <div class="price">€124</div>
+                <div class="detail">€62 each × 2 adults</div>
+            </div>
+            <div class="price-card">
+                <div class="label">Child Age 5</div>
+                <div class="price">FREE*</div>
+                <div class="detail">*If claimed as under 4</div>
+            </div>
+            <div class="price-card">
+                <div class="label">Child Age 3</div>
+                <div class="price">FREE</div>
+                <div class="detail">Under 4 = always free</div>
+            </div>
+            <div class="price-card total">
+                <div class="label">Total Card Cost</div>
+                <div class="price">€124</div>
+                <div class="detail">72-hour card (adults only)</div>
+            </div>
+        </div>
+
+        <div class="note-box">
+            <strong>🚨 Reality Check:</strong> Your kids (ages 5 & 3) already get FREE entry at most attractions and FREE transport (under 4). The Lisboa Card is designed for families with older kids (7-15) who pay for everything. For your family, it's NOT worth it.
+        </div>
+    </div>
+
+    <!-- Day-by-Day Breakdown -->
+    <div class="section">
+        <h2>📅 Day-by-Day Breakdown</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Day / Item</th>
+                    <th style="text-align: right;">With Card</th>
+                    <th style="text-align: right;">Without Card</th>
+                    <th style="text-align: right;">Savings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Day 7 -->
+                <tr class="day-header">
+                    <td colspan="4"><strong>DAY 7 — Sun Aug 2: Arrival + Oceanário</strong></td>
+                </tr>
+                <tr>
+                    <td>Metro: Hotel → Oceanário (return)</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€22.80</td>
+                    <td class="savings-cell" style="text-align: right;">€22.80</td>
+                </tr>
+                <tr>
+                    <td><strong>Oceanário de Lisboa</strong> (15% discount)</td>
+                    <td class="with-card-cell" style="text-align: right;"><strong>€57.00</strong></td>
+                    <td class="without-card-cell" style="text-align: right;">€67.00</td>
+                    <td class="savings-cell" style="text-align: right;">€10.00</td>
+                </tr>
+                <tr class="subtotal-row">
+                    <td><strong>Day 7 Subtotal</strong></td>
+                    <td style="text-align: right;"><strong>€57.00</strong></td>
+                    <td style="text-align: right;"><strong>€89.80</strong></td>
+                    <td style="text-align: right;"><strong>€32.80</strong></td>
+                </tr>
+
+                <!-- Day 8 -->
+                <tr class="day-header">
+                    <td colspan="4"><strong>DAY 8 — Mon Aug 3: Historic Core</strong></td>
+                </tr>
+                <tr>
+                    <td>Metro to Tram 28 stop</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€11.40</td>
+                    <td class="savings-cell" style="text-align: right;">€11.40</td>
+                </tr>
+                <tr>
+                    <td><strong>Tram 28</strong> ride</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€11.40</td>
+                    <td class="savings-cell" style="text-align: right;">€11.40</td>
+                </tr>
+                <tr>
+                    <td><strong>Castelo de São Jorge</strong></td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€30.00</td>
+                    <td class="savings-cell" style="text-align: right;">€30.00</td>
+                </tr>
+                <tr>
+                    <td>Metro to Time Out Market</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€11.40</td>
+                    <td class="savings-cell" style="text-align: right;">€11.40</td>
+                </tr>
+                <tr>
+                    <td>Metro: Market → Hotel (rest)</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€11.40</td>
+                    <td class="savings-cell" style="text-align: right;">€11.40</td>
+                </tr>
+                <tr>
+                    <td>Metro to Bica Funicular</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€11.40</td>
+                    <td class="savings-cell" style="text-align: right;">€11.40</td>
+                </tr>
+                <tr>
+                    <td><strong>Bica Funicular</strong></td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€11.40</td>
+                    <td class="savings-cell" style="text-align: right;">€11.40</td>
+                </tr>
+                <tr>
+                    <td><strong>Santa Justa Lift</strong> (local hack from top)</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€4.50</td>
+                    <td class="savings-cell" style="text-align: right;">€4.50</td>
+                </tr>
+                <tr>
+                    <td>Metro: Evening return</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€11.40</td>
+                    <td class="savings-cell" style="text-align: right;">€11.40</td>
+                </tr>
+                <tr class="subtotal-row">
+                    <td><strong>Day 8 Subtotal</strong></td>
+                    <td style="text-align: right;"><strong>€0</strong></td>
+                    <td style="text-align: right;"><strong>€109.70</strong></td>
+                    <td style="text-align: right;"><strong>€109.70</strong></td>
+                </tr>
+
+                <!-- Day 9 -->
+                <tr class="day-header">
+                    <td colspan="4"><strong>DAY 9 — Tue Aug 4: Belém</strong></td>
+                </tr>
+                <tr>
+                    <td>Tram/Metro to Belém</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€11.40</td>
+                    <td class="savings-cell" style="text-align: right;">€11.40</td>
+                </tr>
+                <tr>
+                    <td>Belém Tower + Jerónimos (exterior only)</td>
+                    <td style="text-align: right;">€0</td>
+                    <td style="text-align: right;">€0</td>
+                    <td style="text-align: right;">—</td>
+                </tr>
+                <tr>
+                    <td>Metro: Belém → Hotel</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€11.40</td>
+                    <td class="savings-cell" style="text-align: right;">€11.40</td>
+                </tr>
+                <tr>
+                    <td>Metro: Hotel → Riverside</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€11.40</td>
+                    <td class="savings-cell" style="text-align: right;">€11.40</td>
+                </tr>
+                <tr>
+                    <td>Metro: Evening return</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€11.40</td>
+                    <td class="savings-cell" style="text-align: right;">€11.40</td>
+                </tr>
+                <tr class="subtotal-row">
+                    <td><strong>Day 9 Subtotal</strong></td>
+                    <td style="text-align: right;"><strong>€0</strong></td>
+                    <td style="text-align: right;"><strong>€45.60</strong></td>
+                    <td style="text-align: right;"><strong>€45.60</strong></td>
+                </tr>
+
+                <!-- Day 10 -->
+                <tr class="day-header">
+                    <td colspan="4"><strong>DAY 10 — Wed Aug 5: Sintra</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Train: Rossio ↔ Sintra</strong> (round-trip)</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€13.80</td>
+                    <td class="savings-cell" style="text-align: right;">€13.80</td>
+                </tr>
+                <tr>
+                    <td>Quinta da Regaleira (no discount)</td>
+                    <td style="text-align: right;">€24.00</td>
+                    <td style="text-align: right;">€24.00</td>
+                    <td style="text-align: right;">—</td>
+                </tr>
+                <tr>
+                    <td>Moorish Castle (no discount)</td>
+                    <td style="text-align: right;">€16.00</td>
+                    <td style="text-align: right;">€16.00</td>
+                    <td style="text-align: right;">—</td>
+                </tr>
+                <tr>
+                    <td><strong>Pena Palace</strong> (10% discount)</td>
+                    <td class="with-card-cell" style="text-align: right;"><strong>€25.20</strong></td>
+                    <td class="without-card-cell" style="text-align: right;">€28.00</td>
+                    <td class="savings-cell" style="text-align: right;">€2.80</td>
+                </tr>
+                <tr>
+                    <td>Metro: Station → Hotel</td>
+                    <td class="with-card-cell" style="text-align: right;">€0</td>
+                    <td class="without-card-cell" style="text-align: right;">€11.40</td>
+                    <td class="savings-cell" style="text-align: right;">€11.40</td>
+                </tr>
+                <tr class="subtotal-row">
+                    <td><strong>Day 10 Subtotal</strong></td>
+                    <td style="text-align: right;"><strong>€65.20</strong></td>
+                    <td style="text-align: right;"><strong>€93.20</strong></td>
+                    <td style="text-align: right;"><strong>€28.00</strong></td>
+                </tr>
+
+                <!-- Grand Total -->
+                <tr class="grand-total-row">
+                    <td><strong>GRAND TOTAL</strong></td>
+                    <td style="text-align: right;"><strong>€281.20</strong></td>
+                    <td style="text-align: right;"><strong>€338.30</strong></td>
+                    <td style="text-align: right;"><strong>€57.10</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            <strong>ℹ️ Note on Uber:</strong> Airport → Hotel on Day 7 uses Uber (~€15-20), not metro. This saves you time with luggage but isn't covered by the Lisboa Card. All other transport shown above is on the card.
+        </div>
+    </div>
+
+    <!-- Comparison Summary -->
+    <div class="section">
+        <h2>📊 Cost Comparison</h2>
+        <div class="comparison-summary">
+            <div class="comparison-card with-card">
+                <h3>✅ With Lisboa Card</h3>
+                <div class="amount">€281</div>
+                <div class="breakdown">Card: €159 + Tickets: €122</div>
+            </div>
+            <div class="comparison-card without-card">
+                <h3>❌ Without Card</h3>
+                <div class="amount">€338</div>
+                <div class="breakdown">Pay-as-you-go everything</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="section">
+        <h2>✨ Why It's Worth It</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="icon">💰</div>
+                <div class="text">
+                    <strong>€57 Saved</strong>
+                    <span>Covers a nice family dinner</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="icon">🏰</div>
+                <div class="text">
+                    <strong>Castle FREE</strong>
+                    <span>€30 value, walk right in</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="icon">🚂</div>
+                <div class="text">
+                    <strong>Sintra Train FREE</strong>
+                    <span>€13.80 saved, no ticket queues</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="icon">🚊</div>
+                <div class="text">
+                    <strong>Tram 28 @ 8:15 AM</strong>
+                    <span>Just hop on, no queue!</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="icon">🎫</div>
+                <div class="text">
+                    <strong>Zero Ticket Hassles</strong>
+                    <span>With 2 kids = priceless!</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="icon">🐠</div>
+                <div class="text">
+                    <strong>Oceanário 15% Off</strong>
+                    <span>€10 discount on tickets</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="icon">🚇</div>
+                <div class="text">
+                    <strong>Unlimited Transport</strong>
+                    <span>All metro/tram/funiculars</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="icon">⏱️</div>
+                <div class="text">
+                    <strong>Skip-the-Line</strong>
+                    <span>Belém Tower & Jerónimos (if you enter)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Items -->
+    <div class="section">
+        <div class="action-box">
+            <h3>📝 How to Get Your Lisboa Card</h3>
+            <ul>
+                <li><strong>Where to buy:</strong> Lisbon Airport arrivals desk ("Ask Me Lisboa", 7 AM–10 PM)</li>
+                <li><strong>When to pick up:</strong> Evening of Aug 2 when you drop off Car 1, OR Day 7 arrival</li>
+                <li><strong>What to buy:</strong> 72-hour card (€159 total: 2 adults + 1 child)</li>
+                <li><strong>When to activate:</strong> First use on Day 7 (starts 72-hour countdown)</li>
+                <li><strong>Valid for:</strong> Days 7, 8, 9, 10 (Aug 2–5)</li>
+                <li><strong>Reservation needed:</strong> If you decide to enter Belém Tower or Jerónimos, book via MMP portal using card serial number</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="note-box" style="margin-top: 2rem;">
+    <strong>🇵🇹 Porto Note:</strong> Lisboa Card doesn't work in Porto (Days 1-4). Porto transport is separate — use Uber or single tickets (€2/ride). Porto costs (~€150 for activities) are completely separate from this analysis.
+</div>
+{% endblock %}

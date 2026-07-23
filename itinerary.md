@@ -82,20 +82,25 @@ Lisbon (metro + tram, 4 days) → [Car 2 pickup] → Algarve (4 days) → Lisbon
 |------|----------|-------|
 | Afternoon | Arrive Porto, check into **VIVA Miragaia Airbnb** | Central Porto. Rest, freshen up. ⏳ Waiting for host confirmation |
 | 5:00 PM | **São Bento Station tiles** | 10 min stop. Free. Stroller-friendly. |
+| 5:30 PM | **OPTION A: Clérigos Tower** (if not too tired) | €8/adult, free <10. 45 min. 225 steps to panoramic views! **Opens until 7 PM (last entry 6:30 PM).** Close to São Bento. |
 | 6:00 PM | **Ribeira Evening Stroll** | Twinkling lights, street performers, gelato |
 | 7:30 PM | Dinner at Ribeira | Simple tasca — soup, salads, bread, cheese |
 
 > 👶 **Kids note:** Keep it easy after travel. Ribeira is flat and stroller-friendly. Let them run along the waterfront.
 
+> 🗼 **Clérigos Tower — Flexible Option:** If everyone's still energetic after São Bento, add Clérigos (5:30 PM). If too tired, skip and do it tomorrow morning at 9 AM instead (see Day 2 Option B below).
+
 ---
 
 ### Day 2 — Tue Jul 28: PORTO — RIVER & BRIDGES
-**Bookshop, cruise, cable car & gardens**
+**Choose your morning: Clérigos OR Lello, then river cruise & gardens**
+
+## OPTION A: If you did Clérigos yesterday evening
 
 | Time | Activity | Notes |
 |------|----------|-------|
-| 9:00 AM | **Livraria Lello Bookshop** | €8/person (credit toward books). 30 min. Harry Potter inspiration! Book timed ticket online. |
-| 9:45 AM | **Bolhão Market** — Breakfast/snacks | €15-20 family. Fresh pastries, cheese, fruit. Kids love free samples! |
+| 9:30 AM | Sleep in a bit! | No rush morning |
+| 10:00 AM | **Bolhão Market** — Breakfast | €15-20 family. Fresh pastries, cheese, fruit. Kids love free samples! |
 | 11:00 AM | Walk to Ribeira, board **6 Bridges Douro Cruise** | €18/adult, €9/child. 50 min. See all 6 iconic Porto bridges! |
 | 12:00 PM | **Gaia Cable Car** | €8/adult, €5/child. 5 min ride. Best Douro views! |
 | 12:15 PM | Quick cellar photo stop (exterior) | Free. See the historic port cellars from outside |
@@ -105,29 +110,51 @@ Lisbon (metro + tram, 4 days) → [Car 2 pickup] → Algarve (4 days) → Lisbon
 | 4:30 PM | **Crystal Palace Gardens** | Free. 2-3 hrs. Peacocks, shaded playground, duck ponds. Let kids run wild! |
 | 6:30 PM | **Francesinha at Café Santiago** | €14-18/sandwich (share between adults). Simple salads/bread for kids. |
 
-> 👶 **Kids note:** Lello bookshop = magical for 7-yr-old! Cable car + cruise = exciting. Crystal Palace = let them RUN. Francesinha is Porto's signature dish — adults try it, kids get simple sides.
+## OPTION B: If you skipped Clérigos yesterday (too tired)
+
+| Time | Activity | Notes |
+|------|----------|-------|
+| 9:00 AM | **Clérigos Tower** | €8/adult, free <10. 45 min. 225 steps to panoramic views! Arrive at opening = no crowds. |
+| 10:00 AM | **Bolhão Market** — Breakfast/snacks | €15-20 family. Fresh pastries, cheese, fruit. Kids love free samples! |
+| 11:00 AM | Walk to Ribeira, board **6 Bridges Douro Cruise** | €18/adult, €9/child. 50 min. See all 6 iconic Porto bridges! |
+| 12:00 PM | **Gaia Cable Car** | €8/adult, €5/child. 5 min ride. Best Douro views! |
+| 12:15 PM | Quick cellar photo stop (exterior) | Free. See the historic port cellars from outside |
+| 12:30 PM | Lunch in Gaia or walk back to Porto | €35-45 family. Simple local spot — **caldo verde soup**, salads, bread, cheese |
+| 1:30 PM | **Walk Dom Luís I Bridge** | Free. Lower deck = stroller-friendly. Upper deck = thrilling! |
+| 2:00 PM | **REST BREAK at hotel** | Nap time! |
+| 4:30 PM | **Crystal Palace Gardens** | Free. 2-3 hrs. Peacocks, shaded playground, duck ponds. Let kids run wild! |
+| 6:30 PM | **Francesinha at Café Santiago** | €14-18/sandwich (share between adults). Simple salads/bread for kids. |
+
+> 👶 **Kids note:** Clérigos Tower = exciting climb adventure! Cable car + cruise = thrilling. Crystal Palace = let them RUN. Francesinha is Porto's signature dish — adults try it, kids get simple sides.
+
+> 🗼 **Flexibility built in:** If you did Clérigos yesterday, you get a sleep-in morning today. If not, you start fresh at 9 AM with the tower. Either way, the rest of the day is identical!
 
 ---
 
 ### Day 3 — Wed Jul 29: DOURO VALLEY SCENIC TRAIN
-**Train through terraced vineyards (skip boat — train views are better!)**
+**Train through terraced vineyards + Rabelo boat ride in Pinhão**
 
 | Time | Activity | Notes |
 |------|----------|-------|
 | 8:15 AM | Train **Porto São Bento → Régua → Pinhão** | €14/adult one-way, free <4. 2.5 hrs. Stunning terraced vineyards FROM THE TRAIN! Pack snacks + tablet. |
 | 11:00 AM | Arrive Pinhão. See **blue-tile train station** | Free. Beautiful azulejos. 5 min photo stop |
-| 11:15 AM | Walk Pinhão village, explore riverside | Free. Charming tiny village. Kids can run safely. |
-| 12:00 PM | Lunch in Pinhão | ~€40 family. Simple local tasca — soup, salads, omelets, bread, cheese |
-| 1:15 PM | Walk to **Quinta do Bomfim gardens** | 10 min walk from village. Free entry to grounds. SKIP wine tasting — just explore! |
-| 1:30 PM | **Quinta gardens & viewpoint** | Free (grounds), 1 hr. Kids run in open vineyard terraces. Parents get epic photos. |
+| 11:15 AM | Walk Pinhão village, explore riverside | Free. Charming tiny village. Kids can run safely. Only 20 min needed. |
+| 12:00 PM | **Rabelo Boat Cruise** | ~€12-15/adult, ~€6-8/child. 1 hr. Traditional wine boat cruise right from the riverfront! Zero walking, keeps kids entertained. |
+| 1:00 PM | Lunch in Pinhão | ~€40 family. Simple local tasca — soup, salads, omelets, bread, cheese |
+| 2:15 PM | **Check train time!** Walk to station | ⚠️ VERIFY exact departure time with CP (Comboios de Portugal) — may be 2:30 PM or closer to 3:00 PM |
 | 2:30 PM | Train **Pinhão → Porto** | €14/adult, 2.5 hrs. Kids should nap on return! |
-| 5:00 PM | Arrive Porto | Earlier return = less exhausted! |
+| 5:00 PM | Arrive Porto (if 2:30 PM train) | Earlier return = less exhausted! |
 | 5:30 PM | **Foz do Douro seaside** | Free. Flat promenade, natural rock pools, ice cream. Perfect wind-down! |
 | 7:30 PM | **Dinner at Brasão Aliados** | ~€40-50 family. Francesinhas, salads, veggie sides. |
 
-> 👶 **Kids note:** Trains = exciting! Scenery from the train IS the experience. Quinta gardens = open vineyard spaces to run. Foz rock pools = sensory play heaven.
+> 👶 **Kids note:** Trains = exciting! Rabelo boat = fun 1-hour break with zero walking. Foz rock pools = sensory play heaven.
 
-> 💡 **Why skip the Pinhão boat?** You're already ON the train beside the river for 2.5 hours — the views are stunning! The boat would show the same scenery.
+> ⚠️ **IMPORTANT ADJUSTMENTS:**
+> 1. **Rabelo boat at 12:00 PM** — Pinhão village is tiny (20 min max). Sitting down for lunch at 12:00 and finishing by 1:15 PM leaves you waiting around. The boat keeps kids entertained + requires zero walking!
+> 2. **Verify train time** — CP schedules from Pinhão back to Porto fluctuate. If the closest train is 3:00 PM (not 2:30 PM), shift your morning timeline down by 30 min to avoid waiting at the station with restless kids.
+> 3. **SKIP Quinta do Bomfim** — Visiting exposed vineyard terraces at 1:30 PM = peak afternoon sun with little shade. Not worth it with kids ages 5 & 3 in August heat. Save energy for the train ride back!
+
+> 💡 **Why add the boat?** You're right that the train views are stunning, but the boat is a DIFFERENT experience — you're ON the water (not beside it), it's only 1 hour, and it's a perfect activity buffer between walking and lunch!
 
 ---
 
@@ -265,19 +292,21 @@ Lisbon (metro + tram, 4 days) → [Car 2 pickup] → Algarve (4 days) → Lisbon
 |------|----------|-------|
 | 8:00 AM | Train **Rossio → Sintra** | ~€4.60 return. 40 min. Frequent trains. |
 | 8:45 AM | Grab pastry at Piriquita | ~€3-4. Travesseiros — local specialty! |
-| 9:15 AM | Uber/tuk-tuk to **Quinta da Regaleira** | €5-10 for tuk-tuk. ARRIVE AT OPENING! |
-| 9:30 AM | **Quinta da Regaleira** | €12/adult, free <5. 2 hrs. Underground tunnels + 27m spiral well! KIDS' FAVORITE! |
-| 11:30 AM | Tuk-tuk up to **Moorish Castle** | €5-10 ride |
-| 11:45 AM | **Moorish Castle ramparts** | €8/adult, free <6. 1 hr. Medieval ruins, EPIC views! Kids love climbing the walls. |
+| 9:15 AM | Uber/tuk-tuk to **Moorish Castle** | €5-10 for tuk-tuk. Start high, work your way down! |
+| 9:30 AM | **Moorish Castle ramparts** ✅ BOOKED | €15/adult, free <6. 1 hr. Medieval ruins, EPIC views! Kids love climbing the walls. **Booking ID: 32925203** |
+| 10:30 AM | Walk/tuk-tuk down to **Quinta da Regaleira** | 10 min downhill walk or quick tuk-tuk |
+| 10:30 AM | **Quinta da Regaleira** ✅ BOOKED | €25/adult, free <5. 2 hrs. Underground tunnels + 27m spiral well! KIDS' FAVORITE! **Booking ID: 32925204** |
 | 12:45 PM | Quick lunch in Sintra town | Simple café — sandwiches, salads |
-| 1:30 PM | Bus 434 or tuk-tuk to **Pena Palace** | Just 5 min from Moorish Castle! |
+| 1:30 PM | Bus 434 or tuk-tuk to **Pena Palace** | Just 5 min ride up |
 | 1:45 PM | **Pena Palace** (exterior + gardens) | €14/adult, free <6. 1 hr. Colorful "Disney castle"! Skip interior (long queue), gardens are FREE and best part. |
 | 3:00 PM | Head back down to station | Bus or tuk-tuk |
 | 3:30 PM | Train back to Lisbon | 40 min. Kids may doze. |
 | 4:30 PM | **REST / Pack for Algarve tomorrow** | Organize for beach days! |
 | 7:00 PM | Dinner near hotel | |
 
-> 👶 **Kids note:** Quinta da Regaleira = FAVORITE of whole trip. Spiral well, dark tunnels, waterfall = pure magic. Moorish Castle = kids LOVE climbing ramparts. Pena Palace exterior is best — skip interior queue.
+> 👶 **Kids note:** Moorish Castle FIRST = smart! Less hot, less crowded. Then Quinta da Regaleira = FAVORITE of whole trip. Spiral well, dark tunnels, waterfall = pure magic. Pena Palace exterior is best — skip interior queue.
+
+> ✅ **Combo ticket booked:** Moorish + Quinta = €73.60 (5% discount, kids free). Total paid: **$84.87**. Itinerary ID: **H28257715**.
 
 > ⚠️ Don't drive to Sintra (parking nightmare). Take the train!
 
@@ -315,19 +344,22 @@ Lisbon (metro + tram, 4 days) → [Car 2 pickup] → Algarve (4 days) → Lisbon
 
 | Time | Activity | Notes |
 |------|----------|-------|
-| 8:30 AM | Drive to departure point | Albufeira or Portimão marina (~20 min). **BOOK IN ADVANCE!** |
-| 9:30 AM | **Benagil Cave Catamaran + Dolphins** | €45-60/adult, €25-35/child. 2-3 hrs. Cathedral-ceiling cave + wild dolphins! Life jackets for kids. |
-| 12:00 PM | Return to shore | |
-| 12:30 PM | Lunch at marina | Simple café — sandwiches, salads |
-| 1:30 PM | Drive to **Praia da Marinha** | ~15 min, basically on the way home |
-| 2:00 PM | **Praia da Marinha** — beach time | One of Portugal's most beautiful beaches. Clear water, dramatic cliffs. Steep stairs down! |
-| 4:00 PM | Head back to **Casa Margarida** | Only 10 min home |
-| 4:30 PM | **Rest / downtime** | Real rest. Local beach or just chill. No forced activity. |
+| 8:00 AM | Drive to **Portimão Marina** | ~35 min from Armação de Pêra. Av. Rio Arade 129, 8500-311 Portimão |
+| 8:30 AM | **Check-in at 5EMOTIONS Kiosk #6** ✅ BOOKED | MUST check in 30 min before departure. Counter N.6 in Portimão Marina |
+| 9:00 AM | **Benagil Caves & Dolphins with Biologist** ✅ BOOKED | 6 people (4 adults + 2 children age 2-10). 2.5 hrs. Marine biologist on board! **Booking: GYGKBF8VW22L** |
+| 11:30 AM | Return to shore | End at same location |
+| 12:00 PM | Lunch at Portimão marina | Simple café — sandwiches, salads |
+| 1:00 PM | Drive to **Praia da Marinha** | ~25 min east |
+| 1:30 PM | **Praia da Marinha** — beach time | One of Portugal's most beautiful beaches. Clear water, dramatic cliffs. Steep stairs down! |
+| 3:30 PM | Head back to **Casa Margarida** | ~15 min home |
+| 4:00 PM | **Rest / downtime** | Real rest. Local beach or just chill. No forced activity. |
 | 7:00 PM | Dinner in Armação de Pêra | Group dinner — book a table for 6! |
 
-> 👶 **Kids note:** THE catamaran = BIG experience — dolphins huge hit! **BOOK IN ADVANCE** (August!). Morning = calmer seas. Praia da Marinha is on the way back (not a detour). Afternoon = genuine rest, they'll be tired from the boat.
+> 👶 **Kids note:** THE catamaran = BIG experience — dolphins + marine biologist! Morning = calmer seas. Praia da Marinha after = perfect combo. Afternoon = genuine rest, they'll be tired from the boat.
 
-> 💡 No Ponta da Piedade today — that's a 40-min special trip from your base. You'll see it properly on the Lagos day (Day 13).
+> ✅ **Booked via GetYourGuide:** Booking ref GYGKBF8VW22L. Check in 30 min early (8:30 AM) at Kiosk #6. Bring: swimwear, towel, sunscreen, sun hat, warm clothing, jacket. NO drinks or glass objects allowed.
+
+> 📄 **Ticket:** [Download Benagil Caves Ticket PDF](#)
 
 ---
 
@@ -433,17 +465,22 @@ Lisbon (metro + tram, 4 days) → [Car 2 pickup] → Algarve (4 days) → Lisbon
 |------|-------|------|--------|
 | **Porto** — VIVA Miragaia Airbnb | Jul 27–30 (3 nights) | **€440** | ⏳ Pending |
 | **Tomar** — Airbnb (TBD) | Jul 30 – Aug 2 (3 nights) | TBD | ❌ Need to book |
-| **Lisbon** — Holiday Inn Continental | Aug 2–6 (4 nights) | **Points** | ✅ BOOKED |
+| **Lisbon** — Holiday Inn Continental | Aug 2–6 (4 nights) | **Points** | ✅ BOOKED (⚠️ May cancel if upgrade available) |
 | **Algarve** — Casa Margarida | Aug 6–10 (4 nights) | **€1,000** | ✅ BOOKED |
 | **Airport** — Holiday Inn Express | Aug 10–11 (1 night) | **Points** | ✅ BOOKED |
 
 > 💰 **Accommodation total (so far):** €1,440 + Tomar TBD. Lisbon & Airport on hotel points!
 
+> ⚠️ **Lisbon Hotel — Cancellation Policy:**
+> - **Free cancellation** before 3:00 PM on **August 1**
+> - **Partial refund** if canceled before check-in (3:00 PM on **August 2**)
+> - Currently calling Holiday Inn to check upgrade availability — will cancel if they upgrade
+
 ### 🎫 Book in Advance (August = busy!)
-- [ ] **Livraria Lello** — Timed tickets for Tue Jul 28, 9:00 AM
-- [ ] **Benagil Cave Catamaran** — Sat Aug 8, 9:30 AM departure (SELLS OUT!)
-- [ ] **Quinta da Regaleira** — Timed tickets for Wed Aug 5, 9:30 AM
-- [ ] **Pena Palace + Moorish Castle** — Combo tickets for Wed Aug 5
+- [ ] **Clérigos Tower** — Consider for Porto (replacement for Lello)
+- [x] **Benagil Caves & Dolphins** — ✅ BOOKED! Fri Aug 7, 9:00 AM (Booking: GYGKBF8VW22L, 6 people)
+- [x] **Moorish Castle + Quinta da Regaleira** — ✅ BOOKED! Wed Aug 5 (Combo, IDs: 32925203, 32925204)
+- [ ] **Pena Palace** — Timed tickets for Wed Aug 5, ~1:45 PM
 - [ ] **Lagos restaurants** — Book 1-2 days ahead in Algarve (group of 6!)
 
 ### 🎉 Darshan & Rika Logistics
