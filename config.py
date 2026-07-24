@@ -24,3 +24,6 @@ class Config:
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_SAMESITE = 'Lax'
     PERMANENT_SESSION_LIFETIME = 604800  # 7 days
+
+    # Weather API (OpenWeatherMap)
+    WEATHER_API_KEY = os.getenv('WEATHER_API_KEY', '')

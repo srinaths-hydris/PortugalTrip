@@ -180,22 +180,29 @@
     </div>
 
     <div class="dashboard-card">
-        <h2>🌤️ Weather Preview</h2>
+        <h2>🌤️ Live Weather</h2>
+        {% if weather %}
         <div class="stat-row">
             <span class="stat-label">Porto (Jul 27-29)</span>
-            <span class="stat-value">☀️ 25-28°C</span>
+            <span class="stat-value">{{ weather.porto.icon }} {{ weather.porto.temp }}</span>
         </div>
         <div class="stat-row">
             <span class="stat-label">Lisbon (Aug 2-5)</span>
-            <span class="stat-value">☀️ 28-32°C</span>
+            <span class="stat-value">{{ weather.lisbon.icon }} {{ weather.lisbon.temp }}</span>
         </div>
         <div class="stat-row">
             <span class="stat-label">Algarve (Aug 6-9)</span>
-            <span class="stat-value">🌡️ 32-35°C</span>
+            <span class="stat-value">{{ weather.algarve.icon }} {{ weather.algarve.temp }}</span>
         </div>
-        <div style="margin-top: 1rem; padding: 0.75rem; background: #fff3cd; border-radius: 8px; font-size: 0.9rem;">
-            ⚠️ Peak summer heat in Algarve - plan indoor activities midday
+        <div style="margin-top: 1rem; padding: 0.75rem; background: #e3f2fd; border-radius: 8px; font-size: 0.85rem; color: #1976d2;">
+            🔄 Live weather from Weather Channel • Updates every page load
         </div>
+        {% else %}
+        <div style="text-align: center; padding: 2rem; color: #666;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌤️</div>
+            <div>Weather data unavailable</div>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

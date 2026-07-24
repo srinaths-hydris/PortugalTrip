@@ -5,6 +5,7 @@ from functools import wraps
 import json
 import os
 from datetime import datetime
+import requests
 
 from config import Config
 import auth
@@ -42,6 +43,38 @@ def save_data(filename, data):
     filepath = os.path.join('data', filename)
     with open(filepath, 'w') as f:
         json.dump(data, f, indent=2)
+
+# Helper: fetch weather data
+def fetch_weather(city, lat, lon):
+    """Fetch weather from OpenWeatherMap API."""
+    api_key = app.config['WEATHER_API_KEY']
+    if not api_key:
+        return {'temp': 'N/A', 'icon': '☀️', 'description': 'Weather unavailable'}
+
+    try:
+        url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}&units=metric"
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            temp = round(data['main']['temp'])
+            description = data['weather'][0]['main']
+            # Map weather to emoji
+            icon_map = {
+                'Clear': '☀️',
+                'Clouds': '⛅',
+                'Rain': '🌧️',
+                'Drizzle': '🌦️',
+                'Thunderstorm': '⛈️',
+                'Snow': '❄️',
+                'Mist': '🌫️',
+                'Fog': '🌫️'
+            }
+            icon = icon_map.get(description, '🌤️')
+            return {'temp': f"{temp}°C", 'icon': icon, 'description': description}
+    except Exception as e:
+        print(f"Weather API error for {city}: {e}")
+
+    return {'temp': 'N/A', 'icon': '☀️', 'description': 'Unavailable'}
 
 # Helper: detect mobile device
 def is_mobile():
@@ -120,6 +153,13 @@ def dashboard():
         total_items = len(checklist['items'])
         completed_items = sum(1 for item in checklist['items'] if item.get('completed', False))
 
+    # Fetch live weather for trip cities
+    weather = {
+        'porto': fetch_weather('Porto', 41.1579, -8.6291),
+        'lisbon': fetch_weather('Lisbon', 38.7223, -9.1393),
+        'algarve': fetch_weather('Faro', 37.0194, -7.9304)  # Faro represents Algarve
+    }
+
     template = 'dashboard_mobile.html' if user['is_mobile'] else 'dashboard.html'
     return render_template(template,
                          user=user,
@@ -127,7 +167,8 @@ def dashboard():
                          trip_date=trip_date,
                          checklist=checklist,
                          completed_items=completed_items,
-                         total_items=total_items)
+                         total_items=total_items,
+                         weather=weather)
 
 @app.route('/itinerary')
 @login_required
