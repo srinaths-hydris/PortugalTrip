@@ -7,12 +7,6 @@
       "priority": "high"
     },
     {
-      "id": 2,
-      "text": "Book Pena Palace tickets (Day 10 - Aug 5)",
-      "completed": false,
-      "priority": "high"
-    },
-    {
       "id": 3,
       "text": "Confirm 2 child seats at Car 1 pickup (Jul 30, Porto Airport)",
       "completed": false,
@@ -83,14 +77,21 @@
       "text": "Book Moorish Castle + Quinta da Regaleira (Sintra)",
       "completed": true,
       "priority": "high",
-      "notes": "✅ Booking IDs: 32925203, 32925204"
+      "notes": "✅ Booking IDs: 32925203, 32925204 | PDFs: Moorish_Castle_ticket.pdf, Quinta_Sintara_Tickets.pdf"
     },
     {
       "id": 106,
       "text": "Book Benagil catamaran tour (Day 12 - Aug 7)",
       "completed": true,
       "priority": "high",
-      "notes": "✅ GYGKBF8VW22L, 6 people, 9:00 AM"
+      "notes": "✅ GYGKBF8VW22L, 6 people, 9:00 AM | PDF: Benagil Caves Ticket.pdf"
+    },
+    {
+      "id": 109,
+      "text": "Book Pena Palace tickets (Day 10 - Aug 5)",
+      "completed": true,
+      "priority": "high",
+      "notes": "✅ Included in Quinta_Sintara_Tickets.pdf"
     },
     {
       "id": 107,

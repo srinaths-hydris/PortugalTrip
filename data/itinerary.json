@@ -1260,5 +1260,235 @@
       ],
       "tip": "Long flight day! Bring tablets, snacks, coloring books. Kids may sleep on London → SF leg. Time difference works in your favor! Buffer gained: By dropping the car last night, your morning is: walk 5 min → check in. No rental return queue, no fuel check, no finding the desk. You saved ~30 min of risk."
     }
-  ]
+  ],
+  "optional_attractions": {
+    "porto": [
+      {
+        "name": "Palácio da Bolsa (Stock Exchange Palace)",
+        "duration": "1-1.5 hours (guided tour)",
+        "cost": "€10/adult, €5.50 child (6-12), free <6",
+        "kid_friendly": "Medium (ornate rooms, Arab Room is stunning, but tour-guided only)",
+        "when_to_add": "Day 2 or 3 afternoon if you skip Port tasting",
+        "notes": "Neo-classical palace, highlight = Arab Room (golden Moorish ceiling). Must book guided tour. Near Ribeira."
+      },
+      {
+        "name": "Serralves Museum + Gardens",
+        "duration": "2-3 hours",
+        "cost": "€20/adult combo (museum+gardens), kids free",
+        "kid_friendly": "High (huge gardens, peacocks, outdoor play areas)",
+        "when_to_add": "Day 3 morning (replace Clérigos if you did it Day 2)",
+        "notes": "Contemporary art museum + 18-hectare park. Kids love the gardens more than the museum. 30 min from downtown."
+      },
+      {
+        "name": "Matosinhos Beach",
+        "duration": "2-3 hours",
+        "cost": "Free (bring beach gear)",
+        "kid_friendly": "Very High (sandy beach, waves, seafood lunch)",
+        "when_to_add": "Day 3 afternoon (skip Port cellars)",
+        "notes": "20 min from downtown. Popular family beach. Seafood restaurants at the waterfront (grilled fish, prawns)."
+      },
+      {
+        "name": "Porto Tram Line 1 (historic tram)",
+        "duration": "45 min round-trip",
+        "cost": "€4/adult, €2 child one-way",
+        "kid_friendly": "High (kids love old trams!)",
+        "when_to_add": "Day 2 or 3 as a short add-on",
+        "notes": "Vintage wooden tram along the Douro riverfront (Ribeira → Foz). Scenic ride, kids enjoy it."
+      }
+    ],
+    "tomar": [
+      {
+        "name": "Mata dos Sete Montes (Seven Hills Forest)",
+        "duration": "1-2 hours",
+        "cost": "Free",
+        "kid_friendly": "High (forest trails, shaded paths)",
+        "when_to_add": "Day 4 after Convent of Christ visit",
+        "notes": "Walking trails around Convent of Christ hill. Cool forest, nice views. Kids can run around."
+      },
+      {
+        "name": "Aqueduto dos Pegões Altos",
+        "duration": "30 min viewing + photos",
+        "cost": "Free (exterior viewing)",
+        "kid_friendly": "Medium (impressive structure, but just viewing)",
+        "when_to_add": "Day 4 evening walk",
+        "notes": "16th-century aqueduct with 180 arches. Walk under it or drive by. Near town center."
+      }
+    ],
+    "lisbon": [
+      {
+        "name": "Lisbon Zoo (Jardim Zoológico)",
+        "duration": "3-4 hours",
+        "cost": "€27/adult, €17.50 child (3-12), free <3",
+        "kid_friendly": "Very High (dolphins, cable car, playground)",
+        "when_to_add": "Day 6 or 8 morning (replace museum time)",
+        "notes": "Dolphins, tigers, cable car over zoo. Full morning activity. Metro accessible (Sete Rios station)."
+      },
+      {
+        "name": "KidZania Lisboa (indoor kids' city)",
+        "duration": "3-4 hours",
+        "cost": "€25/child, €15/adult",
+        "kid_friendly": "Very High (ages 4-14, role-play city)",
+        "when_to_add": "Day 8 or 9 if weather is bad",
+        "notes": "Kids play grown-up jobs (pilot, chef, firefighter). At Dolce Vita Tejo mall. Indoor backup for rainy day."
+      },
+      {
+        "name": "Pavilhão do Conhecimento (Science Museum)",
+        "duration": "2-3 hours",
+        "cost": "€11/adult, €7 child (6-17), free <6",
+        "kid_friendly": "Very High (interactive exhibits, hands-on science)",
+        "when_to_add": "Day 7 after Oceanário (same area)",
+        "notes": "At Parque das Nações. Hands-on science exhibits. Pairs well with Oceanário (same district)."
+      },
+      {
+        "name": "Lisbon Story Centre (interactive history museum)",
+        "duration": "1 hour",
+        "cost": "€8/adult, €4 child (6-15), free <6",
+        "kid_friendly": "Medium-High (earthquake simulator, audiovisual)",
+        "when_to_add": "Day 9 if you have extra time near Praça do Comércio",
+        "notes": "Near Praça do Comércio. Lisbon history via multimedia. Earthquake simulator is a hit with kids."
+      },
+      {
+        "name": "Miradouro da Senhora do Monte (best viewpoint)",
+        "duration": "30 min",
+        "cost": "Free",
+        "kid_friendly": "Medium (walk up hill or tram)",
+        "when_to_add": "Day 9 morning (Alfama district)",
+        "notes": "Highest viewpoint in Lisbon. Panoramic city views. Take Tram 28 or walk up from Alfama. Sunset is magical."
+      },
+      {
+        "name": "Time Out Market (Mercado da Ribeira)",
+        "duration": "1-2 hours (lunch or dinner)",
+        "cost": "€10-15/person",
+        "kid_friendly": "High (food hall, variety for picky eaters)",
+        "when_to_add": "Any Lisbon day for lunch/dinner",
+        "notes": "Curated food hall with 40+ stalls. Kids can pick what they want. Near Cais do Sodré. Open 10 AM–midnight."
+      },
+      {
+        "name": "Santa Justa Lift (Elevador de Santa Justa)",
+        "duration": "30 min (queue + ride)",
+        "cost": "€5.30 round-trip",
+        "kid_friendly": "High (historic elevator, city views)",
+        "when_to_add": "Day 8 or 9 (downtown Lisbon)",
+        "notes": "Neo-Gothic iron elevator to Carmo viewpoint. Short ride, great views. Skip if queues are long."
+      },
+      {
+        "name": "Museu Nacional do Azulejo (Tile Museum)",
+        "duration": "1.5-2 hours",
+        "cost": "€5/adult, free <12",
+        "kid_friendly": "Medium (beautiful tiles, but quiet museum)",
+        "when_to_add": "Day 8 if adults want a cultural stop",
+        "notes": "Stunning azulejo collection (Portuguese tiles). 16th-century convent. East Lisbon (20 min from center)."
+      }
+    ],
+    "sintra": [
+      {
+        "name": "Monserrate Palace + Gardens",
+        "duration": "1.5-2 hours",
+        "cost": "€8/adult, free <18",
+        "kid_friendly": "High (exotic gardens, fern valley, ruins)",
+        "when_to_add": "Day 10 if you finish Pena/Moorish early",
+        "notes": "Romantic palace + subtropical gardens. Less crowded than Pena. 10 min drive west of Sintra center."
+      },
+      {
+        "name": "Cabo da Roca (westernmost point of Europe)",
+        "duration": "30-45 min (stop + photos)",
+        "cost": "Free (parking €2-3)",
+        "kid_friendly": "Medium (dramatic cliffs, windy, hold kids' hands)",
+        "when_to_add": "Day 10 on the way back from Sintra → Lisbon",
+        "notes": "Dramatic cliffs, lighthouse, certificate available. 20 min from Sintra. Windy! Watch kids near edges."
+      },
+      {
+        "name": "Azenhas do Mar (cliff-side village)",
+        "duration": "1 hour (stop for photos + snack)",
+        "cost": "Free (lunch €10-15/person)",
+        "kid_friendly": "High (seaside village, natural pool)",
+        "when_to_add": "Day 10 on the way back (pairs with Cabo da Roca)",
+        "notes": "White-washed village on cliffs, natural ocean pool. Scenic lunch spot. 15 min from Cabo da Roca."
+      }
+    ],
+    "algarve": [
+      {
+        "name": "Zoomarine Algarve (marine park + water park)",
+        "duration": "Full day (5-6 hours)",
+        "cost": "€30/adult, €21 child (4-10), free <4",
+        "kid_friendly": "Very High (dolphins, water slides, shows)",
+        "when_to_add": "Day 11 or 14 (replace beach day)",
+        "notes": "Near Albufeira (20 min from Armação de Pêra). Dolphin shows, water park, birds. Book online for discount."
+      },
+      {
+        "name": "Slide & Splash (water park)",
+        "duration": "Full day (5-6 hours)",
+        "cost": "€30/adult, €22 child (5-10), free <5",
+        "kid_friendly": "Very High (water slides, wave pool)",
+        "when_to_add": "Day 11 or 14 (if kids want pure water park fun)",
+        "notes": "Near Lagoa (15 min from Armação de Pêra). One of the best water parks in Portugal. Open Jun-Sep."
+      },
+      {
+        "name": "Praia da Marinha (most beautiful beach in Algarve)",
+        "duration": "2-3 hours",
+        "cost": "Free (parking €5-8/day)",
+        "kid_friendly": "High (stunning cliffs, golden sand, clear water)",
+        "when_to_add": "Day 11 or 14 (alternative to Armação beach)",
+        "notes": "15 min east of Armação de Pêra. Iconic limestone formations. Steep stairs down. Arrive early (fills up)."
+      },
+      {
+        "name": "Algar Seco (cliff formations + blowhole)",
+        "duration": "1 hour",
+        "cost": "Free",
+        "kid_friendly": "High (rock formations, tunnels, blowhole)",
+        "when_to_add": "Day 12 morning before Benagil tour (5 min from Carvoeiro marina)",
+        "notes": "Dramatic cliff formations in Carvoeiro. Kids love the natural rock tunnels. Sunrise/sunset is magical."
+      },
+      {
+        "name": "Ria Formosa Natural Park (lagoon boat tour)",
+        "duration": "2-3 hours (boat tour)",
+        "cost": "€25-35/adult, €15-20 child",
+        "kid_friendly": "High (boat ride, flamingos, sandbars)",
+        "when_to_add": "Day 14 (if you want an eastern Algarve day trip)",
+        "notes": "Near Faro/Olhão. Protected lagoon, barrier islands, birdwatching (flamingos!). 1h drive from Armação."
+      },
+      {
+        "name": "Silves Castle + Archaeological Museum",
+        "duration": "1.5-2 hours",
+        "cost": "€2.80/adult, free <12",
+        "kid_friendly": "High (red sandstone castle, ramparts)",
+        "when_to_add": "Day 11 or 14 morning",
+        "notes": "15 min from Armação de Pêra. Best-preserved Moorish castle in Algarve. Kids love exploring ramparts."
+      },
+      {
+        "name": "Portimão Museum + Praia da Rocha",
+        "duration": "2-3 hours",
+        "cost": "Museum €3/adult, free <12 | Beach free",
+        "kid_friendly": "High (sardine canning museum + big beach)",
+        "when_to_add": "Day 11 or 14",
+        "notes": "Portimão = former sardine canning hub (museum covers it). Praia da Rocha = huge sandy beach nearby."
+      },
+      {
+        "name": "Lagos Cliffs Kayak Tour (alternative to catamaran)",
+        "duration": "2-3 hours",
+        "cost": "€35-45/adult, €25 child (varies by operator)",
+        "kid_friendly": "Medium-High (active, ages 6+)",
+        "when_to_add": "Day 13 if you want active exploration",
+        "notes": "Kayak into Ponta da Piedade caves. More intimate than boat tours. Book with Kayak Adventures or similar."
+      }
+    ],
+    "évora": [
+      {
+        "name": "Cromeleque dos Almendres (stone circle)",
+        "duration": "30-45 min",
+        "cost": "Free",
+        "kid_friendly": "Medium (like a mini-Stonehenge, but remote)",
+        "when_to_add": "Day 15 if you have extra time before Évora",
+        "notes": "15 min west of Évora. 5000-year-old stone circle (older than Stonehenge!). Dirt road, quiet site."
+      },
+      {
+        "name": "Aqueduto da Água de Prata (aqueduct walk)",
+        "duration": "30 min walk",
+        "cost": "Free",
+        "kid_friendly": "Medium (can walk on top of aqueduct)",
+        "when_to_add": "Day 15 after Évora historic center",
+        "notes": "16th-century aqueduct. You can walk along the top (partially). Starts just outside Évora's walls."
+      }
+    ]
+  }
 }
