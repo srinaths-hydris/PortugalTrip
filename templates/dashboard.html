@@ -123,22 +123,28 @@
 
     <div class="dashboard-card">
         <h2>✈️ Next Actions</h2>
-        <div class="stat-row">
-            <span class="stat-label">Book Tomar hotel</span>
-            <span class="stat-value" style="color: #f59e0b;">⚠️ Pending</span>
-        </div>
-        <div class="stat-row">
-            <span class="stat-label">Book Pena Palace tickets</span>
-            <span class="stat-value" style="color: #f59e0b;">⚠️ Pending</span>
-        </div>
-        <div class="stat-row">
-            <span class="stat-label">Book Benagil catamaran</span>
-            <span class="stat-value" style="color: #f59e0b;">⚠️ Pending</span>
-        </div>
-        <div class="stat-row">
-            <span class="stat-label">Confirm Darshan/Rika flights</span>
-            <span class="stat-value" style="color: #f59e0b;">⚠️ Pending</span>
-        </div>
+        {% if checklist and checklist.items %}
+            {% for item in checklist.items[:4] %}
+            <div class="stat-row">
+                <span class="stat-label">{{ item.text }}</span>
+                <span class="stat-value" style="color: {% if item.priority == 'high' %}#ef4444{% elif item.priority == 'medium' %}#f59e0b{% else %}#6b7280{% endif %};">
+                    ⚠️ {{ item.priority|capitalize }}
+                </span>
+            </div>
+            {% endfor %}
+            {% if checklist.items|length == 0 %}
+            <div style="text-align: center; padding: 2rem; color: #10b981;">
+                <div style="font-size: 3rem;">🎉</div>
+                <div style="margin-top: 0.5rem; font-weight: 600;">All set!</div>
+                <div style="font-size: 0.9rem; color: #666; margin-top: 0.25rem;">No pending actions</div>
+            </div>
+            {% endif %}
+        {% else %}
+            <div class="stat-row">
+                <span class="stat-label">No pending items</span>
+                <span class="stat-value" style="color: #10b981;">✅ Ready!</span>
+            </div>
+        {% endif %}
     </div>
 
     <div class="dashboard-card">

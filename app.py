@@ -125,6 +125,7 @@ def dashboard():
                          user=user,
                          days_until=days_until,
                          trip_date=trip_date,
+                         checklist=checklist,
                          completed_items=completed_items,
                          total_items=total_items)
 
